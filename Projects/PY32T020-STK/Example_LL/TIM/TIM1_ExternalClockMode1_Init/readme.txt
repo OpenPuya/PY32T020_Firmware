@@ -1,0 +1,41 @@
+================================================================================
+                                样例使用说明
+                             Sample Description
+================================================================================
+功能描述：
+此样例演示了TIM1的外部时钟模式1的功能，选择ETR(PA12)引脚作为外部时钟输入源，并使
+能更新中断，在中断中翻转LED灯。
+
+Function descriptions:
+This sample demonstrates the functionality of TIM1 in external clock mode 1. 
+It selects ETR (PA12) pin as the external clock input source and enables the 
+update interrupt. In the interrupt, the LED light is toggled.
+================================================================================
+测试环境：
+测试用板：PY32T020_STK
+MDK版本： 5.28
+IAR版本： 9.20
+GCC版本： GNU Arm Embedded Toolchain 10.3-2021.10
+
+Test environment:
+Test board: PY32T020_STK
+MDK Version: 5.28
+IAR Version: 9.20
+GCC Version: GNU Arm Embedded Toolchain 10.3-2021.10
+================================================================================
+使用步骤：
+1. 编译下载程序到MCU，并运行；
+2. PA12引脚，输入外部时钟。本例程配置MCO输出一个时钟，将PA8引脚与PA12引脚相连；
+3. 可观察到MCU从PA12引脚上每检测到800个脉冲，会让LED灯翻转一次；
+
+Example execution steps:
+1. compile and download the program to MCU and run it;
+2. Input external clock into PA12 pin.This routine configures MCO to output a 
+clock that connects the PA8 pin to the PA12 pin;
+3. It can be observed that every 800 pulses detected by the MCU from the PA12 
+pin, the LED light will be turned over once;
+================================================================================
+注意事项：
+
+Notes:
+================================================================================

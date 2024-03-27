@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.7.27"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.27/schema/PACK.xsd">
+  <vendor>Puya</vendor>
+  <url>https://www.puyasemi.com/uploadfiles/</url>
+  <name>PY32T0xx_DFP</name>
+  <description>Puya PY32T0 Series Device Support</description>
+  <releases>
+    <release version="1.0.0" date="2024-01-05">
+        First Release version of PY32T0 Device Family Pack.
+    </release>
+  </releases>
+  <keywords>
+    <keyword>Puya</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>PY32T0</keyword>
+  </keywords>
+  <devices>
+    <family Dfamily="PY32T0 Series" Dvendor="Puya:176">
+      <processor Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="0" Dmpu="0" Dendian="Little-endian"/>
+      <description>
+  The PY32T0 mainstream microcontrollers are based on high-performance Arm Cortex-M0+ 32-bit RISC core.
+
+  The chip provides sleep and stop low-power operating modes to meet different low-power applications.
+  Offering a high level of integration, they are suitable for a variety of application scenarios, such as controllers, handheld devices, PC peripherals, games and GPS platforms, industrial applications, etc.
+      </description>
+
+      <sequences>
+        <!-- Override for Pre-Defined Sequences -->
+        <sequence name="DebugCoreStart">
+          <block>
+            // Replication of Standard Functionality
+            Write32(0xE000EDF0, 0xA05F0001);                                        // Enable Core Debug via DHCSR
+          </block>
+
+          <block info="DbgMCU registers">
+            // Device Specific Debug Setup
+            Write32(0x4002103C, Read32(0x4002103C) | 0x08000000);                   // Set RCC_APBENR1.DBGEN
+
+            Write32(0x40015804, DbgMCU_CR);                                         // DBGMCU_CR: Configure MCU Debug
+            Write32(0x40015808, DbgMCU_APB_Fz1);                                    // DBGMCU_APB_FZ1: Configure APB Peripheral Freeze1 Behavior
+            Write32(0x4001580C, DbgMCU_APB_Fz2);                                    // DBGMCU_APB_FZ2: Configure APB Peripheral Freeze2 Behavior
+          </block>
+        </sequence>
+      </sequences>
+
+      <!-- ************************  Subfamily 'PY32T020'  **************************** -->
+      <subFamily DsubFamily="PY32T020">
+        <processor Dclock="48000000"/>
+        <debug svd="CMSIS/SVD/PY32T020xx.svd"/>
+        <debugvars configfile="CMSIS/Debug/PY32T020xx.dbgconf">
+          __var DbgMCU_CR      = 0x00000002;   // DBGMCU_CR:  DBG_STOP, DBG_STANDBY
+          __var DbgMCU_APB_Fz1 = 0x00000000;   // DGBMCU_APB_FZ1: All Peripherals Operate as in Normal Mode
+          __var DbgMCU_APB_Fz2 = 0x00000000;   // DGBMCU_APB_FZ2: All Peripherals Operate as in Normal Mode
+        </debugvars>
+
+        <!-- *************************  Device 'PY32T020x6'  ***************************** -->
+        <device Dname="PY32T020x6">
+          <compile header="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h" define="PY32T020x6" />
+          <memory name="IROM1" access="rx" start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory name="IRAM1" access="rw" start="0x20000000" size="0x00001000" init   ="0" default="1"/>
+          <algorithm name="CMSIS/Flash/PY32T020xx_32.FLM" start="0x08000000" size="0x00008000" default="1"/>
+          <algorithm name="CMSIS/Flash/PY32T020xx_OPT.FLM" start="0x1FFF0080" size="0x00000010" default="0"/>
+        </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device Conditions -->
+    <condition id="PY32T0">
+      <description>Puya PY32T0 Series Devices</description>
+      <require Dvendor="Puya:176" Dname="PY32T0*"/>
+    </condition>
+
+    <condition id="PY32T0 CMSIS">
+      <description>Puya PY32T0 Series devices and CMSIS</description>
+      <require condition="PY32T0"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="PY32T020x6">
+      <description>Puya PY32T020x6 Devices</description>
+      <require Dvendor="Puya:176" Dname="PY32T020?6*"/>
+    </condition>
+
+    <condition id="PY32T020x6 ARMCC">
+      <description>Puya PY32T020x6 Devices and ARMCC Compiler</description>
+      <require condition="PY32T020x6"/>
+      <require condition="Compiler ARMCC"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="0.0.1" condition="PY32T0 CMSIS">
+      <description>System Startup for Puya PY32T0 Series</description>
+      <files>
+        <!--  include folder -->
+        <file category="include" name="Drivers/CMSIS/Device/PY/PY32T0xx/Include/"/>
+        <!-- common device header file -->
+        <file category="header" name="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h"/>
+
+        <file category="source" condition="PY32T020x6 ARMCC" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/ARM/startup_py32t020x6.s" attr="config" version="0.0.1"/>
+
+        <file category="source" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/system_py32t0xx.c" attr="config" version="0.0.1"/>
+      </files>
+    </component>
+  </components>
+</package>
+
