@@ -1,0 +1,3 @@
+--create .\Output\Py32t020xx_waterproof_V1.2.6.lib
+.\output\py32t020_tk.o
+.\output\tk_lib.o
