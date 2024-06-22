@@ -38,7 +38,6 @@
 /* Private function prototypes -----------------------------------------------*/
 static void APP_SystemClockConfig(void);
 static void APP_ConfigTIM1XOR(void);
-void APP_CCCallback(void);
 
 /**
   * @brief  Main program.
@@ -89,6 +88,8 @@ static void APP_ConfigTIM1XOR(void)
 
   /* Enable CC interrupt */
   LL_TIM_EnableIT_CC1(TIM1);
+
+  NVIC_SetPriority(TIM1_CC_IRQn, 1);
   NVIC_EnableIRQ(TIM1_CC_IRQn);
 
   /* Select TIM1 CH1, CH2 and CH3 channles are connected to the TI1 input (XOR combination) */
@@ -101,9 +102,11 @@ static void APP_ConfigTIM1XOR(void)
 
   /* CH1, CH2, and CH3 map to PA3, PA5, and PA4 */
   TIM1ChannelInit.Pin       = LL_GPIO_PIN_3 | LL_GPIO_PIN_5 | LL_GPIO_PIN_4;
-  TIM1ChannelInit.Pull      = LL_GPIO_PULL_UP;
+  TIM1ChannelInit.Pull      = LL_GPIO_PULL_DOWN;
   TIM1ChannelInit.Mode      = LL_GPIO_MODE_ALTERNATE;
   TIM1ChannelInit.Alternate = LL_GPIO_AF_2;
+  TIM1ChannelInit.Speed      = LL_GPIO_SPEED_FREQ_HIGH;
+  TIM1ChannelInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   LL_GPIO_Init(GPIOA,&TIM1ChannelInit);
 
   /* Enable CH1、CH2、CH3 channels */
@@ -155,6 +158,19 @@ static void APP_SystemClockConfig(void)
 
   /* Update CMSIS variable (which can be updated also through SystemCoreClockUpdate function) */
   LL_SetSystemCoreClock(24000000);
+}
+
+/**
+  * @brief  Error handling function
+  * @param  None
+  * @retval None
+  */
+void APP_ErrorHandler(void)
+{
+  /* Infinite loop */
+  while (1)
+  {
+  }
 }
 
 #ifdef  USE_FULL_ASSERT

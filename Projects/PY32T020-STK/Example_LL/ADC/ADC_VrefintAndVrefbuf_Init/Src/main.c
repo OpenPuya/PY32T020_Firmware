@@ -99,14 +99,14 @@ int main(void)
 static void APP_AdcConfig(void)
 {
   __IO uint32_t wait_loop_index = 0;
-  LL_ADC_InitTypeDef ADC_Init;
-  LL_ADC_REG_InitTypeDef LL_ADC_REG_InitType;
+  LL_ADC_InitTypeDef ADC_Init = {0};
+  LL_ADC_REG_InitTypeDef LL_ADC_REG_InitType = {0};
 
   /* Enable ADC clock */
   LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_ADC1);
 
   /* Initialize partical features of ADC instance */
-  ADC_Init.Clock=LL_ADC_CLOCK_SYNC_PCLK_DIV64;
+  ADC_Init.Clock=LL_ADC_CLOCK_SYNC_PCLK_DIV4;
   ADC_Init.DataAlignment=LL_ADC_DATA_ALIGN_RIGHT;
   ADC_Init.LowPowerMode=LL_ADC_LP_MODE_NONE;
   ADC_Init.Resolution=LL_ADC_RESOLUTION_12B;

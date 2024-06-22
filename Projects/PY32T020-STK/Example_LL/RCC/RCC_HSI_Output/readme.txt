@@ -6,7 +6,7 @@
 此样例演示了时钟输出功能，可输出HSI波形。
 
 Function descriptions:
-This sample demonstrates the clock output function, which can output HSi 
+This sample demonstrates the clock output function, which can output HSI 
 waveforms.
 ================================================================================
 测试环境：

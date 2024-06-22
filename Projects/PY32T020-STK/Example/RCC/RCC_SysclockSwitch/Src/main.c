@@ -51,7 +51,7 @@ int main(void)
   /* Initialize button */
   BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
   
-  /* Configure the system clock to default HSI 8MHz, and then switch to HSI 16MHz */
+  /* Configure the system clock */
   APP_SystemClockConfig();
 
   /* Configure PA08 pin as MCO1 function to output the system clock */

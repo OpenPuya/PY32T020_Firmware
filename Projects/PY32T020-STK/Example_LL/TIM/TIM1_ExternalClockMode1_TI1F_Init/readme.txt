@@ -26,13 +26,12 @@ GCC Version: GNU Arm Embedded Toolchain 10.3-2021.10
 ================================================================================
 使用步骤：
 1. 编译下载程序到MCU，并运行；
-2. PA3引脚，输入外部时钟。本例程配置MCO输出一个时钟，将PA8引脚与PA3引脚相连。
+2. PA3引脚，输入外部时钟。
 3. 可观察到MCU从PA3引脚上输入时钟信号，CNT计数器计到800时，产生更新事件，LED翻转一次
 
 Example execution steps:
 1. compile and download the program to MCU and run it;
-2. Input external clock into PA3 pin.This routine configures MCO to output a 
-clock that connects the PA8 pin to the PA3 pin.
+2. Input external clock into PA3 pin.
 3. It can be observed that the MCU receives the input clock signal from the PA3
 pin, and when the CNT counter reaches 800, an update event is generated, and the 
 LED toggle once

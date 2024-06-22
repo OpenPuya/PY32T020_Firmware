@@ -40,7 +40,6 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "py32t0xx_hal.h"
 #include "py32t020xx_ll_Start_Kit.h"
-
 #include "py32t020_ll_cortex.h"
 #include "py32t020_ll_utils.h"
 #include "py32t020_ll_gpio.h"

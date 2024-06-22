@@ -34,13 +34,8 @@
 
 /* Private define ------------------------------------------------------------*/
 #define ADC_CALIBRATION_TIMEOUT_MS       ((uint32_t) 1)
-#define VDDA_APPLI                       ((uint32_t)3300)
-#define VAR_CONVERTED_DATA_INIT_VALUE    (__LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B) + 1)
 
 /* Private variables ---------------------------------------------------------*/
-__IO uint16_t uhADCxConvertedData = VAR_CONVERTED_DATA_INIT_VALUE;
-__IO uint16_t uhADCxConvertedData_Voltage_mVolt = 0;
-
 /* Private user code ---------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -49,8 +44,6 @@ static void APP_AdcEnable(void);
 static void APP_AdcCalibrate(void);
 static void APP_AdcConfig(void);
 static void APP_TimerInit(void);
-
-uint32_t data=0;
 
 /**
   * @brief  Main program.
@@ -68,12 +61,6 @@ int main(void)
 
   /* Initialize LED */
   BSP_LED_Init(LED_TK1);
-
-  /* Initialize BUTTON */
-  BSP_PB_Init(BUTTON_KEY,BUTTON_MODE_GPIO);
-
-  /* Initialize UART(for printf use) */
-  BSP_UART_Config();
 
   /* Configure ADC parameters */
   APP_AdcConfig();
@@ -110,8 +97,8 @@ static void APP_AdcConfig(void)
   /* Configure PA5 pin in analog input mode */
   LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_5, LL_GPIO_MODE_ANALOG);
 
-  /* Set ADC clock to pclk/8 */
-  LL_ADC_SetClock(ADC1, LL_ADC_CLOCK_SYNC_PCLK_DIV8);
+  /* Set ADC clock to pclk/4 */
+  LL_ADC_SetClock(ADC1, LL_ADC_CLOCK_SYNC_PCLK_DIV4);
 
   /* Set ADC resolution to 12 bit */
   LL_ADC_SetResolution(ADC1, LL_ADC_RESOLUTION_12B);

@@ -32,6 +32,26 @@
 
 #ifdef FLASH_MEM
 
+#ifdef PY32T020xx_20
+struct FlashDevice const FlashDevice  =
+{
+  FLASH_DRV_VERS,             // Driver Version, do not modify!
+  "Cortex-M0+ 20kB Flash",    // Device Name (20kB)
+  ONCHIP,                     // Device Type
+  0x08000000,                 // Device Start Address
+  0x00005000,                 // Device Size in Bytes (32kB)
+  0x80,                       // Programming Page Size
+  0,                          // Reserved, must be 0
+  0xFF,                       // Initial Content of Erased Memory
+  600,                        // Program Page Timeout 600 mSec
+  6000,                       // Erase Sector Timeout 6000 mSec
+
+//Specify Size and Address of Sectors
+  0x1000, 0x000000,           // Sector Size  4kB (6 sectors)
+  SECTOR_END
+};
+#endif // PY32T020xx_20
+
 #ifdef PY32T020xx_32
 struct FlashDevice const FlashDevice  =
 {

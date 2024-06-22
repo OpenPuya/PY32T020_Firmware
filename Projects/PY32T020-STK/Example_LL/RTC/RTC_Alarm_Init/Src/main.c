@@ -137,7 +137,7 @@ static void APP_SystemClockConfig(void)
   */
 static void APP_ConfigRtc(void)
 {
-  LL_RTC_InitTypeDef rtc_initstruct;
+  LL_RTC_InitTypeDef rtc_initstruct = {0};
   
   /*##-1- Enable PWR clock and enable access to the backup domain #######*/
   /* To change the source clock of the RTC functionalities (LSE, LSI), you have to:
@@ -192,8 +192,8 @@ static void APP_ConfigRtc(void)
   */
 static void APP_ConfigRtcAlarm(void)
 {
-  LL_RTC_TimeTypeDef  rtc_time_initstruct;
-  LL_RTC_AlarmTypeDef rtc_alarm_initstruct;
+  LL_RTC_TimeTypeDef  rtc_time_initstruct = {0};
+  LL_RTC_AlarmTypeDef rtc_alarm_initstruct = {0};
   
   /*## Configure Date ##################################################*/
   /* Set date: 2022.08.16 */

@@ -68,7 +68,7 @@ int main(void)
 static void APP_ConfigureExti(void)
 {
   /* Configuration pins */
-  GPIO_InitTypeDef  GPIO_InitStruct;
+  GPIO_InitTypeDef  GPIO_InitStruct = {0};
   __HAL_RCC_GPIOA_CLK_ENABLE();                  /* Enable GPIOA clock */
   GPIO_InitStruct.Mode  = GPIO_MODE_IT_RISING;   /* GPIO mode is a rising edge interrupt */
   GPIO_InitStruct.Pull  = GPIO_PULLDOWN;         /* pull down */

@@ -32,7 +32,7 @@ Example execution steps:
 1. Compile and download the program to the MCU and run it.
 2. Use an oscilloscope to monitor the frequency on the PA08 pin. After the MCU 
    starts, it outputs the HSI clock with a frequency of 24MHz. 
-3. Press the user button to switch to the HSE clock and PA08 outputs HSI clock.
+3. Press the user button to switch to the HSE clock and PA08 outputs HSE clock.
 ================================================================================
 注意事项：
 

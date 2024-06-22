@@ -112,7 +112,10 @@ static void APP_ConfigTIM1(void)
   /* Set PA3/PA7/PA5/PA4 as TIM1_CH1/TIM1_CH1N/TIM1_CH2/TIM1_CH3 */
   GPIOxCH1MapInit.Pin        = LL_GPIO_PIN_3|LL_GPIO_PIN_7|LL_GPIO_PIN_5|LL_GPIO_PIN_4;
   GPIOxCH1MapInit.Mode       = LL_GPIO_MODE_ALTERNATE;
-  GPIOxCH1MapInit.Alternate  = LL_GPIO_AF_2; 
+  GPIOxCH1MapInit.Alternate  = LL_GPIO_AF_2;
+  GPIOxCH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_HIGH;
+  GPIOxCH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  GPIOxCH1MapInit.Pull       = LL_GPIO_PULL_DOWN;  
   LL_GPIO_Init(GPIOA,&GPIOxCH1MapInit);
 
   /* Set PB0/PB1 as TIM1_CH2N/TIM1_CH3N */

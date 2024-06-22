@@ -97,7 +97,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if (temp == 3)
     {
       /* Modify TIM auto reload value */
-      __HAL_TIM_SET_AUTORELOAD(&TimHandle, 4800 - 1); 
+      __HAL_TIM_SET_AUTORELOAD(htim, 4800 - 1); 
     }
   }
 }

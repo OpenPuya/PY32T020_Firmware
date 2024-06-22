@@ -26,13 +26,12 @@ GCC Version: GNU Arm Embedded Toolchain 10.3-2021.10
 ================================================================================
 使用步骤：
 1. 编译下载程序到MCU，并运行；
-2. PA12引脚，输入外部时钟。本例程配置MCO输出一个时钟，将PA8引脚与PA12引脚相连。
+2. PA12引脚，输入外部时钟。
 3. 可观察到MCU从PA12引脚上每检测到800个脉冲，会让LED灯翻转一次；
 
 Example execution steps:
 1. compile and download the program to MCU and run it;
-2. Input external clock into PA12 pin.This routine configures MCO to output a 
-clock that connects the PA8 pin to the PA12 pin.
+2. Input external clock into PA12 pin.
 3. It can be observed that the MCU will toggle the LED light once every 800 
 pulses detected from the PA12 pin;
 ================================================================================

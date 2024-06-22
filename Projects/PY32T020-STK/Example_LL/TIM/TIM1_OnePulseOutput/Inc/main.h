@@ -48,8 +48,6 @@ extern "C" {
 /* Private defines -----------------------------------------------------------*/
 /* Exported variables prototypes ---------------------------------------------*/
 /* Exported functions prototypes ---------------------------------------------*/
-void APP_CCCallback(void);
-void APP_UPDATECallback(void);
 
 #ifdef __cplusplus
 }

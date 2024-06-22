@@ -32,11 +32,15 @@
 #include "main.h"
 
 /* Private define ------------------------------------------------------------*/
+#define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
+#define TXSTARTMESSAGESIZE    (COUNTOF(aTxStartMessage) - 1)
+#define TXENDMESSAGESIZE      (COUNTOF(aTxEndMessage) - 1)
+
 /* Private variables ---------------------------------------------------------*/
-UART_HandleTypeDef UartHandle;
-uint8_t aTxBuffer[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+UART_HandleTypeDef UartHandle = {0};
 uint8_t aRxBuffer[12] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
-__IO ITStatus UartReady = RESET;
+uint8_t aTxStartMessage[] = "\n\r UART-Hyperterminal communication based on polling \n\r Enter 12 characters using keyboard :\n\r";
+uint8_t aTxEndMessage[] = "\n\r Example Finished\n\r";
 
 /* Private user code ---------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -60,26 +64,35 @@ int main(void)
   UartHandle.Init.MsbFirst     = UART_MSB_FIRST_DISABLE;
   HAL_UART_Init(&UartHandle);
   
-  /* Sends an amount of data in polling mode */
-  if (HAL_UART_Transmit(&UartHandle, (uint8_t *)aTxBuffer, 12, 5000) != HAL_OK)
+  /* Start the transmission process */
+  if(HAL_UART_Transmit(&UartHandle, (uint8_t*)aTxStartMessage, TXSTARTMESSAGESIZE, 5000)!= HAL_OK)
+  {
+    APP_ErrorHandler();
+  }
+  
+  
+  /* Put UART peripheral in reception process */
+  if(HAL_UART_Receive(&UartHandle, (uint8_t *)aRxBuffer, 12, 5000) != HAL_OK)
+  {
+    APP_ErrorHandler();
+  }
+  
+  
+  /* Sends an amount of data in non blocking mode. */
+  if (HAL_UART_Transmit(&UartHandle, (uint8_t *)aRxBuffer, 12, 5000) != HAL_OK)
+  {
+    APP_ErrorHandler();
+  }
+ 
+
+  /* Send the End Message */
+  if(HAL_UART_Transmit(&UartHandle, (uint8_t*)aTxEndMessage, TXENDMESSAGESIZE, 5000)!= HAL_OK)
   {
     APP_ErrorHandler();
   }
 
   while (1)
   {
-    /* Receive an amount of data in polling mode */
-    if (HAL_UART_Receive(&UartHandle, (uint8_t *)aRxBuffer, 12, 5000) != HAL_OK)
-    {
-      APP_ErrorHandler();
-    }
-
-    /* Sends an amount of data in polling mode */
-    if (HAL_UART_Transmit(&UartHandle, (uint8_t *)aRxBuffer, 12, 5000) != HAL_OK)
-    {
-      APP_ErrorHandler();
-    }
-
   }
 }
 

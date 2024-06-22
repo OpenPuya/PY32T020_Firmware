@@ -942,7 +942,11 @@ uint32_t HAL_RCC_GetSysClockFreq(void)
 {
   uint32_t hsidiv;
   uint32_t sysclockfreq;
+#if defined(RCC_HSI48M_SUPPORT)
   const uint32_t hsiValue[6] = {0,0,0,0,24000000,48000000};
+#else
+  const uint32_t hsiValue[6] = {0,0,0,0,24000000,0};
+#endif
   uint32_t hsi_Index;
   if (__HAL_RCC_GET_SYSCLK_SOURCE() == RCC_CFGR_SWS_HSISYS)
   {

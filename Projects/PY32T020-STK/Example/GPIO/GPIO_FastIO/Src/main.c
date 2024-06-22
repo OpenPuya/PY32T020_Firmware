@@ -90,11 +90,11 @@ int main(void)
   */
 static void APP_GpioInit()
 {
-  GPIO_InitTypeDef  GPIO_InitStruct;
+  GPIO_InitTypeDef  GPIO_InitStruct = {0};
 
   __HAL_RCC_GPIOA_CLK_ENABLE();                          /* GPIOA clock enable */
 
-  /* Initialize pin PA1 */
+  /* Initialize pin PA1/PA14 */
   GPIO_InitStruct.Pin = GPIO_PIN_1 | GPIO_PIN_14;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;            /* Push-pull output */
   GPIO_InitStruct.Pull = GPIO_PULLUP;                    /* Enable pull-up */

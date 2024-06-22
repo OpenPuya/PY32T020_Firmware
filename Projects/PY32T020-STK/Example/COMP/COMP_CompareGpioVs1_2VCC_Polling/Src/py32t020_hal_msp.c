@@ -53,11 +53,11 @@ void HAL_MspInit(void)
   */
 void HAL_COMP_MspInit(COMP_HandleTypeDef *hcomp)
 {
+  GPIO_InitTypeDef COMPINPUT = {0};
   __HAL_RCC_GPIOA_CLK_ENABLE();                 /* Enable GPIOA Clock */   
   __HAL_RCC_COMP2_CLK_ENABLE();                 /* Enable COMP2 Clock */  
 
   /* Configure PA2 Analog */
-  GPIO_InitTypeDef COMPINPUT = {0};
   COMPINPUT.Pin = GPIO_PIN_2;
   COMPINPUT.Mode = GPIO_MODE_ANALOG;            /* Analog Mode */
   COMPINPUT.Speed = GPIO_SPEED_FREQ_HIGH;

@@ -169,7 +169,7 @@ __STATIC_INLINE void LL_IWDG_ReloadCounter(IWDG_TypeDef *IWDGx)
 }
 
 /**
-  * @brief  Enable write access to IWDG_PR, IWDG_RLR and IWDG_WINR registers
+  * @brief  Enable write access to IWDG_PR, IWDG_RLR registers
   * @rmtoll KR           KEY           LL_IWDG_EnableWriteAccess
   * @param  IWDGx IWDG Instance
   * @retval None
@@ -180,7 +180,7 @@ __STATIC_INLINE void LL_IWDG_EnableWriteAccess(IWDG_TypeDef *IWDGx)
 }
 
 /**
-  * @brief  Disable write access to IWDG_PR, IWDG_RLR and IWDG_WINR registers
+  * @brief  Disable write access to IWDG_PR, IWDG_RLR registers
   * @rmtoll KR           KEY           LL_IWDG_DisableWriteAccess
   * @param  IWDGx IWDG Instance
   * @retval None

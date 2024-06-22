@@ -53,9 +53,6 @@ int main(void)
   /* Configure Systemclock */
   APP_SystemClockConfig();
   
-  /* Configure MCO */
-  HAL_RCC_MCOConfig(RCC_MCO1, RCC_MCOSOURCE_HSI, RCC_MCODIV_4);
-  
   /* Initialize LED */
   BSP_LED_Init(LED_TK1);
 
@@ -74,7 +71,7 @@ int main(void)
   }
 
   sClockSourceConfig.ClockFilter = 0;                                  /* No filter */
-  sClockSourceConfig.ClockPolarity = TIM_CLOCKPOLARITY_NONINVERTED;                                /* ETR is non-inverted, active at high level or rising edge */
+  sClockSourceConfig.ClockPolarity = TIM_CLOCKPOLARITY_NONINVERTED;    /* ETR is non-inverted, active at high level or rising edge */
   sClockSourceConfig.ClockPrescaler = TIM_ETRPRESCALER_DIV1;           /* No prescaler is used */
   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_ETRMODE1;           /* External clock source mode 1(ETRF) */
   HAL_TIM_ConfigClockSource(&TimHandle, &sClockSourceConfig);          /* Configure clock source */

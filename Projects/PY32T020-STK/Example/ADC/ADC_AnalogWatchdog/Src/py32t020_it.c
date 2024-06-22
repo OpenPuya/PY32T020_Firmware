@@ -40,7 +40,7 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private user code ---------------------------------------------------------*/
 /* External variables --------------------------------------------------------*/
-extern ADC_HandleTypeDef hadc;
+extern ADC_HandleTypeDef ADCHandle;
 
 /******************************************************************************/
 /*          Cortex-M0+ Processor Interruption and Exception Handlers          */
@@ -98,7 +98,7 @@ void SysTick_Handler(void)
   */
 void ADC_COMP_IRQHandler(void)
 {
-  HAL_ADC_IRQHandler(&hadc);
+  HAL_ADC_IRQHandler(&ADCHandle);
 }
 
 /************************ (C) COPYRIGHT Puya *****END OF FILE******************/

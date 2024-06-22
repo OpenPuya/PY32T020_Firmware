@@ -25,15 +25,14 @@ GCC Version: GNU Arm Embedded Toolchain 10.3-2021.10
 ================================================================================
 使用步骤：
 1. 编译下载程序到MCU，并运行；
-2. 每按一次用户按键，观察到LED翻转一次；
+2. PA15每输入一个上升沿，观察到LED翻转一次；
 
 Example execution steps:
 1.Compile and download the program to MCU and run it;
-2.Observe the LED flipping once every time the user presses the button;
+2.PA15 each input a rising edge,Observe the LED flipping;
 ================================================================================
 注意事项：
-用户按键对应PA15引脚。
 
 Notes:
-PA15 pin corresponding to user button.
+
 ================================================================================

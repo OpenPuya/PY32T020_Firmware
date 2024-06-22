@@ -115,14 +115,14 @@ void APP_IwdgConfig(void)
   /* Enable IWDG */
   LL_IWDG_Enable(IWDG);
 
-  /* Enable write access to IWDG_PR, IWDG_RLR and IWDG_WINR registers */
+  /* Enable write access to IWDG_PR, IWDG_RLR registers */
   LL_IWDG_EnableWriteAccess(IWDG);
 
   /* Set IWDG prescaler */
-  LL_IWDG_SetPrescaler(IWDG, LL_IWDG_PRESCALER_32); /* T=1MS */
+  LL_IWDG_SetPrescaler(IWDG, LL_IWDG_PRESCALER_32);
 
   /* Set IWDG reload value */
-  LL_IWDG_SetReloadCounter(IWDG, 1000); /* 1ms*1000=1s */
+  LL_IWDG_SetReloadCounter(IWDG, 1024); /* T*1024=1s */
 
   /* Check if all flags Prescaler, Reload & Window Value Update are reset or not */
   while (LL_IWDG_IsReady(IWDG) == 0U) {;}

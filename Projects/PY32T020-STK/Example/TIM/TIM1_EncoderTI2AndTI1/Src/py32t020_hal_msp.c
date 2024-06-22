@@ -55,7 +55,7 @@ void HAL_MspInit(void)
   */
 void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef *htim)
 {
-  GPIO_InitTypeDef   GPIO_InitStruct;
+  GPIO_InitTypeDef   GPIO_InitStruct = {0};
   /* Enable TIM1 clock */
   __HAL_RCC_TIM1_CLK_ENABLE();
   /* Enable GPIOA clock */
@@ -67,7 +67,7 @@ void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef *htim)
   GPIO_InitStruct.Alternate = GPIO_AF2_TIM1;    /* Alternate Function is TIM1 */
 
   GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_5;
-  /* Initialize PA8 */
+  /* Initialize GPIO */
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 

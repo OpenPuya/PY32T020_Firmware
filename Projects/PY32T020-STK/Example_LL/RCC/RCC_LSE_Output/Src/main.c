@@ -67,9 +67,6 @@ int main(void)
   /* Initialize clock, configure system clock as LSE */
   APP_SystemClockConfig();
   
-  /* Initialize SysTick */
-  LL_Init1msTick(LSE_VALUE);
-
   while (1)
   {
     /* Toggle LED */
@@ -93,6 +90,7 @@ static void APP_SystemClockConfig(void)
   while(LL_PWR_IsEnabledBkUpAccess() == 0)
   {
   }
+  LL_RCC_LSE_SetDriveCapability(LL_RCC_LSEDRIVE_HIGH);
   LL_RCC_LSE_Enable();
   while (LL_RCC_LSE_IsReady() != 1)
   {
@@ -111,6 +109,10 @@ static void APP_SystemClockConfig(void)
 
   /* Set APB1 prescaler and initialize it */
   LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
+
+  /* Initialize SysTick */
+  LL_Init1msTick(LSE_VALUE);
+
   /* Update system clock global variable SystemCoreClock (can also be updated by calling SystemCoreClockUpdate function) */
   LL_SetSystemCoreClock(LSE_VALUE);
 }
@@ -122,11 +124,12 @@ static void APP_SystemClockConfig(void)
   */
 static void APP_McoGpioConfig(void)
 {
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+
   /* Enable GPIOA clock */
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);
 
   /* Configure PA08 as alternate function and set it as MCO output pin */
-  LL_GPIO_InitTypeDef GPIO_InitStruct;
   /* Select pin 8 */
   GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
   /* Set mode as alternate function */

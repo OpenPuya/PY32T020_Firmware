@@ -134,8 +134,6 @@ static void APP_RccInit(void)
   */
 static void APP_CompInit(void)
 {
-  __HAL_RCC_COMP1_CLK_ENABLE();                                         /* Enable COMP1 clock */
-  
   hcomp1.Instance = COMP1;                                              /* COMP1 */
   hcomp1.Init.InputMinus      = COMP_INPUT_MINUS_IO1;                   /* Negative input is PA0  */
   hcomp1.Init.InputPlus       = COMP_INPUT_PLUS_IO3;                    /* Positive input selection is Vrefcmp */

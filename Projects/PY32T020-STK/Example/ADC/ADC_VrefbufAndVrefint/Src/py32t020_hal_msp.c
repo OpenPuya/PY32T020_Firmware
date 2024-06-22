@@ -48,4 +48,12 @@ void HAL_MspInit(void)
   __HAL_RCC_PWR_CLK_ENABLE();
 }
 
+/**
+  * @brief Initialize ADC MSP
+  */
+void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
+{
+  __HAL_RCC_ADC_CLK_ENABLE();            /* Enable ADC clock */ 
+}
+
 /************************ (C) COPYRIGHT Puya *****END OF FILE******************/

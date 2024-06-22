@@ -33,9 +33,14 @@
 #include "py32t020xx_ll_Start_Kit.h"
 
 /* Private define ------------------------------------------------------------*/
+#define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
+#define TXSTARTMESSAGESIZE    (COUNTOF(aTxStartMessage) - 1)
+#define TXENDMESSAGESIZE      (COUNTOF(aTxEndMessage) - 1)
+
 /* Private variables ---------------------------------------------------------*/
-uint8_t aTxBuffer[] = "UART Test";
-uint8_t aRxBuffer[30] = {0};
+uint8_t aRxBuffer[12] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+uint8_t aTxStartMessage[] = "\n\r UART-Hyperterminal communication based on polling \n\r Enter 12 characters using keyboard :\n\r";
+uint8_t aTxEndMessage[] = "\n\r Example Finished\n\r";
 
 uint8_t *TxBuff = NULL;
 __IO uint16_t TxCount = 0;
@@ -64,16 +69,20 @@ int main(void)
   /* Configure UART */
   APP_ConfigUART(UART3);
 
-  /* Send string:"UART Test"，and wait send complete */
-  APP_UARTTransmit(UART3, (uint8_t*)aTxBuffer, sizeof(aTxBuffer)-1);
+  /* Start the transmission process */
+  APP_UARTTransmit(UART3, (uint8_t*)aTxStartMessage, TXSTARTMESSAGESIZE);
 
-  while (1)
+  /* receive data */
+  APP_UARTReceive(UART3, (uint8_t *)aRxBuffer, 12);
+
+  /* Transmit data */
+  APP_UARTTransmit(UART3, (uint8_t*)aRxBuffer, 12);
+  
+  /* Send the End Message  */
+  APP_UARTTransmit(UART3, (uint8_t*)aTxEndMessage, TXENDMESSAGESIZE);
+  
+  while(1)
   {
-    /* receive data */
-    APP_UARTReceive(UART3, (uint8_t *)aRxBuffer, 12);
-
-    /* Transmit data */
-    APP_UARTTransmit(UART3, (uint8_t*)aRxBuffer, 12);
   }
 }
 
@@ -114,6 +123,9 @@ static void APP_SystemClockConfig(void)
   */
 static void APP_ConfigUART(UART_TypeDef *UARTx)
 {
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+  LL_UART_InitTypeDef UART_InitStruct = {0}; 
+
   /* Enable clock, initialize GPIO, enable NVIC interrupt */
   if (UARTx == UART3)
   {
@@ -123,7 +135,6 @@ static void APP_ConfigUART(UART_TypeDef *UARTx)
     LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_UART3);
 
     /* Initialize PA2 */
-    LL_GPIO_InitTypeDef GPIO_InitStruct;
     /* Select pin 2 */
     GPIO_InitStruct.Pin = LL_GPIO_PIN_2;
     /* Select alternate mode */
@@ -148,7 +159,6 @@ static void APP_ConfigUART(UART_TypeDef *UARTx)
   }
 
   /* Set UART feature */
-  LL_UART_InitTypeDef UART_InitStruct = {0};
   /* Set baud rate */
   UART_InitStruct.BaudRate = 115200;
   /* set word length to 8 bits: Start bit, 8 data bits, n stop bits */
@@ -179,16 +189,16 @@ static void APP_UARTTransmit(UART_TypeDef *UARTx, uint8_t *pData, uint16_t Size)
   /* transmit data */
   while (TxCount > 0)
   {
-    /* Wait for TXE bit to be set */
-    while(LL_UART_IsActiveFlag_TXE(UARTx) != 1);
+    /* Wait for TDRE bit to be set */
+    while(LL_UART_IsActiveFlag_TDRE(UARTx) != 1);
     /* transmit data */
     LL_UART_TransmitData(UARTx, *TxBuff);
     TxBuff++;
     TxCount--;
   }
 
-  /* Wait for BUSY bit to be clear */
-  while(LL_UART_IsActiveFlag_BUSY(UARTx));
+  /* Wait for transmission complete */
+  while(LL_UART_IsActiveFlag_TXE(UARTx) != 1);
 }
 
 /**

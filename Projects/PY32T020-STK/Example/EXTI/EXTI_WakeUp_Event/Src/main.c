@@ -59,9 +59,6 @@ int main(void)
   /* Configure external events */
   APP_ConfigureEXTI();
   
-  /* Pause systick */
-  HAL_SuspendTick();
-  
   /* Turn on LED */
   BSP_LED_On(LED_TK1);
   
@@ -72,6 +69,9 @@ int main(void)
   
   /* Turn off LED */
   BSP_LED_Off(LED_TK1);
+  
+  /* Pause systick */
+  HAL_SuspendTick();
   
   /* Configure and enter stop mode */
   APP_PWR_EnterStopMode();
@@ -93,7 +93,7 @@ int main(void)
   */
 static void APP_ConfigureEXTI(void)
 {
-  GPIO_InitTypeDef  GPIO_InitStruct;
+  GPIO_InitTypeDef  GPIO_InitStruct = {0};
   __HAL_RCC_GPIOA_CLK_ENABLE();                  /* Enable GPIOA clock */
   GPIO_InitStruct.Mode  = GPIO_MODE_EVT_FALLING; /* GPIO mode is a falling edge event */
   GPIO_InitStruct.Pull  = GPIO_PULLUP;           /* pull up */

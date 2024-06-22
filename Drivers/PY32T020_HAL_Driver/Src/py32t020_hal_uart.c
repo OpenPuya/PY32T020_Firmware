@@ -1591,12 +1591,12 @@ uint32_t HAL_UART_GetError(UART_HandleTypeDef *huart)
 /** @defgroup UART_Private_Functions UART Private Functions
   * @{
   */
+#if (USE_HAL_UART_REGISTER_CALLBACKS == 1)
 /**
   * @brief  Initialize the callbacks to their default values.
   * @param  huart UART handle.
   * @retval none
   */
-#if (USE_HAL_UART_REGISTER_CALLBACKS == 1)
 void UART_InitCallbacksToDefault(UART_HandleTypeDef *huart)
 {
   /* Init the UART Callback settings */

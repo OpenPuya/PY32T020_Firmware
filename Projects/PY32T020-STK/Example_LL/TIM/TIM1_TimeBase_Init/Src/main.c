@@ -48,6 +48,7 @@ int main(void)
 {
   /* Enable TIM1 clock */
   LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_TIM1);
+  
   /* Configure Systemclock */
   APP_SystemClockConfig();
 
@@ -134,6 +135,19 @@ static void APP_SystemClockConfig(void)
 
   /* Update CMSIS variable (which can be updated also through SystemCoreClockUpdate function) */
   LL_SetSystemCoreClock(24000000);
+}
+
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @param  None
+  * @retval None
+  */
+void APP_ErrorHandler(void)
+{
+  /* Infinite loop */
+  while(1)
+  {
+  }
 }
 
 #ifdef  USE_FULL_ASSERT

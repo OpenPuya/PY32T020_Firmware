@@ -33,9 +33,14 @@
 #include "py32t020xx_ll_Start_Kit.h"
 
 /* Private define ------------------------------------------------------------*/
+#define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
+#define TXSTARTMESSAGESIZE    (COUNTOF(aTxStartMessage) - 1)
+#define TXENDMESSAGESIZE      (COUNTOF(aTxEndMessage) - 1)
+
 /* Private variables ---------------------------------------------------------*/
-uint8_t aTxBuffer[] = "UART Test";
-uint8_t aRxBuffer[30] = {0};
+uint8_t aRxBuffer[12] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+uint8_t aTxStartMessage[] = "\n\r UART-Hyperterminal communication based on IT \n\r Enter 12 characters using keyboard :\n\r";
+uint8_t aTxEndMessage[] = "\n\r Example Finished\n\r";
 
 uint8_t *TxBuff = NULL;
 __IO uint16_t TxSize = 0;
@@ -46,6 +51,7 @@ __IO uint16_t RxSize = 0;
 __IO uint16_t RxCount = 0;
 
 __IO ITStatus UartReady = RESET;
+__IO ITStatus UartError = RESET;
 
 /* Private user code ---------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -54,6 +60,7 @@ static void APP_SystemClockConfig(void);
 static void APP_ConfigUART(UART_TypeDef *UARTx);
 static void APP_UartTransmit_IT(UART_TypeDef *UARTx, uint8_t *pData, uint16_t Size);
 static void APP_UartReceive_IT(UART_TypeDef *UARTx, uint8_t *pData, uint16_t Size);
+static void APP_WaitToReady(void);
 
 /**
   * @brief  Main program.
@@ -68,28 +75,24 @@ int main(void)
   /* Configure UART */
   APP_ConfigUART(UART3);
 
-  /* Send string:"UART Test"，and wait send complete */
-  APP_UartTransmit_IT(UART3, (uint8_t*)aTxBuffer, sizeof(aTxBuffer)-1);
-  while (UartReady != SET)
-  {
-  }
-  UartReady = RESET;
+  /* Start the transmission process */
+  APP_UartTransmit_IT(UART3, (uint8_t*)aTxStartMessage, TXSTARTMESSAGESIZE);
+  APP_WaitToReady();
 
-  while (1)
-  {
-    /* receive data */
-    APP_UartReceive_IT(UART3, (uint8_t *)aRxBuffer, 12);
-    while (UartReady != SET)
-    {
-    }
-    UartReady = RESET;
+  /* receive data */
+  APP_UartReceive_IT(UART3, (uint8_t *)aRxBuffer, 12);
+  APP_WaitToReady();
 
-    /* Transmit data */
-    APP_UartTransmit_IT(UART3, (uint8_t*)aRxBuffer, 12);
-    while (UartReady != SET)
-    {
-    }
-    UartReady = RESET;
+  /* Transmit data */
+  APP_UartTransmit_IT(UART3, (uint8_t*)aRxBuffer, 12);
+  APP_WaitToReady();
+  
+  /* Send the End Message  */
+  APP_UartTransmit_IT(UART3, (uint8_t*)aTxEndMessage, TXENDMESSAGESIZE);
+  APP_WaitToReady();
+  
+  while(1)
+  {
   }
 }
 
@@ -124,12 +127,30 @@ static void APP_SystemClockConfig(void)
 }
 
 /**
+  * @brief  Wait transfer complete
+  * @param  None
+  * @retval None
+  */
+static void APP_WaitToReady(void)
+{
+  while (UartReady != SET);
+  
+  if(UartError == SET)
+  {
+    APP_ErrorHandler();
+  }
+}
+
+/**
   * @brief  UART configuration functions
   * @param  UARTx：UART Instance，This parameter can be one of the following values:UART3
   * @retval None
   */
 static void APP_ConfigUART(UART_TypeDef *UARTx)
 {
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+  LL_UART_InitTypeDef UART_InitStruct = {0};
+  
   /* Enable clock, initialize GPIO, enable NVIC interrupt */
   if (UARTx == UART3)
   {
@@ -139,7 +160,6 @@ static void APP_ConfigUART(UART_TypeDef *UARTx)
     LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_UART3);
 
     /* Initialize PA2 */
-    LL_GPIO_InitTypeDef GPIO_InitStruct;
     /* Select pin 2 */
     GPIO_InitStruct.Pin = LL_GPIO_PIN_2;
     /* Select alternate mode */
@@ -169,7 +189,6 @@ static void APP_ConfigUART(UART_TypeDef *UARTx)
   }
 
   /* Set UART feature */
-  LL_UART_InitTypeDef UART_InitStruct = {0};
   /* Set baud rate */
   UART_InitStruct.BaudRate = 115200;
   /* set word length to 8 bits: Start bit, 8 data bits, n stop bits */
@@ -197,7 +216,8 @@ static void APP_UartTransmit_IT(UART_TypeDef *UARTx, uint8_t *pData, uint16_t Si
   TxBuff = pData;
   TxSize = Size;
   TxCount = Size;
-
+  
+  UartReady = RESET;
   /* Enable transmit data register empty interrupt */
   LL_UART_EnableIT_TDRE(UARTx);
   /* Enable Busy Error Interrupt */
@@ -216,7 +236,8 @@ static void APP_UartReceive_IT(UART_TypeDef *UARTx, uint8_t *pData, uint16_t Siz
   RxBuff = pData;
   RxSize = Size;
   RxCount = Size;
-
+  
+  UartReady = RESET;
   /* Enable line status error interrupt */
   LL_UART_EnableIT_LS(UARTx);
   /* Enable Busy Error Interrupt */
@@ -259,21 +280,32 @@ void APP_UartIRQCallback(UART_TypeDef *UARTx)
   /* An error occurred */
   if (errorflags != RESET)
   {
-    APP_ErrorHandler();
+    LL_UART_DisableIT_RXNE(UARTx);
+    LL_UART_DisableIT_LS(UARTx);
+    LL_UART_DisableIT_BUSYERR(UARTx);
+    UartReady = SET;
+    UartError = SET;
+    return;
   }
 
   /* The transmit data register is empty */
   if ((LL_UART_IsActiveFlag_TDRE(UARTx) != RESET) && (LL_UART_IsEnabledIT_TDRE(UARTx) != RESET))
   {
-    LL_UART_TransmitData(UARTx, *TxBuff);
-    TxBuff++;
-
-    if (--TxCount == 0U)
+    if (TxCount == 0U)
     {
-      LL_UART_DisableIT_TDRE(UARTx);
-      LL_UART_DisableIT_BUSYERR(UARTx);
+      if (LL_UART_IsActiveFlag_TDRE(UARTx) != RESET)
+      {
+        LL_UART_DisableIT_TDRE(UARTx);
+        LL_UART_DisableIT_BUSYERR(UARTx);
       
-      UartReady = SET;
+        UartReady = SET;
+      }
+    }
+    else
+    { 
+      LL_UART_TransmitData(UARTx, *TxBuff);
+      TxBuff++;
+      TxCount--;
     }
     
     return;

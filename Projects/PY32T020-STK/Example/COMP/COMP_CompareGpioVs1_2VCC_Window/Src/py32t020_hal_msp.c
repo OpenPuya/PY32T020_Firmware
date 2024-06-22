@@ -53,13 +53,14 @@ void HAL_MspInit(void)
   */
 void HAL_COMP_MspInit(COMP_HandleTypeDef *hcomp)
 {
+  GPIO_InitTypeDef COMPINPUT = {0};
+  GPIO_InitTypeDef GPIOConfig = {0};
   __HAL_RCC_GPIOB_CLK_ENABLE();                 /* Enable GPIOB Clock */
   __HAL_RCC_GPIOA_CLK_ENABLE();                 /* Enable GPIOA Clock */
   __HAL_RCC_COMP1_CLK_ENABLE();                 /* Enable COMP1 Clock */    
   __HAL_RCC_COMP2_CLK_ENABLE();                 /* Enable COMP2 Clock */  
 
   /* Configure PB1 Analog */
-  GPIO_InitTypeDef COMPINPUT = {0};
   COMPINPUT.Pin = GPIO_PIN_1 ;
   COMPINPUT.Mode = GPIO_MODE_ANALOG;            /* Analog Mode */
   COMPINPUT.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -75,7 +76,6 @@ void HAL_COMP_MspInit(COMP_HandleTypeDef *hcomp)
   HAL_GPIO_Init(GPIOA,  &COMPINPUT);            /* GPIO Init */
   HAL_SYSCFG_EnableGPIOAnalog2(GPIOA, GPIO_PIN_2);
   
-  GPIO_InitTypeDef GPIOConfig = {0};
   GPIOConfig.Pin = GPIO_PIN_4;
   GPIOConfig.Mode = GPIO_MODE_OUTPUT_PP;         /* Push-pull Mode */
   GPIOConfig.Speed = GPIO_SPEED_FREQ_HIGH;

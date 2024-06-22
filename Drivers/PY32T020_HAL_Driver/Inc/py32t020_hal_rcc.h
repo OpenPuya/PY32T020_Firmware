@@ -325,7 +325,9 @@ typedef struct
 * @{
 */
 #define RCC_HSICALIBRATION_24MHz       (0x4<<13 | ((*(uint32_t *)(0x1FFF0100)) & 0x1FFF))  /*!< 24MHz HSI calibration trimming value */
+#if defined(RCC_HSI48M_SUPPORT)
 #define RCC_HSICALIBRATION_48MHz       (0x5<<13 | ((*(uint32_t *)(0x1FFF0104)) & 0x1FFF))  /*!< 48MHz HSI calibration trimming value */
+#endif
 /**
   * @}
   */

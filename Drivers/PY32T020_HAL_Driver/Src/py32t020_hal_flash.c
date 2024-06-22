@@ -1098,15 +1098,21 @@ void HAL_FLASH_IRQHandler(void)
      generates NMI */
   error = (FLASH->SR & FLASH_FLAG_SR_ERROR);
 
-  CLEAR_BIT(FLASH->CR, pFlash.ProcedureOnGoing);
-
+  if(pFlash.ProcedureOnGoing == FLASH_TYPEERASE_USERDATAERASE)
+  {
+    CLEAR_BIT(FLASH->CR, FLASH_CR_PER);
+  }
+  else
+  {
+    CLEAR_BIT(FLASH->CR, pFlash.ProcedureOnGoing);
+  }
   /* A] Set parameter for user or error callbacks */
   /* check operation was a program or erase */
   if ((pFlash.ProcedureOnGoing & (FLASH_TYPEPROGRAM_PAGE)) != 0x00U)
   {
     /* return adress being programmed */
     param = pFlash.Address;
-  }else if ((pFlash.ProcedureOnGoing & (FLASH_TYPEERASE_MASSERASE | FLASH_TYPEERASE_SECTORERASE | FLASH_TYPEERASE_PAGEERASE)) != 0x00U)
+  }else if ((pFlash.ProcedureOnGoing & (FLASH_TYPEERASE_MASSERASE | FLASH_TYPEERASE_SECTORERASE | FLASH_TYPEERASE_PAGEERASE | FLASH_TYPEERASE_USERDATAERASE)) != 0x00U)
   {
     /* return page number being erased (0 for mass erase) */
     param = pFlash.PageOrSector;

@@ -83,8 +83,10 @@ static void APP_ConfigInputCapture(void)
   /* Configure PA3 as input capture channel */
   TIM1CH1MapInit.Pin        = LL_GPIO_PIN_3;
   TIM1CH1MapInit.Mode       = LL_GPIO_MODE_ALTERNATE;
+  TIM1CH1MapInit.Pull       = LL_GPIO_PULL_DOWN;
   TIM1CH1MapInit.Alternate  = LL_GPIO_AF_2;
-
+  TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_HIGH;
+  TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;  
   LL_GPIO_Init(GPIOA,&TIM1CH1MapInit);
 
   /* Configure the capture channel using the parameters defined by InputCaptureInit structure */
@@ -165,6 +167,19 @@ static void APP_SystemClockConfig(void)
 
   /* Update CMSIS variable (which can be updated also through SystemCoreClockUpdate function) */
   LL_SetSystemCoreClock(24000000);
+}
+
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @param  None
+  * @retval None
+  */
+void APP_ErrorHandler(void)
+{
+  /* Infinite loop */
+  while(1)
+  {
+  }
 }
 
 #ifdef  USE_FULL_ASSERT

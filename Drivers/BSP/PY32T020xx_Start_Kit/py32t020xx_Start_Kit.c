@@ -80,7 +80,7 @@ uint32_t BSP_GetVersion(void)
   */
 void BSP_LED_Init(Led_TypeDef Led)
 {
-  GPIO_InitTypeDef  GPIO_InitStruct;
+  GPIO_InitTypeDef  GPIO_InitStruct = {0};
 
   /* Enable the GPIO_LED Clock */
   LEDx_GPIO_CLK_ENABLE(Led);
@@ -114,7 +114,7 @@ void BSP_LED_Init(Led_TypeDef Led)
   */
 void BSP_LED_DeInit(Led_TypeDef Led)
 {
-  GPIO_InitTypeDef  GPIO_InitStruct;
+  GPIO_InitTypeDef  GPIO_InitStruct = {0};
 
   /* Turn off LED */
   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
@@ -174,7 +174,7 @@ void BSP_LED_Toggle(Led_TypeDef Led)
   */
 void BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode)
 {
-  GPIO_InitTypeDef gpioinitstruct;
+  GPIO_InitTypeDef gpioinitstruct = {0};
 
   /* Enable the BUTTON Clock */
   BUTTONx_GPIO_CLK_ENABLE(Button);
@@ -212,7 +212,7 @@ void BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode)
   */
 void BSP_PB_DeInit(Button_TypeDef Button)
 {
-  GPIO_InitTypeDef gpio_init_structure;
+  GPIO_InitTypeDef gpio_init_structure = {0};
 
   gpio_init_structure.Pin = BUTTON_PIN[Button];
   HAL_NVIC_DisableIRQ((IRQn_Type)(BUTTON_IRQn[Button]));
@@ -238,7 +238,7 @@ uint32_t BSP_PB_GetState(Button_TypeDef Button)
   */
 void BSP_UART_Config(void)
 {
-  GPIO_InitTypeDef  GPIO_InitStruct;
+  GPIO_InitTypeDef  GPIO_InitStruct = {0};
 
 #if defined (__GNUC__)
   setvbuf(stdout,NULL,_IONBF,0);

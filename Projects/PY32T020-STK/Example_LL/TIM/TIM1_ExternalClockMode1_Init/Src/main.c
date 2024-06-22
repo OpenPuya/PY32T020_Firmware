@@ -39,7 +39,6 @@
 static void APP_SystemClockConfig(void);
 static void APP_ConfigTIM1Count(void);
 static void APP_ConfigTIM1ExternalClock(void);
-static void APP_GPIOConfig(void);
 
 /**
   * @brief  Main program.
@@ -52,12 +51,6 @@ int main(void)
 
   /* Configure system clock */
   APP_SystemClockConfig();
-
-  /* Initialize GPIO output */
-  APP_GPIOConfig();
-  
-  /* Configure MCO */
-  LL_RCC_ConfigMCO(LL_RCC_MCOSOURCE_HSI,LL_RCC_MCO_DIV_4);
   
   /* Initialize LED */
   BSP_LED_Init(LED3);
@@ -90,7 +83,7 @@ static void APP_ConfigTIM1ExternalClock(void)
   ETRGPIOinit.OutputType = LL_GPIO_OUTPUT_OPENDRAIN;
   ETRGPIOinit.Pull       = LL_GPIO_PULL_UP;
   ETRGPIOinit.Alternate  = LL_GPIO_AF_2;
-  
+  ETRGPIOinit.Speed      = LL_GPIO_SPEED_FREQ_HIGH;  
   LL_GPIO_Init(GPIOA,&ETRGPIOinit);
   
   /* Configure TIM1 external clock source mode 1 */
@@ -178,32 +171,15 @@ static void APP_SystemClockConfig(void)
 }
 
 /**
-  * @brief  Configure PA08 as MCO alternate function
+  * @brief  This function is executed in case of error occurrence.
   * @param  None
   * @retval None
   */
-static void APP_GPIOConfig(void)
+void APP_ErrorHandler(void)
 {
-  /* Enable GPIOA clock */
-  LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);
-
-  /* Configure PA08 as alternate function and set it as MCO output pin */
-  LL_GPIO_InitTypeDef GPIO_InitStruct;  
-  /* Select pin 8 */
-  GPIO_InitStruct.Pin = LL_GPIO_PIN_8; 
-  /* Set mode as alternate function */
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE; 
-  /* Select alternate function 6 (AF6) */
-  GPIO_InitStruct.Alternate = LL_GPIO_AF6_MCO;     
-  /* Set output speed as very high frequency */
-  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;   
-  /* Set output type as push-pull */
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  /* Set no pull-up/pull-down */
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;                
-
-  /* Initialize GPIOA */
-  LL_GPIO_Init(GPIOA,&GPIO_InitStruct);
+  while(1)
+  {
+  }
 }
 
 #ifdef  USE_FULL_ASSERT

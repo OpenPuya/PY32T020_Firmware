@@ -3,16 +3,10 @@
                              Sample Description
 ================================================================================
 功能描述：
-此样例配置系统时钟为LSI，并通过MCO（PA08）引脚输出。注意系统时钟切换为LSI之前，
-要求把SysTick中断关闭掉，因为SysTick中断默认是1ms一次中断，由于LSI时钟频率过低，
-SysTick中断会导致程序无法正常运行。
+此样例使能LSI，并通过MCO（PA08）引脚输出。
 
 Function descriptions:
-This sample configures the system clock as LSI and outputs it through the MCO 
-(PA08) pin. Note that before switching the system clock to LSI, it is required 
-to disable the SysTick interrupt. This is because the SysTick interrupt 
-defaults to occur every 1ms, and due to the low frequency of LSI, the SysTick 
-interrupt can disrupt the normal operation of the program.
+This sample enables the LSI and is output via the MCO (PA08) pin. 
 ================================================================================
 测试环境：
 测试用板：PY32T020_STK
@@ -38,9 +32,7 @@ Example execution steps:
    matches the configured LSI frequency.
 ================================================================================
 注意事项：
-1. 样例中默认启动的系统时钟是HSI，只有按下用户按键后，系统时钟才会切换到LSI。
 
 Notes:
-1. The sample initially starts with the HSI system clock. Only when the user 
-   button is pressed, the system clock will be switched to LSI.
+
 ================================================================================

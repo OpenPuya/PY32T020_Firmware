@@ -82,6 +82,9 @@ static void APP_Config6StepPWMChannel(void)
   TIM1CH1MapInit.Pin        = LL_GPIO_PIN_3;
   TIM1CH1MapInit.Mode       = LL_GPIO_MODE_ALTERNATE;
   TIM1CH1MapInit.Alternate  = LL_GPIO_AF_2;
+  TIM1CH1MapInit.Speed      = LL_GPIO_SPEED_FREQ_HIGH;
+  TIM1CH1MapInit.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  TIM1CH1MapInit.Pull       = LL_GPIO_PULL_DOWN;
   LL_GPIO_Init(GPIOA,&TIM1CH1MapInit);
 
   /* Set PA7 as TIM1_CH1N */
@@ -285,6 +288,19 @@ static void APP_SystemClockConfig(void)
 
   /* Update CMSIS variable (which can be updated also through SystemCoreClockUpdate function) */
   LL_SetSystemCoreClock(24000000);
+}
+
+/**
+  * @brief  Error handling function
+  * @param  None
+  * @retval None
+  */
+void APP_ErrorHandler(void)
+{
+  /* Infinite loop */
+  while (1)
+  {
+  }
 }
 
 #ifdef  USE_FULL_ASSERT

@@ -56,6 +56,13 @@
         </debugvars>
 
         <!-- *************************  Device 'PY32T020x6'  ***************************** -->
+        <device Dname="PY32T020x5">
+          <compile header="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h" define="PY32T020x5" />
+          <memory name="IROM1" access="rx" start="0x08000000" size="0x00005000" startup="1" default="1"/>
+          <memory name="IRAM1" access="rw" start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="CMSIS/Flash/PY32T020xx_20.FLM" start="0x08000000" size="0x00005000" default="1"/>
+          <algorithm name="CMSIS/Flash/PY32T020xx_OPT.FLM" start="0x1FFF0080" size="0x00000010" default="0"/>
+        </device>
         <device Dname="PY32T020x6">
           <compile header="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h" define="PY32T020x6" />
           <memory name="IROM1" access="rx" start="0x08000000" size="0x00008000" startup="1" default="1"/>
@@ -86,11 +93,22 @@
       <require Cclass="CMSIS" Cgroup="CORE"/>
     </condition>
 
+    <condition id="PY32T020x5">
+      <description>Puya PY32T020x5 Devices</description>
+      <require Dvendor="Puya:176" Dname="PY32T020?5*"/>
+    </condition>
+
     <condition id="PY32T020x6">
       <description>Puya PY32T020x6 Devices</description>
       <require Dvendor="Puya:176" Dname="PY32T020?6*"/>
     </condition>
 
+    <condition id="PY32T020x5 ARMCC">
+      <description>Puya PY32T020x5 Devices and ARMCC Compiler</description>
+      <require condition="PY32T020x5"/>
+      <require condition="Compiler ARMCC"/>
+    </condition>
+    
     <condition id="PY32T020x6 ARMCC">
       <description>Puya PY32T020x6 Devices and ARMCC Compiler</description>
       <require condition="PY32T020x6"/>
@@ -107,9 +125,9 @@
         <!-- common device header file -->
         <file category="header" name="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h"/>
 
-        <file category="source" condition="PY32T020x6 ARMCC" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/ARM/startup_py32t020x6.s" attr="config" version="0.0.1"/>
+        <file category="source" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/ARM/startup_py32t020xx.s" attr="config" version="0.0.1"/>
 
-        <file category="source" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/system_py32t0xx.c" attr="config" version="0.0.1"/>
+        <file category="source" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/system_py32t020.c" attr="config" version="0.0.1"/>
       </files>
     </component>
   </components>

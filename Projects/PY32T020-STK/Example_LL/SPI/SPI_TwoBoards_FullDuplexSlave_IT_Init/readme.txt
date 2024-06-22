@@ -3,17 +3,18 @@
                              Sample Description
 ================================================================================
 功能描述:
-此样例是利用中断对串口外设接口（SPI）与外部设备以全双工串行方式进行通信的演示,
-此接口设置为主模式，为外部从设备提供通信时钟SCK。主机通过MOSI引脚发送数据,从MISO
-引脚接收从机的数据，数据以主机提供的SCK沿同步被移位，完成全双工通信。
+此样例是利用中断对串口外设接口（SPI）与外部设备以全双工串行方式进行通信的演示，
+主设备提供通信时钟SCK，通过MOSI/MISO引脚发送/接收数据。从设备通过MOSI/MISO引脚接
+收/发送数据。数据以主机提供的SCK沿同步被移位，完成全双工通信。
 
 Function descriptions:
-This example is a demonstration of using interrupts to communicate with the
-serial peripheral interface (SPI) and external devices in a full duplex serial
-mode. This interface is set as the main mode and provides communication clock
-SCK for external slave devices. The master sends data through the MOSI pin and
-receives data from the slave through the MISO pin. The data is synchronously
-shifted along the SCK provided by the master, completing full duplex communication.
+This sample is a demonstration of using interrupts to communicate with a serial 
+peripheral interface (SPI) and an external device in full-duplex serial mode. 
+The master device provides the communication clock SCK and sends/receives data 
+through the MOSI/MISO pin. The slave device receives/transmits data through the 
+MOSI/MISO pins. The data is shifted synchronously along the SCK provided by the 
+master to complete full-duplex communication.
+
 ================================================================================
 测试环境：
 测试用板：PY32T020_STK

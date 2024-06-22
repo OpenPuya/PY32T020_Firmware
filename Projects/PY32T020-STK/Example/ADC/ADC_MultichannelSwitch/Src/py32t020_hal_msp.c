@@ -54,6 +54,7 @@ void HAL_MspInit(void)
 void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  __HAL_RCC_ADC_CLK_ENABLE();                            /* Enable ADC clock */
   __HAL_RCC_GPIOA_CLK_ENABLE();             
 
   GPIO_InitStruct.Pin = GPIO_PIN_5 | GPIO_PIN_4;

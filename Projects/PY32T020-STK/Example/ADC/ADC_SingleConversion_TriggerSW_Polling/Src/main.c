@@ -33,7 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef             hadc;
+ADC_HandleTypeDef             ADCHandle;
 ADC_ChannelConfTypeDef        sConfig;
 volatile uint16_t             aADCxConvertedData;
 
@@ -63,13 +63,13 @@ int main(void)
   while (1)
   {   
     /* ADC Start */
-    HAL_ADC_Start(&hadc);  
+    HAL_ADC_Start(&ADCHandle);  
     
     /* Polling for ADC Conversion */
-    HAL_ADC_PollForConversion(&hadc, 1000000);        
+    HAL_ADC_PollForConversion(&ADCHandle, 1000000);        
     
     /* Get ADC Value */
-    aADCxConvertedData = HAL_ADC_GetValue(&hadc);     
+    aADCxConvertedData = HAL_ADC_GetValue(&ADCHandle);     
     
     /* print channel5 value */
     printf("Channel 5:%u\r\n",(unsigned int)aADCxConvertedData);
@@ -85,35 +85,33 @@ int main(void)
   */
 static void APP_ADCConfig(void)
 {
-  __HAL_RCC_ADC_CLK_ENABLE();                                                /* Enable ADC clock */
-
-  hadc.Instance = ADC1;
+  ADCHandle.Instance = ADC1;
   
-  hadc.Init.ClockPrescaler        = ADC_CLOCK_SYNC_PCLK_DIV32;               /* Set ADC clock*/
-  hadc.Init.Resolution            = ADC_RESOLUTION_12B;                      /* 12-bit resolution for converted data */
-  hadc.Init.DataAlign             = ADC_DATAALIGN_RIGHT;                     /* Right-alignment for converted data */
-  hadc.Init.ScanConvMode          = ADC_SCAN_DIRECTION_FORWARD;              /* Scan sequence direction: forward */
-  hadc.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;                     /* Single Conversion */
-  hadc.Init.LowPowerAutoWait      = DISABLE;                                 /* Auto-delayed conversion feature disabled */
-  hadc.Init.ContinuousConvMode    = DISABLE;                                 /* Continuous mode disabled to have only 1 conversion at each conversion trig */
-  hadc.Init.DiscontinuousConvMode = DISABLE;                                 /* Disable discontinuous mode */
-  hadc.Init.ExternalTrigConv      = ADC_SOFTWARE_START;                      /* Software start to trig the 1st conversion manually, without external event */
-  hadc.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE;           /* Parameter discarded because software trigger chosen */
-  hadc.Init.Overrun               = ADC_OVR_DATA_OVERWRITTEN;                /* DR register is overwritten with the last conversion result in case of overrun */
-  hadc.Init.SamplingTimeCommon    = ADC_SAMPLETIME_41CYCLES_5;               /* The channel sampling time is 41.5 ADC clock cycles */
-  if (HAL_ADC_Init(&hadc) != HAL_OK)                                         /* ADC initialization */
+  ADCHandle.Init.ClockPrescaler        = ADC_CLOCK_SYNC_PCLK_DIV4;                /* Set ADC clock*/
+  ADCHandle.Init.Resolution            = ADC_RESOLUTION_12B;                      /* 12-bit resolution for converted data */
+  ADCHandle.Init.DataAlign             = ADC_DATAALIGN_RIGHT;                     /* Right-alignment for converted data */
+  ADCHandle.Init.ScanConvMode          = ADC_SCAN_DIRECTION_FORWARD;              /* Scan sequence direction: forward */
+  ADCHandle.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;                     /* Single Conversion */
+  ADCHandle.Init.LowPowerAutoWait      = DISABLE;                                 /* Auto-delayed conversion feature disabled */
+  ADCHandle.Init.ContinuousConvMode    = DISABLE;                                 /* Continuous mode disabled to have only 1 conversion at each conversion trig */
+  ADCHandle.Init.DiscontinuousConvMode = DISABLE;                                 /* Disable discontinuous mode */
+  ADCHandle.Init.ExternalTrigConv      = ADC_SOFTWARE_START;                      /* Software start to trig the 1st conversion manually, without external event */
+  ADCHandle.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE;           /* Parameter discarded because software trigger chosen */
+  ADCHandle.Init.Overrun               = ADC_OVR_DATA_OVERWRITTEN;                /* DR register is overwritten with the last conversion result in case of overrun */
+  ADCHandle.Init.SamplingTimeCommon    = ADC_SAMPLETIME_239CYCLES_5;              /* The channel sampling time is 239.5 ADC clock cycles */
+  if (HAL_ADC_Init(&ADCHandle) != HAL_OK)                                         /* ADC initialization */
   {
     APP_ErrorHandler();
   }
 
   sConfig.Rank         = ADC_RANK_CHANNEL_NUMBER;                             
   sConfig.Channel      = ADC_CHANNEL_5;                                      
-  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)                       /* Configure ADC Channel */
+  if (HAL_ADC_ConfigChannel(&ADCHandle, &sConfig) != HAL_OK)                       /* Configure ADC Channel */
   {
     APP_ErrorHandler();
   }
     
-  if (HAL_ADCEx_Calibration_Start(&hadc) != HAL_OK)                           /* ADC Calibration */
+  if (HAL_ADCEx_Calibration_Start(&ADCHandle) != HAL_OK)                           /* ADC Calibration */
   {
     APP_ErrorHandler();
   }

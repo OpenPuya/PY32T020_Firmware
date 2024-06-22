@@ -54,7 +54,7 @@ int main(void)
   /* Reset of all peripherals, Initializes the Systick */
   HAL_Init();
   
-  /* Enable LSE clock */
+  /* Enable LSI clock */
   APP_SystemClockConfig();
   
   /* Initialize LED */
@@ -90,8 +90,14 @@ int main(void)
   
   while (1)
   {
+    /* Suspend SysTick interrupt */
+    HAL_SuspendTick();
+
     /* Configure and enter stop mode */
     APP_PWR_EnterStopMode();
+
+    /* Resume SysTick interrupt */
+    HAL_ResumeTick();
     
     /* Wait for synchronization */
     HAL_RTC_WaitForSynchro(&RTCinit);
@@ -108,11 +114,25 @@ int main(void)
   */
 static void APP_RtcInit(void)
 {
-  RTC_TimeTypeDef Timeinit;
+  RTC_TimeTypeDef Timeinit = {0};
+  RCC_PeriphCLKInitTypeDef RTCLCKconfig = {0};
+  
+  /* Enable access to the backup domain (RTC settings are stored in the backup domain) */
+  HAL_PWR_EnableBkUpAccess();
+  
+  /*Enable RTC clock*/
+  __HAL_RCC_RTCAPB_CLK_ENABLE();                        /* Enable RTC module APB clock */
+  __HAL_RCC_RTC_ENABLE();                               /* Enable RTC clock */
+  
+  /* RCC peripheral clock initialization */
+  RTCLCKconfig.PeriphClockSelection = RCC_PERIPHCLK_RTC;/* RCC peripheral clock selection as RTC */
+  RTCLCKconfig.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;/* RTC source selection as LSI */
+  HAL_RCCEx_PeriphCLKConfig(&RTCLCKconfig);
   
   /* RTC initialization */
   RTCinit.Instance = RTC;                               /* Select RTC */
   RTCinit.Init.AsynchPrediv = RTC_AUTO_1_SECOND;        /* Automatic calculation of RTC's 1-second time base */
+  RTCinit.Init.OutPut = RTC_OUTPUTSOURCE_NONE;          /* No output on the TAMPER pin */
   /*2022-1-1-00:00:00*/
   RTCinit.DateToUpdate.Year = 22;                       /* Year 22 */
   RTCinit.DateToUpdate.Month = RTC_MONTH_JANUARY;       /* January */
@@ -177,7 +197,7 @@ static void APP_SystemClockConfig(void)
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_24MHz;  /* Configure HSI clock 24MHz */
   RCC_OscInitStruct.HSEState = RCC_HSE_OFF;                          /* Close HSE */
   /* RCC_OscInitStruct.HSEFreq  = RCC_HSE_6_8MHz; */                 /* HSE select 6-8MHz */
-  RCC_OscInitStruct.LSIState = RCC_LSI_OFF;                          /* Close LSI */
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;                           /* Enable LSI */
   RCC_OscInitStruct.LSEState = RCC_LSE_OFF;                          /* Close LSE */
   /* RCC_OscInitStruct.LSEDriver = RCC_LSEDRIVE_MEDIUM;*/            /* LSE  drive capability */
   /* Configure oscillator */

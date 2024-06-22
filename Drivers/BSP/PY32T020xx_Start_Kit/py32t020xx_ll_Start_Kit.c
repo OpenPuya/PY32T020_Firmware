@@ -267,7 +267,7 @@ int fputc(int ch, FILE *f)
 {
   /* Send a byte to UART */
   LL_UART_TransmitData(DEBUG_UART, ch);
-  while (!LL_UART_IsActiveFlag_TDRE(DEBUG_UART));
+  while (!LL_UART_IsActiveFlag_TXE(DEBUG_UART));
   return (ch);
 }
 
@@ -295,7 +295,7 @@ int putchar(int ch)
 {
   /* Send a byte to UART */
   LL_UART_TransmitData(DEBUG_UART, ch);
-  while (!LL_UART_IsActiveFlag_TDRE(DEBUG_UART));
+  while (!LL_UART_IsActiveFlag_TXE(DEBUG_UART));
   return (ch);
 }
 #elif  defined(__GNUC__)
@@ -308,7 +308,7 @@ int __io_putchar(int ch)
 {
   /* Send a byte to UART */
   LL_UART_TransmitData(DEBUG_UART, ch);
-  while (!LL_UART_IsActiveFlag_TDRE(DEBUG_UART));
+  while (!LL_UART_IsActiveFlag_TXE(DEBUG_UART));
   return (ch);
 }
 

@@ -32,18 +32,24 @@
 #include "main.h"
 
 /* Private define ------------------------------------------------------------*/
+#define UpLimit    1369
+#define LowLimit   1361
+
 /* Private variables ---------------------------------------------------------*/
 uint32_t             Temp_LSItrim;                /* LSI clock trimming */
 uint32_t             Capture_last_cnt;            /* The number of capture when the last update interrupt occurred */ 
 uint32_t             Capture_cnt;                 /* The current number of capture */ 
-TIM_HandleTypeDef    TimHandle;
-TIM_IC_InitTypeDef   sICConfig;
+uint32_t             Adjustcnt = 0;               /* Number of adjustments */
+uint32_t             CaliState = 0;               /* Show calibration result */
+TIM_HandleTypeDef    TimHandle = {0};
+TIM_IC_InitTypeDef   sICConfig = {0};
 
 /* Private user code ---------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 #define RCC_LSI_CALIBRATIONVALUE_ADJUST(__LSICALIBRATIONVALUE__) \
-                  MODIFY_REG(RCC->ICSCR, RCC_ICSCR_LSI_TRIM_Msk, (uint32_t)(__LSICALIBRATIONVALUE__) << RCC_ICSCR_LSI_TRIM_Pos)
+                  MODIFY_REG(RCC->ICSCR, RCC_ICSCR_LSI_TRIM_Msk, ((uint32_t)(__LSICALIBRATIONVALUE__) << RCC_ICSCR_LSI_TRIM_Pos))
 #define RCC_GET_LSI_TRIM_VALUE()  ((uint32_t)(READ_BIT(RCC->ICSCR,RCC_ICSCR_LSI_TRIM)))
+#define MAXAdjustcnt  100
 
 /* Private function prototypes -----------------------------------------------*/
 static void APP_SystemClockConfig(void);
@@ -83,6 +89,13 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
+    if(CaliState == 1)
+    {
+      BSP_LED_On(LED_TK1);
+      while(1);
+    }
+    BSP_LED_Toggle(LED_TK1);
+    HAL_Delay(200);
   }
 }
 
@@ -148,20 +161,28 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
   */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  uint32_t Temp_delta;
+  uint32_t Temp_delta = 0;
   /* Count the number of times a capture occurs between update interrupts */
   Temp_delta = Capture_cnt - Capture_last_cnt;
   
   /* Get current trimming of LSI */
   Temp_LSItrim = RCC_GET_LSI_TRIM_VALUE();
   
+  if(Adjustcnt > MAXAdjustcnt)
+  {
+    /* STOP TIM14 */
+    HAL_TIM_Base_Stop_IT(htim);
+    HAL_TIM_IC_Stop_IT(htim,TIM_CHANNEL_1);
+    return;
+  }
+  
   /* Adjust LSI trimming value, target frequency is 32.768KHz  */
-  if (Temp_delta < 1023)
+  if (Temp_delta < LowLimit)
   {
     Temp_LSItrim = (Temp_LSItrim >> RCC_ICSCR_LSI_TRIM_Pos)+1;
     RCC_LSI_CALIBRATIONVALUE_ADJUST(Temp_LSItrim);
   }
-  else if (Temp_delta > 1025)
+  else if (Temp_delta > UpLimit)
   {
     Temp_LSItrim = (Temp_LSItrim >> RCC_ICSCR_LSI_TRIM_Pos)-1;
     RCC_LSI_CALIBRATIONVALUE_ADJUST(Temp_LSItrim);
@@ -171,11 +192,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     /* Calibrate ok,STOP TIM14 */
     HAL_TIM_Base_Stop_IT(htim);
     HAL_TIM_IC_Stop_IT(htim,TIM_CHANNEL_1);
-    
-    /* LED on */
-    BSP_LED_On(LED_TK1);
+
+    CaliState = 1;
   }    
   Capture_last_cnt = Capture_cnt;
+  Adjustcnt++;
 }
 
 /**

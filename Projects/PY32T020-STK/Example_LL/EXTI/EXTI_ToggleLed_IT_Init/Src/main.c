@@ -101,17 +101,17 @@ static void APP_SystemClockConfig(void)
 static void APP_ConfigureEXTI(void)
 {
   /* Enable GPIOA clock */
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+  LL_EXTI_InitTypeDef EXTI_InitStruct = {0};
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);
 
   /* Configure PA15 as input mode */
-  LL_GPIO_InitTypeDef GPIO_InitStruct;
   GPIO_InitStruct.Pin = LL_GPIO_PIN_15;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* Set EXTI15 to event patterns, rising edge trigger */
-  LL_EXTI_InitTypeDef EXTI_InitStruct;
   EXTI_InitStruct.Line = LL_EXTI_LINE_15;
   EXTI_InitStruct.LineCommand = ENABLE;
   EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;

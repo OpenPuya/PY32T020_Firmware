@@ -144,11 +144,11 @@ static void APP_SetSysclock(void)
   */
 static void APP_GPIOConfig(void)
 {
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};  
   /* Enable GPIOA clock */
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);
   
   /* Configure PA08 as alternate function and set it as MCO output pin */
-  LL_GPIO_InitTypeDef GPIO_InitStruct;  
   /* Select pin 8 */
   GPIO_InitStruct.Pin = LL_GPIO_PIN_8; 
   /* Set mode as alternate function */
@@ -163,8 +163,7 @@ static void APP_GPIOConfig(void)
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;                
   
   /* Initialize GPIOA */
-  LL_GPIO_Init(GPIOA,&GPIO_InitStruct);
-    
+  LL_GPIO_Init(GPIOA,&GPIO_InitStruct); 
 }
 
 /**

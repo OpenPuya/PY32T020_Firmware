@@ -131,7 +131,10 @@ static void APP_SystemClockConfig(void)
   */
 static void APP_ConfigI2cSlave(void)
 {
-  /* Enabel GPIOA clock */
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+  LL_I2C_InitTypeDef I2C_InitStruct = {0};
+
+  /* Enable GPIOA clock */
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);
 
   /* Enabke I2C1 peripheral clock */
@@ -140,8 +143,6 @@ static void APP_ConfigI2cSlave(void)
   /* Set PA11 to SCL pin , Select alternate function mode
      and fast output speed. output type is Selected open-drain,
      Enable I/O pull up*/
-  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
-
   GPIO_InitStruct.Pin = LL_GPIO_PIN_11;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
@@ -170,7 +171,6 @@ static void APP_ConfigI2cSlave(void)
   NVIC_EnableIRQ(I2C1_IRQn);
 
   /* Initialize I2C1 peripheral */
-  LL_I2C_InitTypeDef I2C_InitStruct;
   I2C_InitStruct.ClockSpeed      = I2C_SPEEDCLOCK;
   I2C_InitStruct.DutyCycle       = LL_I2C_DUTYCYCLE_16_9;
   I2C_InitStruct.DataHoldTimeSel = LL_I2C_DATA_HOLD_TIME_HARDWARE;

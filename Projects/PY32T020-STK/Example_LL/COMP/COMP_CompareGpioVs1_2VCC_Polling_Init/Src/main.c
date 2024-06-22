@@ -56,7 +56,7 @@ int main(void)
   APP_SystemClockConfig();
 
   /* Initialize LED */
-  BSP_LED_Init(LED3);
+  BSP_LED_Init(LED_TK1);
 
   /* Initialize COMP2 */
   APP_CompInit();

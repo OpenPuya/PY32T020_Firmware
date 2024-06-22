@@ -32,10 +32,10 @@
 #include "main.h"
 
 /* Private define ------------------------------------------------------------*/
-#define DATA_LENGTH       15                /* Length of data */
-#define I2C_ADDRESS        0xA0             /* Own address 0xA0 */
-#define I2C_SPEEDCLOCK   100000             /* Communication speed 100K */
-#define I2C_DUTYCYCLE    I2C_DUTYCYCLE_2    /* Duty cycle */
+#define DATA_LENGTH      15                    /* Length of data */
+#define I2C_ADDRESS      0xA0                  /* Own address 0xA0 */
+#define I2C_SPEEDCLOCK   100000                /* Communication speed 100K */
+#define I2C_DUTYCYCLE    I2C_DUTYCYCLE_16_9    /* Duty cycle */
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef I2cHandle;

@@ -32,11 +32,17 @@
 #include "main.h"
 
 /* Private define ------------------------------------------------------------*/
+#define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
+#define TXSTARTMESSAGESIZE    (COUNTOF(aTxStartMessage) - 1)
+#define TXENDMESSAGESIZE      (COUNTOF(aTxEndMessage) - 1)
+
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef UartHandle = {0};
-uint8_t aTxBuffer[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
 uint8_t aRxBuffer[12] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
-uint8_t uErrorState   = 0;
+uint8_t aTxStartMessage[] = "\n\r UART-Hyperterminal communication based on IT \n\r Enter 12 characters using keyboard :\n\r";
+uint8_t aTxEndMessage[] = "\n\r Example Finished\n\r";
+__IO uint8_t uErrorState   = 0;
+
 /* Private user code ---------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -62,11 +68,35 @@ int main(void)
   UartHandle.Init.MsbFirst     = UART_MSB_FIRST_DISABLE;
   HAL_UART_Init(&UartHandle);
   
-  /* Sends an amount of data in non blocking mode. */
-  if (HAL_UART_Transmit_IT(&UartHandle, (uint8_t *)aTxBuffer, 12) != HAL_OK)
+  /* Start the transmission process */
+  if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aTxStartMessage, TXSTARTMESSAGESIZE)!= HAL_OK)
   {
     APP_ErrorHandler();
   }
+  while(HAL_UART_GetState(&UartHandle) != HAL_UART_STATE_READY);
+  
+  /* Put UART peripheral in reception process */
+  if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 12) != HAL_OK)
+  {
+    APP_ErrorHandler();
+  }
+  while(HAL_UART_GetState(&UartHandle) != HAL_UART_STATE_READY);
+  
+  /* Sends an amount of data in non blocking mode. */
+  if (HAL_UART_Transmit_IT(&UartHandle, (uint8_t *)aRxBuffer, 12) != HAL_OK)
+  {
+    APP_ErrorHandler();
+  }
+  while (HAL_UART_GetState(&UartHandle) != HAL_UART_STATE_READY);
+
+  /* Send the End Message */
+  if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aTxEndMessage, TXENDMESSAGESIZE)!= HAL_OK)
+  {
+    APP_ErrorHandler();
+  }
+  while (HAL_UART_GetState(&UartHandle) != HAL_UART_STATE_READY);
+  
+  BSP_LED_On(LED_TK1);
 
   while (1)
   {
@@ -86,33 +116,6 @@ int main(void)
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
   uErrorState = 1;
-}
-
-/**
-  * @brief  UART Tx callback
-  * @param  huart：UART handle
-  * @retval None
-  */
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *UartHandle)
-{
-  if (HAL_UART_Receive_IT(UartHandle, (uint8_t *)aRxBuffer, 12) != HAL_OK)
-  {
-    APP_ErrorHandler();
-  }
-}
-
-/**
-  * @brief  UART Rx callback
-  * @param  huart：UART handle
-  * @retval None
-  */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
-{
-  /* Sends an amount of data in non blocking mode.*/
-  if (HAL_UART_Transmit_IT(UartHandle, (uint8_t *)aRxBuffer, 12) != HAL_OK)
-  {
-    APP_ErrorHandler();
-  }
 }
 
 /**

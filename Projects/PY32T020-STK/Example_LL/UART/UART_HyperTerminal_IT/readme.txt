@@ -3,14 +3,16 @@
                                 Sample Description
 ================================================================================
 功能描述：
-此样例演示了通过UART中断收发数据的功能，复位MCU并重新运行，PC端收到字符串：
-UART Test；PC端发送12个字符，MCU会反馈同样的12个字符给PC端。
+此样例演示了UART的中断方式发送和接收数据，UART配置为115200，数据位8，停止位1，
+校验位None,下载并运行程序后，打印提示信息，然后通过上位机下发12个数据，例如
+0x1~0xC,则MCU会把接收到的数据再次发送到上位机，然后打印结束信息。
 
 Function descriptions:
-This example demonstrates function of UART to send and receive data using
-interrupt mode.Reset the MCU and restart,the PC will receive a string:
-UART Test;The PC sends 12 characters,then the MCU returns the same 12 characters
-to the PC
+This example demonstrates how to use UART to send an amount of data in interrupt
+mode UART configuration is 115200 baud rate, data bit 8, stop bit 1, check bit 
+None. After download and run the program,Print the prompt message, and then send
+12 data through the upper computer, such as 0x1~0xC, the MCU will send the 
+received data to the upper computer again, Then print the end message 
 ================================================================================
 测试环境：
 测试用板：PY32T020_STK
@@ -28,32 +30,30 @@ GCC Version: GNU Arm Embedded Toolchain 10.3-2021.10
 1. 编译并下载程序到MCU；
 2. 通过USB转TTL模块连接PC与STK板,STK板与USB转TTL模块的连线方式如下；
 STK板        USB转TTL模块
-PA2(TX) --> RX
-PA3(RX) --> TX
-GND     --> GND
-3.PC端打开串口调试助手，正确连接上通讯COM口，
-  波特率设置为115200，1位停止位，8位数据位，无奇偶校验。
-4. 复位MCU并重新运行，PC端收到字符串：UART Test；
-5. PC端发送12个字符，MCU会反馈同样的12个字符给PC端。
+PA02(TX) --> RX
+PA03(RX) --> TX
+GND      --> GND
+3. PC端打开串口调试助手，正确连接上通讯COM口，波特率设置为115200；
+4. MCU会发送信息到PC端，提示输入12个数据
+5. 用上位机发送12个数据，MCU会反馈同样的12个数据给上位机,然后提示执行结束
 
 Example execution steps:
 1. compile and download the program to MCU and run it;
-2. Connect PC and STK board through USB to TTL module and the connection method
-is as follows
-STK board    USB to TTL moudle
-PA2(TX) --> RX
-PA3(RX) --> TX
-GND     --> GND
-3. Open the serial port Assistant on the PC, connect the COM port correctly, and
-set the baud rate to 115200,1 stop bit, and 8 data bit ,without parity check.
-4. Reset the MCU and restart,the PC will receive a string:UART Test;
-5. The PC sends 12 characters,then the MCU returns the same 12 characters to the
-PC
+2. Connect the PC to the STK board through the USB-to-TTL module. The connection 
+method between the STK board and the USB-to-TTL module is as follows.
+STK board    USB-to-TTL module
+PA02(TX) --> RX
+PA03(RX) --> TX
+GND      --> GND
+3. Start the serial assistant on the PC, correctly connect the COM port, and set
+the baud rate to 115200.
+4. The MCU will send a message to the PC, prompting you to enter 12 data
+5. The upper computer sends 12 data, and the MCU will feedback the same 12 data 
+to the upper computer, and then prompt the execution to end
 ================================================================================
 注意事项：
 建议去掉STK板上R19\R20
 
 Notes:
 It is recommended to remove R19\R20 from STK board
-
 ================================================================================

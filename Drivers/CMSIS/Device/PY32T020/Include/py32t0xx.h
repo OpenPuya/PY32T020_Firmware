@@ -50,14 +50,15 @@ extern "C" {
   *  application.
   */
 
-#if !defined (PY32T020x6)
+#if !defined (PY32T020x6) && !defined (PY32T020x5)
 /* #define PY32T020x6  */  /*!< PY32T020x6  Devices (PY32T020x6  microcontrollers where the Flash memory is 32  Kbytes) */
+/* #define PY32T020x5  */  /*!< PY32T020x5  Devices (PY32T020x5  microcontrollers where the Flash memory is 20  Kbytes) */
 #endif
 /**  Tip: To avoid modifying this file each time you need to switch between these
   *       devices, you can define the device in your toolchain compiler preprocessor.
   */
-#if (defined(PY32T020x6))
-#define PY32T020APRE
+#if (defined(PY32T020x6) || defined(PY32T020x5))
+#define PY32T020PRE
 #endif
 
 /**
@@ -77,6 +78,8 @@ extern "C" {
   */
 #if defined(PY32T020x6)
 #include "py32t020x6.h"
+#elif defined(PY32T020x5)
+#include "py32t020x5.h"
 #else
 #error "Please select first the target PY32T0xx device used in your application (in py32t0xx.h file)"
 #endif /* Device_Included */

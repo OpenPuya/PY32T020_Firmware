@@ -185,6 +185,19 @@ static void APP_SystemClockConfig(void)
   LL_SetSystemCoreClock(24000000);
 }
 
+/**
+  * @brief  Error handling function
+  * @param  None
+  * @retval None
+  */
+void APP_ErrorHandler(void)
+{
+  /* Infinite loop */
+  while (1)
+  {
+  }
+}
+
 #ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number

@@ -54,6 +54,7 @@ int main(void)
 
   /*Set SYSCLK as MCO source: MCO = SYSCLK*/
   LL_RCC_ConfigMCO(LL_RCC_MCOSOURCE_SYSCLK,LL_RCC_MCO_DIV_1);
+
   while (1)
   {
 
@@ -85,6 +86,7 @@ static void APP_SystemClockConfig(void)
   
   /* Set APB prescaler: PCLK = HCLK */
   LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
+
   LL_Init1msTick(24000000);
 
   /* Update the SystemCoreClock global variable(which can be updated also through SystemCoreClockUpdate function) */
@@ -98,11 +100,11 @@ static void APP_SystemClockConfig(void)
   */
 static void APP_ConfigGPIO(void)
 {
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* Enable GPIOA clock */
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);
   
   /* Configure PA08 as alternate function and set it as MCO output pin */
-  LL_GPIO_InitTypeDef GPIO_InitStruct;
   /* Select pin 8*/
   GPIO_InitStruct.Pin = LL_GPIO_PIN_8;
   /* Set mode as alternate function */
