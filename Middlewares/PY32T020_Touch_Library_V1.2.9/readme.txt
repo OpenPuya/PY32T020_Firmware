@@ -1,3 +1,0 @@
-在app_config.h中开启需要的外设模块，详细看app_config.h内的说明
-在tk_cfg.h中配置触摸工作模式
-在tk_cfg_user.h中配置触摸通道

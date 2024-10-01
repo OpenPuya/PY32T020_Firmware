@@ -1,0 +1,1 @@
+在app_config.h中开启需要的外设模块，详细看app_config.h内的说明

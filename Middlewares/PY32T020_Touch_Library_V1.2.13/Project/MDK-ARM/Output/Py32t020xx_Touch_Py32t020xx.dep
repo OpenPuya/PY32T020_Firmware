@@ -1,0 +1,749 @@
+Dependencies for Project 'Py32t020xx_Touch', Target 'Py32t020xx': (DO NOT MODIFY !)
+F (.\startup_py32t020xx.s)(0x663846CE)(--cpu Cortex-M0+ --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "PY32T020x6 SETA 1"--list .\output\startup_py32t020xx.lst --xref -o .\output\startup_py32t020xx.o --depend .\output\startup_py32t020xx.d)
+F (..\Src\system_py32t020.c)(0x664414B6)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\system_py32t020.o --omf_browse .\output\system_py32t020.crf --depend .\output\system_py32t020.d)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+F (..\Src\main.c)(0x665432A9)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+I (..\Inc\main.h)(0x662F098E)
+I (..\..\app_drivers\inc\drivers.h)(0x663B1746)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\inc\app_config.h)(0x66603210)()
+F (..\..\app_drivers\src\drivers.c)(0x66542566)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\drivers.o --omf_browse .\output\drivers.crf --depend .\output\drivers.d)
+I (..\..\app_drivers\inc\drivers.h)(0x663B1746)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\smg_task.c)(0x663B17C0)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\smg_task.o --omf_browse .\output\smg_task.crf --depend .\output\smg_task.d)
+I (..\..\app_drivers\inc\drivers.h)(0x663B1746)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\adc_task.c)(0x6642BED6)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\adc_task.o --omf_browse .\output\adc_task.crf --depend .\output\adc_task.d)
+I (..\..\app_drivers\inc\drivers.h)(0x663B1746)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\uart_task.c)(0x662E08C8)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\uart_task.o --omf_browse .\output\uart_task.crf --depend .\output\uart_task.d)
+I (..\..\app_drivers\inc\drivers.h)(0x663B1746)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\argb_task.c)(0x662E180C)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\argb_task.o --omf_browse .\output\argb_task.crf --depend .\output\argb_task.d)
+I (..\..\app_drivers\inc\argb_task.h)(0x662F6940)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\gpio.c)(0x66542DC4)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\gpio.o --omf_browse .\output\gpio.crf --depend .\output\gpio.d)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+F (..\..\app_drivers\src\uart_drivers.c)(0x6641AED6)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\uart_drivers.o --omf_browse .\output\uart_drivers.crf --depend .\output\uart_drivers.d)
+I (..\..\app_drivers\inc\uart_drivers.h)(0x662E0892)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\tim1_drivers.c)(0x6642BF84)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\tim1_drivers.o --omf_browse .\output\tim1_drivers.crf --depend .\output\tim1_drivers.d)
+I (..\..\app_drivers\inc\tim1_drivers.h)(0x662F6DB2)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\tim14_drivers.c)(0x663AD560)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\tim14_drivers.o --omf_browse .\output\tim14_drivers.crf --depend .\output\tim14_drivers.d)
+I (..\..\app_drivers\inc\tim14_drivers.h)(0x662F6D96)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\smg_drivers.c)(0x663B168A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\smg_drivers.o --omf_browse .\output\smg_drivers.crf --depend .\output\smg_drivers.d)
+I (..\..\app_drivers\inc\smg_drivers.h)(0x663B169C)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\beep_drivers.c)(0x662A10FA)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\beep_drivers.o --omf_browse .\output\beep_drivers.crf --depend .\output\beep_drivers.d)
+I (..\..\app_drivers\inc\beep_drivers.h)(0x662A111A)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\adc_drivers.c)(0x663B008E)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\adc_drivers.o --omf_browse .\output\adc_drivers.crf --depend .\output\adc_drivers.d)
+I (..\..\app_drivers\inc\adc_drivers.h)(0x662E0A48)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\tm1624.c)(0x66498128)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\tm1624.o --omf_browse .\output\tm1624.crf --depend .\output\tm1624.d)
+I (..\..\app_drivers\inc\tm1624.h)(0x66498136)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\tm1640.c)(0x662F3836)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\tm1640.o --omf_browse .\output\tm1640.crf --depend .\output\tm1640.d)
+I (..\..\app_drivers\inc\tm1640.h)(0x662F00AC)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\ir_received.c)(0x663B2B88)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\ir_received.o --omf_browse .\output\ir_received.crf --depend .\output\ir_received.d)
+I (..\..\app_drivers\inc\ir_received.h)(0x663EFB08)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\spi-led_drivers.c)(0x663B14A4)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\spi-led_drivers.o --omf_browse .\output\spi-led_drivers.crf --depend .\output\spi-led_drivers.d)
+I (..\..\app_drivers\inc\spi-led_drivers.h)(0x662E14B6)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\user-otp_drivers.c)(0x663B143C)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\user-otp_drivers.o --omf_browse .\output\user-otp_drivers.crf --depend .\output\user-otp_drivers.d)
+I (..\..\app_drivers\inc\user-otp_drivers.h)(0x66497DD4)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\app_drivers\src\py32t020_flash.c)(0x6642F328)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_flash.o --omf_browse .\output\py32t020_flash.crf --depend .\output\py32t020_flash.d)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_adc.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_adc.o --omf_browse .\output\py32t020_ll_adc.crf --depend .\output\py32t020_ll_adc.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_comp.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_comp.o --omf_browse .\output\py32t020_ll_comp.crf --depend .\output\py32t020_ll_comp.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_comp.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_crc.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_crc.o --omf_browse .\output\py32t020_ll_crc.crf --depend .\output\py32t020_ll_crc.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_crc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_exti.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_exti.o --omf_browse .\output\py32t020_ll_exti.crf --depend .\output\py32t020_ll_exti.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_gpio.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_gpio.o --omf_browse .\output\py32t020_ll_gpio.crf --depend .\output\py32t020_ll_gpio.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_i2c.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_i2c.o --omf_browse .\output\py32t020_ll_i2c.crf --depend .\output\py32t020_ll_i2c.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_i2c.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_pwr.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_pwr.o --omf_browse .\output\py32t020_ll_pwr.crf --depend .\output\py32t020_ll_pwr.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_rcc.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_rcc.o --omf_browse .\output\py32t020_ll_rcc.crf --depend .\output\py32t020_ll_rcc.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_spi.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_spi.o --omf_browse .\output\py32t020_ll_spi.crf --depend .\output\py32t020_ll_spi.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_tim.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_tim.o --omf_browse .\output\py32t020_ll_tim.crf --depend .\output\py32t020_ll_tim.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_uart.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_uart.o --omf_browse .\output\py32t020_ll_uart.crf --depend .\output\py32t020_ll_uart.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+F (..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_utils.c)(0x65EE6E3A)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\py32t020_ll_utils.o --omf_browse .\output\py32t020_ll_utils.crf --depend .\output\py32t020_ll_utils.d)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+F (..\Inc\tk_cfg_user.h)(0x66603293)()
+F (..\Inc\tk_cfg.h)(0x66603295)()
+F (..\Src\tk_user.c)(0x665FCF09)(--c99 -c --cpu Cortex-M0+ -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\Inc -I ..\..\Drivers\BSP\PY32T020xx_Start_Kit -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\PY32T020_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Device\PY32T020\Include -I ..\..\lib_c -I ..\..\Touch_Lib -I ..\..\app_drivers\inc-I.\RTE\_Py32t020xx-ID:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Users\Administrator\AppData\Local\Arm\Packs\Puya\PY32T0xx_DFP\0.0.6\Drivers\CMSIS\Device\PY\PY32T0xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DPY32T020x6 -DPY32T020x6 -DUSE_FULL_LL_DRIVER -DLIB_TYPE="1"-o .\output\tk_user.o --omf_browse .\output\tk_user.crf --depend .\output\tk_user.d)
+I (..\Inc\main.h)(0x662F098E)
+I (..\..\app_drivers\inc\drivers.h)(0x663B1746)
+I (..\..\app_drivers\inc\app_config.h)(0x66603210)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rcc.h)(0x65EE6E3A)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\py32t020x6.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\core_cm0plus.h)(0x65EE6E38)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x65EE6E38)
+I (..\..\Drivers\CMSIS\Device\PY32T020\Include\system_py32t0xx.h)(0x65EE6E38)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_bus.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_system.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_cortex.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_utils.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_pwr.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_gpio.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_uart.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_adc.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_tim.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_spi.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_exti.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_iwdg.h)(0x65EE6E3A)
+I (..\..\Drivers\PY32T020_HAL_Driver\Inc\py32t020_ll_rtc.h)(0x65EE6E3A)
+I (..\..\app_drivers\inc\gpio.h)(0x666031A3)
+I (..\..\app_drivers\inc\py32t020_flash.h)(0x6628BD78)
+I (..\Inc\tk_cfg.h)(0x66603295)
+I (..\..\Touch_Lib\tk_lib.h)(0x6652BA16)
+I (..\..\Touch_Lib\py32t020_tk.h)(0x6656CDDB)
+I (..\Inc\tk_cfg_user.h)(0x66603293)
+F (..\..\Touch_Lib\Py32t020xx_sample_V1.2.13.lib)(0x6660310F)()

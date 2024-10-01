@@ -31,12 +31,15 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "py32t020_it.h"
+#include <stdint.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+extern uint16_t ADCCoversionValue[3];
+extern uint8_t ADCCoversionFlag;
 /* Private function prototypes -----------------------------------------------*/
 /* Private user code ---------------------------------------------------------*/
 /* External variables --------------------------------------------------------*/
@@ -99,6 +102,27 @@ void ADC_COMP_IRQHandler(void)
 
     /* Call analog watchdog IT handler program */
     APP_AdcAWDCallback();
+  }
+
+  static uint8_t channel = 0;
+  // EOC中断
+  if(LL_ADC_IsActiveFlag_EOC(ADC1) != 0 && LL_ADC_IsEnabledIT_EOC(ADC1))
+  {
+    /* Clear flag ADC group regular end of unitary conversion */
+    LL_ADC_ClearFlag_EOC(ADC1);
+
+    ADCCoversionValue[channel] = LL_ADC_REG_ReadConversionData12(ADC1);
+    channel++;
+  }
+
+  // EOS中断
+  if(LL_ADC_IsActiveFlag_EOS(ADC1) != 0 && LL_ADC_IsEnabledIT_EOS(ADC1))
+  {
+    /* Clear flag ADC group regular end of sequence conversions */
+    LL_ADC_ClearFlag_EOS(ADC1);
+
+    ADCCoversionFlag = 1;
+    channel = 0;
   }
 }
 

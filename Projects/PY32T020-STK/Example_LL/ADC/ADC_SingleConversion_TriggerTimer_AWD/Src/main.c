@@ -1,41 +1,45 @@
 /**
-  ******************************************************************************
-  * @file    main.c
-  * @author  MCU Application Team
-  * @brief   Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2023 Puya Semiconductor Co.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by Puya under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2016 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    main.c
+ * @author  MCU Application Team
+ * @brief   Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * <h2><center>&copy; Copyright (c) 2023 Puya Semiconductor Co.
+ * All rights reserved.</center></h2>
+ *
+ * This software component is licensed by Puya under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
+ *
+ ******************************************************************************
+ * @attention
+ *
+ * <h2><center>&copy; Copyright (c) 2016 STMicroelectronics.
+ * All rights reserved.</center></h2>
+ *
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
+ *
+ ******************************************************************************
+ */
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "py32t020xx_ll_Start_Kit.h"
+#include <cstdint>
+#include <stdint.h>
 
 /* Private define ------------------------------------------------------------*/
-#define ADC_CALIBRATION_TIMEOUT_MS       ((uint32_t) 1)
+#define ADC_CALIBRATION_TIMEOUT_MS ((uint32_t)1)
 
 /* Private variables ---------------------------------------------------------*/
+uint16_t ADCCoversionValue[3] = {0};
+uint8_t ADCCoversionFlag = 0;
 /* Private user code ---------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -46,12 +50,11 @@ static void APP_AdcConfig(void);
 static void APP_TimerInit(void);
 
 /**
-  * @brief  Main program.
-  * @param  None
-  * @retval int
-  */
-int main(void)
-{
+ * @brief  Main program.
+ * @param  None
+ * @retval int
+ */
+int main(void) {
   /* Enable SYSCFG clock and PWR clock */
   LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_SYSCFG);
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_PWR);
@@ -71,31 +74,25 @@ int main(void)
   /* Enable ADC */
   APP_AdcEnable();
 
-  /* Start ADC conversion (if it is software triggered then start conversion directly) */
-  LL_ADC_REG_StartConversion(ADC1);
+  while (1) {
+    /* Start ADC conversion (if it is software triggered then start conversion
+     * directly) */
+    LL_ADC_REG_StartConversion(ADC1);
+    while (ADCCoversionFlag == 0) {
+    }
 
-  /* Initialize TIM1 */
-  APP_TimerInit();
-  while (1)
-  {
+    
   }
 }
 
 /**
-  * @brief  Configure ADC parameters
-  * @param  None
-  * @retval None
-  */
-static void APP_AdcConfig(void)
-{
+ * @brief  Configure ADC parameters
+ * @param  None
+ * @retval None
+ */
+static void APP_AdcConfig(void) {
   /* Enable ADC1 clock */
   LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_ADC1);
-
-  /* Enable GPIOA clock */
-  LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);
-
-  /* Configure PA5 pin in analog input mode */
-  LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_5, LL_GPIO_MODE_ANALOG);
 
   /* Set ADC clock to pclk/4 */
   LL_ADC_SetClock(ADC1, LL_ADC_CLOCK_SYNC_PCLK_DIV4);
@@ -113,10 +110,7 @@ static void APP_AdcConfig(void)
   LL_ADC_SetSamplingTimeCommonChannels(ADC1, LL_ADC_SAMPLINGTIME_239CYCLES_5);
 
   /* ADC regular group conversion trigger from external IP: TIM1 TRGO. */
-  LL_ADC_REG_SetTriggerSource(ADC1, LL_ADC_REG_TRIG_EXT_TIM1_TRGO);
-
-  /* Set Trigger edge to rising edge */
-  LL_ADC_REG_SetTriggerEdge(ADC1, LL_ADC_REG_TRIG_EXT_RISING);
+  LL_ADC_REG_SetTriggerSource(ADC1, LL_ADC_REG_TRIG_SOFTWARE);
 
   /* Set ADC conversion mode to single mode: one conversion per trigger */
   LL_ADC_REG_SetContinuousMode(ADC1, LL_ADC_REG_CONV_SINGLE);
@@ -128,37 +122,45 @@ static void APP_AdcConfig(void)
   LL_ADC_REG_SetSequencerDiscont(ADC1, LL_ADC_REG_SEQ_DISCONT_DISABLE);
 
   /* Set channel 5 as conversion channel */
-  LL_ADC_REG_SetSequencerChannels(ADC1, LL_ADC_CHANNEL_5);
+  LL_ADC_REG_SetSequencerChannels(
+      ADC1, LL_ADC_CHANNEL_0 | LL_ADC_CHANNEL_5 |
+                LL_ADC_CHANNEL_VREFINT); // 这里修改为你的实际通道
 
   /* Dose not enable internal conversion channel */
-  LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_NONE );
+  LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1),
+                                 LL_ADC_PATH_INTERNAL_VREFINT);
 
-  /* Set channel 5 as ADC analog watchdog channel */
-  LL_ADC_SetAnalogWDMonitChannels(ADC1, LL_ADC_AWD_CHANNEL_5_REG);
+  /* Set channel VREFINT as ADC analog watchdog channel */
+  LL_ADC_SetAnalogWDMonitChannels(ADC1, LL_ADC_AWD_CH_VREFINT_REG);
 
-  /* Set the analog watchdog threshold in the range of 0~0x800 */
-  LL_ADC_ConfigAnalogWDThresholds(ADC1,0x800,0x0);
+  // 保护电压
+  const uint32_t VDDA_APPLI = 3300; // mv
+
+  // 内部1.2V参考电压，因此阈值设置为0-1500
+  LL_ADC_ConfigAnalogWDThresholds(ADC1, 1500, 0);
 
   NVIC_SetPriority(ADC_COMP_IRQn, 0);
   NVIC_EnableIRQ(ADC_COMP_IRQn);
+
+  // 开启数据EOC和EOS中断
+  LL_ADC_EnableIT_EOC(ADC1);
+  LL_ADC_EnableIT_EOS(ADC1);
 
   /* Enable ADC analog watchdog IT */
   LL_ADC_EnableIT_AWD(ADC1);
 }
 
 /**
-  * @brief  ADC calibration program.
-  * @param  None
-  * @retval None
-  */
-static void APP_AdcCalibrate(void)
-{
+ * @brief  ADC calibration program.
+ * @param  None
+ * @retval None
+ */
+static void APP_AdcCalibrate(void) {
 #if (USE_TIMEOUT == 1)
   uint32_t Timeout = 0;
 #endif
 
-  if (LL_ADC_IsEnabled(ADC1) == 0)
-  {
+  if (LL_ADC_IsEnabled(ADC1) == 0) {
 
     /* Enable ADC calibration */
     LL_ADC_StartCalibration(ADC1);
@@ -167,83 +169,53 @@ static void APP_AdcCalibrate(void)
     Timeout = ADC_CALIBRATION_TIMEOUT_MS;
 #endif
 
-    while (LL_ADC_IsCalibrationOnGoing(ADC1) != 0)
-    {
+    while (LL_ADC_IsCalibrationOnGoing(ADC1) != 0) {
 #if (USE_TIMEOUT == 1)
       /* Detects if the calibration has timed out */
-      if (LL_SYSTICK_IsActiveCounterFlag())
-      {
-        if(Timeout-- == 0)
-        {
+      if (LL_SYSTICK_IsActiveCounterFlag()) {
+        if (Timeout-- == 0) {
           APP_ErrorHandler();
         }
       }
 #endif
     }
 
-    /* The delay between the end of ADC calibration and ADC enablement is at least 4 ADC clocks */
+    /* The delay between the end of ADC calibration and ADC enablement is at
+     * least 4 ADC clocks */
     LL_mDelay(1);
   }
 }
 
 /**
-  * @brief  Enable ADC.
-  * @param  None
-  * @retval None
-  */
-static void APP_AdcEnable(void)
-{
+ * @brief  Enable ADC.
+ * @param  None
+ * @retval None
+ */
+static void APP_AdcEnable(void) {
   /* Enable ADC */
   LL_ADC_Enable(ADC1);
 
-  /* The delay between ADC enablement and ADC stabilization is at least 8 ADC clocks */
+  /* The delay between ADC enablement and ADC stabilization is at least 8 ADC
+   * clocks */
   LL_mDelay(1);
 }
 
 /**
-  * @brief  TIM1 configuration program.
-  * @param  None
-  * @retval None
-  */
-static void APP_TimerInit()
-{
-  /* Enable TIM1 clock */
-  LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_TIM1);
-
-  /* Set TIM1 prescale */
-  LL_TIM_SetPrescaler(TIM1,6000);
-
-  /* Set TIM1 auto-reload value */
-  LL_TIM_SetAutoReload(TIM1, 4000);
-
-  /* TIM1 Update event is used as trigger output */
-  LL_TIM_SetTriggerOutput(TIM1,LL_TIM_TRGO_UPDATE);
-
-  /* Enable TIM1 */
-  LL_TIM_EnableCounter(TIM1);
-}
+ * @brief  ADC interruption handler callback program.
+ * @param  None
+ * @retval None
+ */
+void APP_AdcAWDCallback() { BSP_LED_On(LED3); }
 
 /**
-  * @brief  ADC interruption handler callback program.
-  * @param  None
-  * @retval None
-  */
-void APP_AdcAWDCallback()
-{
-  BSP_LED_On(LED3);
-}
-
-/**
-  * @brief  Configure systemclock
-  * @param  None
-  * @retval None
-  */
-static void APP_SystemClockConfig(void)
-{
+ * @brief  Configure systemclock
+ * @param  None
+ * @retval None
+ */
+static void APP_SystemClockConfig(void) {
   /* Enable HSI */
   LL_RCC_HSI_Enable();
-  while(LL_RCC_HSI_IsReady() != 1)
-  {
+  while (LL_RCC_HSI_IsReady() != 1) {
   }
 
   /* Set AHB prescaler: HCLK = SYSCLK */
@@ -251,46 +223,43 @@ static void APP_SystemClockConfig(void)
 
   /* Select HSISYS as system clock source */
   LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_HSISYS);
-  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSISYS)
-  {
+  while (LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSISYS) {
   }
 
   /* Set APB prescaler: PCLK = HCLK */
   LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
   LL_Init1msTick(24000000);
 
-  /* Update the SystemCoreClock global variable(which can be updated also through SystemCoreClockUpdate function) */
+  /* Update the SystemCoreClock global variable(which can be updated also
+   * through SystemCoreClockUpdate function) */
   LL_SetSystemCoreClock(24000000);
 }
 
 /**
-  * @brief  Error handling function
-  * @param  None
-  * @retval None
-  */
-void APP_ErrorHandler(void)
-{
+ * @brief  Error handling function
+ * @param  None
+ * @retval None
+ */
+void APP_ErrorHandler(void) {
   /* Infinite loop */
-  while (1)
-  {
+  while (1) {
   }
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file:Pointer to the source file name
-  * @param  line:assert_param error line source number
-  * @retval None
-  */
-void assert_failed(uint8_t *file, uint32_t line)
-{
-  /* User can add His own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file:Pointer to the source file name
+ * @param  line:assert_param error line source number
+ * @retval None
+ */
+void assert_failed(uint8_t *file, uint32_t line) {
+  /* User can add His own implementation to report the file name and line
+     number, ex: printf("Wrong parameters value: file %s on line %d\r\n", file,
+     line) */
   /* Infinite loop */
-  while (1)
-  {
+  while (1) {
   }
 }
 #endif /* USE_FULL_ASSERT */
