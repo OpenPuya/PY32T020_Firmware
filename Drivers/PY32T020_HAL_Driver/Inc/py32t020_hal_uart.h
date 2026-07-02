@@ -408,7 +408,7 @@ typedef  void (*pUART_CallbackTypeDef)(UART_HandleTypeDef *huart);  /*!< pointer
   *            @arg UART_FLAG_ORE      : Overrun Error flag
   * @retval None
   */
-#define __HAL_UART_CLEAR_FLAG(__HANDLE__, __FLAG__) ((__HANDLE__)->Instance->SR &= (__FLAG__))
+#define __HAL_UART_CLEAR_FLAG(__HANDLE__, __FLAG__)       WRITE_REG((__HANDLE__)->Instance->SR , __FLAG__)
 
 /** @brief  Enable the specified UART interrupt.
   * @param  __HANDLE__ specifies the UART Handle.

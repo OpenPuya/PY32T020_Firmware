@@ -73,7 +73,9 @@ int main(void)
   {
     APP_ErrorHandler();
   }
-  while(HAL_UART_GetState(&UartHandle) != HAL_UART_STATE_READY);
+  while (HAL_UART_GetState(&UartHandle) != HAL_UART_STATE_READY);
+  /* Wait SR register TXE bit = 1, ensure transmit completly */
+  while(__HAL_UART_GET_FLAG(&UartHandle, UART_FLAG_TXE) == 0);
   
   /* Put UART peripheral in reception process */
   if(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)aRxBuffer, 12) != HAL_OK)
@@ -88,6 +90,8 @@ int main(void)
     APP_ErrorHandler();
   }
   while (HAL_UART_GetState(&UartHandle) != HAL_UART_STATE_READY);
+  /* Wait SR register TXE bit = 1, ensure transmit completly */
+  while(__HAL_UART_GET_FLAG(&UartHandle, UART_FLAG_TXE) == 0);
 
   /* Send the End Message */
   if(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)aTxEndMessage, TXENDMESSAGESIZE)!= HAL_OK)
@@ -95,6 +99,8 @@ int main(void)
     APP_ErrorHandler();
   }
   while (HAL_UART_GetState(&UartHandle) != HAL_UART_STATE_READY);
+  /* Wait SR register TXE bit = 1, ensure transmit completly */
+  while(__HAL_UART_GET_FLAG(&UartHandle, UART_FLAG_TXE) == 0);
   
   BSP_LED_On(LED_TK1);
 

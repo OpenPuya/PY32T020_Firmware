@@ -79,7 +79,9 @@ typedef struct
   */
 #define PWR_MAINREGULATOR_ON                (0x00000000u)    /*!< Regulator in main mode      */
 #define PWR_LOWPOWERREGULATOR_ON            PWR_CR1_LPR_0    /*!< Regulator in low-power mode */
+#if defined(PWR_DEEPSTOP_HIBERNATE_SUPPORT)
 #define PWR_DEEPLOWPOWERREGULATOR_ON        PWR_CR1_LPR_1    /*!< Regulator in deep-low-power mode */
+#endif
 
 /**
   * @}
@@ -117,8 +119,10 @@ typedef struct
   */
 #define PWR_SRAM_RETENTION_VOLT_NORMAL     0x00000000U                                           /* Set SRAM voltage in normal mode */
 #define PWR_SRAM_RETENTION_VOLT_STOP       (PWR_CR1_SRAM_RETV_CTRL_1                           ) /* Set SRAM voltage in stop mode */
+#if defined(PWR_DEEPSTOP_HIBERNATE_SUPPORT)
 #define PWR_SRAM_RETENTION_VOLT_DLP        (PWR_CR1_SRAM_RETV_CTRL_1                           ) /* Set SRAM voltage in deep lowpower mode */
 #define PWR_SRAM_RETENTION_VOLT_HIBERNATE  (PWR_CR1_SRAM_RETV_CTRL_1 | PWR_CR1_SRAM_RETV_CTRL_0) /* Set SRAM voltage in hibernate mode */
+#endif
 /**
   * @}
   */
@@ -143,9 +147,14 @@ typedef struct
 /** @defgroup PWR_Private_Macros  PWR Private Macros
   * @{
   */
+#if defined(PWR_DEEPSTOP_HIBERNATE_SUPPORT)
 #define IS_PWR_REGULATOR(REGULATOR)               (((REGULATOR) == PWR_MAINREGULATOR_ON)     || \
                                                    ((REGULATOR) == PWR_LOWPOWERREGULATOR_ON) || \
                                                    ((REGULATOR) == PWR_DEEPLOWPOWERREGULATOR_ON))
+#else
+#define IS_PWR_REGULATOR(REGULATOR)               (((REGULATOR) == PWR_MAINREGULATOR_ON)     || \
+                                                   ((REGULATOR) == PWR_LOWPOWERREGULATOR_ON) )
+#endif
 
 #define IS_PWR_SLEEP_ENTRY(ENTRY)                 (((ENTRY) == PWR_SLEEPENTRY_WFI) || \
                                                    ((ENTRY) == PWR_SLEEPENTRY_WFE))
@@ -155,12 +164,15 @@ typedef struct
 
 #define IS_PWR_WAKEUP_HSIEN_TIMING(TIMING)        (((TIMING) == PWR_WAKEUP_HSIEN_AFTER_MR) || \
                                                    ((TIMING) == PWR_WAKEUP_HSIEN_IMMEDIATE))
-
+#if defined(PWR_DEEPSTOP_HIBERNATE_SUPPORT)
 #define IS_PWR_SRAM_RETENTION_VOLT(VOLT)          (((VOLT) == PWR_SRAM_RETENTION_VOLT_NORMAL)    || \
                                                    ((VOLT) == PWR_SRAM_RETENTION_VOLT_STOP)      || \
                                                    ((VOLT) == PWR_SRAM_RETENTION_VOLT_DLP)       || \
                                                    ((VOLT) == PWR_SRAM_RETENTION_VOLT_HIBERNATE))
-
+#else
+#define IS_PWR_SRAM_RETENTION_VOLT(VOLT)          (((VOLT) == PWR_SRAM_RETENTION_VOLT_NORMAL)    || \
+                                                   ((VOLT) == PWR_SRAM_RETENTION_VOLT_STOP))
+#endif
 #define IS_PWR_WAKEUP_FLASH_DELAY(DELAY)          (((DELAY) == PWR_WAKEUP_FLASH_DELAY_5US) || \
                                                    ((DELAY) == PWR_WAKEUP_FLASH_DELAY_2US) || \
                                                    ((DELAY) == PWR_WAKEUP_FLASH_DELAY_3US) || \

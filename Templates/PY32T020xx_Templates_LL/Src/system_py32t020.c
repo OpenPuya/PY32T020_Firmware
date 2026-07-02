@@ -90,9 +90,11 @@ void SystemCoreClockUpdate(void)             /* Get Core Clock Frequency      */
   /* Get SYSCLK source -------------------------------------------------------*/
   switch (RCC->CFGR & RCC_CFGR_SWS)
   {
+#if defined(RCC_HSE_SUPPORT)
   case RCC_CFGR_SWS_0:  /* HSE used as system clock */
     SystemCoreClock = HSE_VALUE;
     break;
+#endif /* RCC_HSE_SUPPORT */
 
   case (RCC_CFGR_SWS_1 | RCC_CFGR_SWS_0):  /* LSI used as system clock */
     SystemCoreClock = LSI_VALUE;
@@ -126,6 +128,9 @@ void SystemInit(void)
 {
   /*Set the HSI clock to 24MHz by default*/
   RCC->ICSCR = (RCC->ICSCR & 0xFFFF0000) | ((*(uint32_t *)(0x1FFF0100)) & 0x0000FFFF);
+
+  /*Set the LSI clock to 32.768KHz by default*/
+  RCC->ICSCR = (RCC->ICSCR & 0xFE00FFFF) | (((*(uint32_t *)(0x1FFF0144)) & 0x1FF) << RCC_ICSCR_LSI_TRIM_Pos);
 
   /* Configure the Vector Table location add offset address ------------------*/
 #ifdef VECT_TAB_SRAM

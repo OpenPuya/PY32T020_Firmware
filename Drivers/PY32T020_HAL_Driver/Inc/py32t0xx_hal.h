@@ -266,6 +266,7 @@ extern uint32_t uwTickFreq;
   */
 #define __HAL_SYSCFG_COMP2_BREAK_TIM1()           SET_BIT(SYSCFG->CFGR2, SYSCFG_CFGR2_COMP2_BRK_TIM1)
 #endif
+
 /**
   * @}
   */

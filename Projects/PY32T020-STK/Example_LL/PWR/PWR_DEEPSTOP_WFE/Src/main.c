@@ -158,6 +158,7 @@ static void APP_ExtiConfig(void)
   */
 static void APP_EnterDeepStop(void)
 {
+#if defined(PWR_DEEPSTOP_HIBERNATE_SUPPORT)
   /* Enable PWR clock */
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_PWR);
 
@@ -176,6 +177,9 @@ static void APP_EnterDeepStop(void)
   __WFE();
 
   LL_LPM_EnableSleep();
+#else
+#error The deepstop mode is unsupported on py32t020b device
+#endif
 }
 
 /**

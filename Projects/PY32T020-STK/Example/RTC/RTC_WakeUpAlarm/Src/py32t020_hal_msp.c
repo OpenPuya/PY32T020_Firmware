@@ -73,10 +73,16 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef *hrtc)
   {
   }
 #elif defined (RTC_CLOCK_SOURCE_LSI)
+#if defined(RCC_LSE_SUPPORT)
   RCC_OscInitStruct.OscillatorType =  RCC_OSCILLATORTYPE_LSI | RCC_OSCILLATORTYPE_LSE;
+#else
+  RCC_OscInitStruct.OscillatorType =  RCC_OSCILLATORTYPE_LSI;
+#endif    
   RCC_OscInitStruct.LSIState = RCC_LSI_ON;
+#if defined(RCC_LSE_SUPPORT)  
   RCC_OscInitStruct.LSEState = RCC_LSE_OFF;
   /* RCC_OscInitStruct.LSEDriver = RCC_LSEDRIVE_MEDIUM; */
+#endif  
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
   }

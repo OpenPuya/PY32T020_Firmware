@@ -1086,15 +1086,6 @@
         <group>
             <name>PY32T020_HAL_Driver</name>
             <file>
-                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_hal.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_hal_cortex.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_hal_flash.c</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_utils.c</name>
             </file>
         </group>
@@ -1110,13 +1101,13 @@
         <group>
             <name>User</name>
             <file>
-                <name>$PROJ_DIR$\..\Src\main.c </name>
+                <name>$PROJ_DIR$\..\Src\main.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\Src\py32t020_hal_msp.c </name>
+                <name>$PROJ_DIR$\..\Src\py32t020_hal_msp.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\Src\py32t020_it.c </name>
+                <name>$PROJ_DIR$\..\Src\py32t020_it.c</name>
             </file>
         </group>
     </group>

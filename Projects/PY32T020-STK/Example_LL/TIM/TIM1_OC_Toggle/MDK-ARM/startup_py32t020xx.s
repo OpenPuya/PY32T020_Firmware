@@ -32,7 +32,7 @@
 ;* License. You may obtain a copy of the License at:
 ;*                        opensource.org/licenses/BSD-3-Clause
 ;*
-;****************************************************************************** 
+;******************************************************************************
 ;* <<< Use Configuration Wizard in Context Menu >>>
 
 ; Amount of memory (in bytes) allocated for Stack

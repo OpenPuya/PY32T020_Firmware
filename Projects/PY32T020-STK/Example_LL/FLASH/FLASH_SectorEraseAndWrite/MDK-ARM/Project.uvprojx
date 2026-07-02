@@ -16,14 +16,14 @@
         <TargetCommonOption>
           <Device>PY32T020x6</Device>
           <Vendor>Puya</Vendor>
-          <PackID>Puya.PY32T0xx_DFP.1.0.0</PackID>
+          <PackID>Puya.PY32T0xx_DFP.1.0.6</PackID>
           <PackURL>https://www.puyasemi.com/uploadfiles/</PackURL>
           <Cpu>IRAM(0x20000000,0x00001000) IROM(0x08000000,0x00008000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0PY32T020xx_32 -FS08000000 -FL08000 -FP0($$Device:PY32T020x6$CMSIS\Flash\PY32T020xx_32.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0PY068xx_32 -FS08000000 -FL08000 -FP0($$Device:PY32T020x6$CMSIS\Flash\PY068xx_32.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:PY32T020x6$Drivers\CMSIS\Device\PY\PY32T0xx\Include\py32t0xx.h</RegisterFile>
+          <RegisterFile>$$Device:PY32T020x6$Drivers\CMSIS\Device\PUYA\PY32T0xx\Include\py32t0xx.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -185,6 +185,8 @@
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
+            <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -427,21 +429,6 @@
         <Group>
           <GroupName>Drivers/PY32T020_HAL_Driver</GroupName>
           <Files>
-            <File>
-              <FileName>py32t020_hal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_hal.c</FilePath>
-            </File>
-            <File>
-              <FileName>py32t020_hal_cortex.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_hal_cortex.c</FilePath>
-            </File>
-            <File>
-              <FileName>py32t020_hal_flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_hal_flash.c</FilePath>
-            </File>
             <File>
               <FileName>py32t020_ll_utils.c</FileName>
               <FileType>1</FileType>

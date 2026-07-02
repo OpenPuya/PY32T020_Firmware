@@ -752,7 +752,7 @@ __STATIC_INLINE uint32_t LL_UART_IsActiveFlag_BUSY_ERR(UART_TypeDef *UARTx)
   */
 __STATIC_INLINE void LL_UART_ClearFlag_ORE(UART_TypeDef *UARTx)
 {
-  SET_BIT(UARTx->SR, UART_SR_ORE);
+  WRITE_REG(UARTx->SR, UART_SR_ORE);
 }
 
 /**
@@ -765,7 +765,7 @@ __STATIC_INLINE void LL_UART_ClearFlag_ORE(UART_TypeDef *UARTx)
   */
 __STATIC_INLINE void LL_UART_ClearFlag_PE(UART_TypeDef *UARTx)
 {
-  SET_BIT(UARTx->SR, UART_SR_PE);
+  WRITE_REG(UARTx->SR, UART_SR_PE);
 }
 
 /**
@@ -778,7 +778,7 @@ __STATIC_INLINE void LL_UART_ClearFlag_PE(UART_TypeDef *UARTx)
   */
 __STATIC_INLINE void LL_UART_ClearFlag_FE(UART_TypeDef *UARTx)
 {
-  SET_BIT(UARTx->SR, UART_SR_FE);
+  WRITE_REG(UARTx->SR, UART_SR_FE);
 }
 
 /**
@@ -791,7 +791,7 @@ __STATIC_INLINE void LL_UART_ClearFlag_FE(UART_TypeDef *UARTx)
   */
 __STATIC_INLINE void LL_UART_ClearFlag_BRI(UART_TypeDef *UARTx)
 {
-  SET_BIT(UARTx->SR, UART_SR_BRI);
+  WRITE_REG(UARTx->SR, UART_SR_BRI);
 }
 
 /**
@@ -804,7 +804,7 @@ __STATIC_INLINE void LL_UART_ClearFlag_BRI(UART_TypeDef *UARTx)
   */
 __STATIC_INLINE void LL_UART_ClearFlag_ADDR_RCVD(UART_TypeDef *UARTx)
 {
-   SET_BIT(UARTx->SR, UART_SR_ADDR_RCVD);
+   WRITE_REG(UARTx->SR, UART_SR_ADDR_RCVD);
 }
 
 /**
@@ -817,7 +817,7 @@ __STATIC_INLINE void LL_UART_ClearFlag_ADDR_RCVD(UART_TypeDef *UARTx)
   */
 __STATIC_INLINE void LL_UART_ClearFlag_BUSY_ERR(UART_TypeDef *UARTx)
 {
-   SET_BIT(UARTx->SR, UART_SR_BUSY_ERR);
+   WRITE_REG(UARTx->SR, UART_SR_BUSY_ERR);
 }
 
 /**

@@ -29,7 +29,7 @@ OPT = -Og
 # paths
 #######################################
 # Build path
-BUILD_DIR = build\Project
+BUILD_DIR = Project
 
 ######################################
 # source
@@ -46,7 +46,6 @@ C_SOURCES =  \../Src/main.c \
 ../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal_pwr.c \
 ../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal_gpio.c \
 ../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal_cortex.c \
-../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal_uart.c \
 ../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal_iwdg.c \
 ../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal_spi.c
 

@@ -45,6 +45,8 @@ extern "C" {
 #include "py32t020_ll_utils.h"
 #include "py32t020_ll_gpio.h"
 #include "py32t020_ll_bus.h"
+#include "py32t020_ll_rcc.h"
+#include "py32t020_ll_flash.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* Private defines -----------------------------------------------------------*/

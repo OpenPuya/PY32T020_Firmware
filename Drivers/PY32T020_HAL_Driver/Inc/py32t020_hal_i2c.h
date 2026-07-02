@@ -644,8 +644,8 @@ HAL_StatusTypeDef HAL_I2C_DisableWakeUp(I2C_HandleTypeDef *hi2c);
   * @{
   */
 #define I2C_FLAG_MASK                    0x0000FFFFU
-#define I2C_MIN_PCLK_FREQ_STANDARD       2000000U     /*!< 2 MHz                     */
-#define I2C_MIN_PCLK_FREQ_FAST           4000000U     /*!< 4 MHz                     */
+#define I2C_MIN_PCLK_FREQ_STANDARD       4000000U     /*!< 4 MHz                     */
+#define I2C_MIN_PCLK_FREQ_FAST           8000000U     /*!< 8 MHz                     */
 #define I2C_MIN_PCLK_FREQ_FAST_PLUS      16000000U    /*!< 16 MHz                     */
 /**
   * @}

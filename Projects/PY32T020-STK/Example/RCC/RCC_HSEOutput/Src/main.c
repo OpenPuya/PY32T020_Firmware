@@ -85,8 +85,10 @@ static void APP_SystemClockConfig(void)
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;                                /* Open HSE */
   RCC_OscInitStruct.HSEFreq  = RCC_HSE_6_8MHz;                            /* HSE select 6-8MHz */
   /* RCC_OscInitStruct.LSIState = RCC_LSI_OFF; */                         /* Close LSI */
+#if defined(RCC_LSE_SUPPORT)  
   /* RCC_OscInitStruct.LSEState = RCC_LSE_OFF; */                         /* Close LSE */
   /* RCC_OscInitStruct.LSEDriver = RCC_LSEDRIVE_MEDIUM; */
+#endif  
   /* Configure oscillator */
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {

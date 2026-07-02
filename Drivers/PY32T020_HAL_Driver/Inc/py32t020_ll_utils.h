@@ -121,6 +121,7 @@ typedef struct
   * @{
   */
 
+#if defined(RCC_HSE_SUPPORT)
 /** @defgroup UTILS_EC_HSE_BYPASS HSE Bypass activation
   * @{
   */
@@ -129,7 +130,7 @@ typedef struct
 /**
   * @}
   */
-
+#endif
 /**
   * @}
   */

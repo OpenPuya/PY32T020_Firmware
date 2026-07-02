@@ -305,9 +305,12 @@ uint32_t HAL_RCCEx_GetLSCSource(void);
 /** @defgroup RCCEx_Private_Macros RCCEx Private Macros
   * @{
   */
+#if defined(RCC_LSE_SUPPORT)
 #define IS_RCC_LSCSOURCE(__SOURCE__) (((__SOURCE__) == RCC_LSCSOURCE_LSI) || \
                                       ((__SOURCE__) == RCC_LSCSOURCE_LSE))
-
+#else
+#define IS_RCC_LSCSOURCE(__SOURCE__) ((__SOURCE__) == RCC_LSCSOURCE_LSI)
+#endif
 #if defined(RCC_CCIPR_COMP1SEL)
 #define IS_RCC_COMP1CLKSOURCE(__SOURCE__)  \
                (((__SOURCE__) == RCC_COMP1CLKSOURCE_PCLK)  || \
@@ -326,11 +329,13 @@ uint32_t HAL_RCCEx_GetLSCSource(void);
                 ((__SOURCE__) == RCC_IWDGCLKSOURCE_LSE))
 #endif /* RCC_CCIPR_IWDGSEL */
 
+
 #define IS_RCC_PERIPHCLOCK(__SELECTION__)  \
   ((((__SELECTION__) & RCC_PERIPHCLK_COMP1)   == RCC_PERIPHCLK_COMP1)   || \
    (((__SELECTION__) & RCC_PERIPHCLK_COMP2)   == RCC_PERIPHCLK_COMP2)   || \
    (((__SELECTION__) & RCC_PERIPHCLK_IWDG)    == RCC_PERIPHCLK_IWDG)    || \
    (((__SELECTION__) & RCC_PERIPHCLK_RTC)     == RCC_PERIPHCLK_RTC))
+
 /**
   * @}
   */

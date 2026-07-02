@@ -67,9 +67,14 @@ int main(void)
   */
 static void APP_SystemClockConfig(void)
 {
+  /* Disable HSE */
+  LL_RCC_HSE_Disable();
+  while(LL_RCC_HSE_IsReady() != 0)
+  {
+  }
+  LL_RCC_HSE_SetFreqRegion(LL_RCC_HSE_6_8MHz);
   /* Enable and initialize HSE */
   LL_RCC_HSE_Enable();
-  LL_RCC_HSE_SetFreqRegion(LL_RCC_HSE_6_8MHz);
   while(LL_RCC_HSE_IsReady() != 1)
   {
   }

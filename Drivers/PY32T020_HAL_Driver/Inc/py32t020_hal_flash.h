@@ -338,10 +338,10 @@ typedef struct
 /** @defgroup FLASH_OB_USER_SWD FLASH Option Bytes SWD
   * @{
   */ 
-#define OB_SWD_MODE_PF3_SWCLK_PF4_SWDIO     ((uint32_t)0x00000000U) << 16                                      /*!< PF3 :SWCLK  PF4 :SWDIO   */
-#define OB_SWD_MODE_PA14_SWCLK_PA13_SWDIO   ((uint32_t)FLASH_BTCR_SWD_MODE_0) << 16                            /*!< PA14:SWCLK  PA13:SWDIO */
-#define OB_SWD_MODE_PA14_SWCLK_PF4_SWDIO    ((uint32_t)FLASH_BTCR_SWD_MODE_1) << 16                            /*!< PA14:SWCLK  PF4 :SWDIO  */
-#define OB_SWD_MODE_PF3_SWCLK_PA13_SWDIO    ((uint32_t)(FLASH_BTCR_SWD_MODE_0 | FLASH_BTCR_SWD_MODE_1)) << 16  /*!< PF3 :SWCLK  PA13:SWDIO  */
+#define OB_SWD_MODE_PF3_SWCLK_PF4_SWDIO     ((uint32_t)(0x00000000U))                                            /*!< PF3 :SWCLK  PF4 :SWDIO */
+#define OB_SWD_MODE_PA14_SWCLK_PA13_SWDIO   ((uint32_t)(FLASH_BTCR_SWD_MODE_0 << 16))                            /*!< PA14:SWCLK  PA13:SWDIO */
+#define OB_SWD_MODE_PA14_SWCLK_PF4_SWDIO    ((uint32_t)(FLASH_BTCR_SWD_MODE_1 << 16))                            /*!< PA14:SWCLK  PF4 :SWDIO */
+#define OB_SWD_MODE_PF3_SWCLK_PA13_SWDIO    ((uint32_t)((FLASH_BTCR_SWD_MODE_0 | FLASH_BTCR_SWD_MODE_1) << 16))  /*!< PF3 :SWCLK  PA13:SWDIO */
 /**
   * @}
   */
@@ -619,9 +619,9 @@ HAL_StatusTypeDef  FLASH_WaitForLastOperation(uint32_t Timeout);
 
 #define IS_FLASH_PROGRAM_ADDRESS(__ADDRESS__)          (IS_FLASH_PROGRAM_MAIN_MEM_ADDRESS(__ADDRESS__))
 
-#define IS_FLASH_NB_PAGES(__ADDRESS__, __VALUE__)      (((__ADDRESS__) >= (FLASH_BASE)) && ((__ADDRESS__ + (__VALUE__*FLASH_PAGE_SIZE)) <= (FLASH_BASE + FLASH_SIZE - 1UL)))
+#define IS_FLASH_NB_PAGES(__ADDRESS__, __VALUE__)      (((__ADDRESS__) >= (FLASH_BASE)) && ((__ADDRESS__ + (__VALUE__*FLASH_PAGE_SIZE) - 1) <= (FLASH_BASE + FLASH_SIZE - 1UL)))
 
-#define IS_FLASH_NB_SECTORS(__ADDRESS__, __VALUE__)    (((__ADDRESS__) >= (FLASH_BASE)) && ((__ADDRESS__ + (__VALUE__*FLASH_SECTOR_SIZE)) <= (FLASH_BASE + FLASH_SIZE - 1UL)))
+#define IS_FLASH_NB_SECTORS(__ADDRESS__, __VALUE__)    (((__ADDRESS__) >= (FLASH_BASE)) && ((__ADDRESS__ + (__VALUE__*FLASH_SECTOR_SIZE) - 1) <= (FLASH_BASE + FLASH_SIZE - 1UL)))
 
 #define IS_FLASH_FAST_PROGRAM_ADDRESS(__ADDRESS__)     (((__ADDRESS__) >= (FLASH_BASE)) && ((__ADDRESS__) <= (FLASH_BASE + FLASH_SIZE - 256UL)))
 

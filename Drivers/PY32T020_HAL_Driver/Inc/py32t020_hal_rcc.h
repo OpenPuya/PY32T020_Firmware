@@ -74,10 +74,12 @@ extern "C" {
                                                (((__OSCILLATOR__) & RCC_OSCILLATORTYPE_LSI) == RCC_OSCILLATORTYPE_LSI) || \
                                                (((__OSCILLATOR__) & RCC_OSCILLATORTYPE_LSE) == RCC_OSCILLATORTYPE_LSE))
 
+#if defined(RCC_HSE_SUPPORT)
 #define IS_RCC_HSE(__HSE__)          (((__HSE__) == RCC_HSE_OFF) || ((__HSE__) == RCC_HSE_ON) || \
                                       ((__HSE__) == RCC_HSE_BYPASS))
 
 #define IS_RCC_HSE_FREQ(__FREQ__)    (((__FREQ__) == RCC_HSE_4_6MHz) || ((__FREQ__) == RCC_HSE_6_8MHz))
+#endif
 
 #if defined(RCC_LSE_SUPPORT)
 #define IS_RCC_LSE(__LSE__)          (((__LSE__) == RCC_LSE_OFF) || ((__LSE__) == RCC_LSE_ON) || \
@@ -168,12 +170,13 @@ typedef struct
 {
   uint32_t OscillatorType;       /*!< The oscillators to be configured.
                                       This parameter can be a value of @ref RCC_Oscillator_Type                   */
-
+#if defined(RCC_HSE_SUPPORT)
   uint32_t HSEState;             /*!< The new state of the HSE.
                                       This parameter can be a value of @ref RCC_HSE_Config                        */
 
   uint32_t HSEFreq;              /*!< The frequency range of the HSE.
                                       This parameter can be a value of @ref RCC_HSE_Freq                          */
+#endif
 #if defined(RCC_LSE_SUPPORT)
   uint32_t LSEState;             /*!< The new state of the LSE.
                                       This parameter can be a value of @ref RCC_LSE_Config                        */
@@ -238,7 +241,9 @@ typedef struct
   * @{
   */
 #define RCC_OSCILLATORTYPE_NONE        0x00000000U   /*!< Oscillator configuration unchanged */
+#if defined(RCC_HSE_SUPPORT)
 #define RCC_OSCILLATORTYPE_HSE         0x00000001U   /*!< HSE to configure */
+#endif
 #define RCC_OSCILLATORTYPE_HSI         0x00000002U   /*!< HSI to configure */
 #if defined(RCC_LSE_SUPPORT)
 #define RCC_OSCILLATORTYPE_LSE         0x00000004U   /*!< LSE to configure */
@@ -248,6 +253,7 @@ typedef struct
   * @}
   */
 
+#if defined(RCC_HSE_SUPPORT)
 /** @defgroup RCC_HSE_Config HSE Config
   * @{
   */
@@ -277,6 +283,7 @@ typedef struct
 /**
   * @}
   */
+#endif
 
 #if defined(RCC_LSE_SUPPORT)
 /** @defgroup RCC_LSE_Config LSE Config
@@ -370,7 +377,9 @@ typedef struct
   * @{
   */
 #define RCC_SYSCLKSOURCE_HSISYS        0x00000000U                       /*!< HSISYS selection as system clock */
+#if defined(RCC_HSE_SUPPORT)
 #define RCC_SYSCLKSOURCE_HSE           RCC_CFGR_SW_0                     /*!< HSE selection as system clock */
+#endif
 #define RCC_SYSCLKSOURCE_LSI           (RCC_CFGR_SW_1 | RCC_CFGR_SW_0)   /*!< LSI selection as system clock */
 #if defined(RCC_LSE_SUPPORT)
 #define RCC_SYSCLKSOURCE_LSE           RCC_CFGR_SW_2                     /*!< LSE selection as system clock */
@@ -383,7 +392,9 @@ typedef struct
   * @{
   */
 #define RCC_SYSCLKSOURCE_STATUS_HSISYS 0x00000000U                       /*!< HSISYS used as system clock */
+#if defined(RCC_HSE_SUPPORT)
 #define RCC_SYSCLKSOURCE_STATUS_HSE    RCC_CFGR_SWS_0                    /*!< HSE used as system clock */
+#endif
 #define RCC_SYSCLKSOURCE_STATUS_LSI    (RCC_CFGR_SWS_1 | RCC_CFGR_SWS_0) /*!< LSI used as system clock */
 #if defined(RCC_LSE_SUPPORT)
 #define RCC_SYSCLKSOURCE_STATUS_LSE    RCC_CFGR_SWS_2                    /*!< LSE used as system clock */
@@ -429,9 +440,11 @@ typedef struct
 #define RCC_RTCCLKSOURCE_LSE           RCC_BDCR_RTCSEL_0                                                   /*!< LSE oscillator clock used as RTC clock */
 #endif
 #define RCC_RTCCLKSOURCE_LSI           RCC_BDCR_RTCSEL_1                                                   /*!< LSI oscillator clock used as RTC clock */
+#if defined(RCC_HSE_SUPPORT)
 #define RCC_RTCCLKSOURCE_HSE_DIV32     (                            RCC_BDCR_RTCSEL_1 | RCC_BDCR_RTCSEL_0) /*!< HSE oscillator clock divided by 32 used as RTC clock */
 #define RCC_RTCCLKSOURCE_HSE_DIV128    (RCC_BDCR_RTC_HSEDIV_SEL_0 | RCC_BDCR_RTCSEL_1 | RCC_BDCR_RTCSEL_0) /*!< HSE oscillator clock divided by 128 used as RTC clock */
 #define RCC_RTCCLKSOURCE_HSE_DIV8      (RCC_BDCR_RTC_HSEDIV_SEL_1 | RCC_BDCR_RTCSEL_1 | RCC_BDCR_RTCSEL_0) /*!< HSE oscillator clock divided by 8 used as RTC clock */
+#endif
 /**
   * @}
   */
@@ -457,7 +470,9 @@ typedef struct
 #define RCC_MCOSOURCE_SYSCLK          RCC_CFGR_MCOSEL_0                                           /*!< SYSCLK selection as MCO source */
 #define RCC_MCOSOURCE_HSI10M          RCC_CFGR_MCOSEL_1                                           /*!< HSI10M selection as MCO source */
 #define RCC_MCOSOURCE_HSI             (RCC_CFGR_MCOSEL_1 | RCC_CFGR_MCOSEL_0)                     /*!< HSI selection as MCO source */
+#if defined(RCC_HSE_SUPPORT)
 #define RCC_MCOSOURCE_HSE             RCC_CFGR_MCOSEL_2                                           /*!< HSE selection as MCO source */
+#endif
 #define RCC_MCOSOURCE_LSI             (RCC_CFGR_MCOSEL_2 | RCC_CFGR_MCOSEL_1)                     /*!< LSI selection as MCO source */
 #if defined(RCC_LSE_SUPPORT)
 #define RCC_MCOSOURCE_LSE             (RCC_CFGR_MCOSEL_2 | RCC_CFGR_MCOSEL_1 | RCC_CFGR_MCOSEL_0) /*!< LSE selection as MCO source */
@@ -494,8 +509,10 @@ typedef struct
 #define RCC_IT_LSECSS                  RCC_CIFR_LSECSSF            /*!< LSE Clock Security System Interrupt flag */
 #endif
 #define RCC_IT_HSIRDY                  RCC_CIFR_HSIRDYF            /*!< HSI Ready Interrupt flag */
+#if defined(RCC_HSE_SUPPORT)
 #define RCC_IT_HSERDY                  RCC_CIFR_HSERDYF            /*!< HSE Ready Interrupt flag */
 #define RCC_IT_CSS                     RCC_CIFR_CSSF               /*!< HSE Clock Security System Interrupt flag */
+#endif
 /**
   * @}
   */
@@ -511,7 +528,9 @@ typedef struct
   */
 /* Flags in the CR register */
 #define RCC_FLAG_HSIRDY                ((CR_REG_INDEX << 5U) | RCC_CR_HSIRDY_Pos) /*!< HSI Ready flag */
+#if defined(RCC_HSE_SUPPORT)
 #define RCC_FLAG_HSERDY                ((CR_REG_INDEX << 5U) | RCC_CR_HSERDY_Pos) /*!< HSE Ready flag */
+#endif
 
 #if defined(RCC_LSE_SUPPORT)
 /* Flags in the BDCR register */
@@ -1109,6 +1128,7 @@ typedef struct
 
 #define __HAL_RCC_LSI_DISABLE()        CLEAR_BIT(RCC->CSR, RCC_CSR_LSION)
 
+#if defined(RCC_HSE_SUPPORT)
 /**
   * @brief  Macro to configure the External High Speed oscillator (HSE).
   * @note   Transition HSE Bypass to HSE On and HSE On to HSE Bypass are not
@@ -1162,6 +1182,7 @@ typedef struct
                                                   If HSEBYP is set, it is output after 4096 clock cycles.
   */
 #define __HAL_RCC_HSE_STARTUP_DELAY(__TIME__)   MODIFY_REG(RCC->ECSCR, RCC_ECSCR_HSE_STARTUP ,(__TIME__))
+#endif
 
 #if defined(RCC_LSE_SUPPORT)
 /**
@@ -1478,7 +1499,9 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uin
 
 /* Peripheral Control functions  ************************************************/
 void              HAL_RCC_MCOConfig(uint32_t RCC_MCOx, uint32_t RCC_MCOSource, uint32_t RCC_MCODiv);
+#if defined(RCC_HSE_SUPPORT)
 void              HAL_RCC_EnableCSS(void);
+#endif
 #if defined(RCC_LSE_SUPPORT)
 void              HAL_RCC_EnableLSECSS(void);
 void              HAL_RCC_DisableLSECSS(void);
@@ -1491,8 +1514,10 @@ void              HAL_RCC_GetOscConfig(RCC_OscInitTypeDef *RCC_OscInitStruct);
 void              HAL_RCC_GetClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uint32_t *pFLatency);
 /* LSE & HSE CSS NMI IRQ handler */
 void              HAL_RCC_NMI_IRQHandler(void);
+#if defined(RCC_HSE_SUPPORT)
 /* User Callbacks in non blocking mode (IT mode) */
 void              HAL_RCC_CSSCallback(void);
+#endif
 
 /**
   * @}

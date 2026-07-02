@@ -34,9 +34,9 @@
 /* Private define ------------------------------------------------------------*/
 #define Vcc_Power     3.30                                            /* VCC power supply voltage, modify according to actual situation  */
 #define TScal1        (float)((HAL_ADC_TSCAL1) * 3.3 / Vcc_Power)     /* Voltage corresponding to calibration value at 30 ℃ */
-#define TScal2        (float)((HAL_ADC_TSCAL2) * 3.3 / Vcc_Power)     /* Voltage corresponding to calibration value at 85 ℃ */
+#define TScal2        (float)((HAL_ADC_TSCAL2) * 3.3 / Vcc_Power)     /* Voltage corresponding to calibration value at 105 ℃ */
 #define TStem1        30                                              /* 30 ℃ */
-#define TStem2        85                                              /* 85 ℃ */
+#define TStem2        105                                              /* 105 ℃ */
 #define Temp_k        ((float)(TStem2-TStem1)/(float)(TScal2-TScal1)) /* Temperature calculation */
   
 /* Private variables ---------------------------------------------------------*/
@@ -130,7 +130,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *adchandle)
 {
   aADCxConvertedData = HAL_ADC_GetValue(adchandle);
 
-  aTEMPERATURE =(int16_t)((85-30)*(aADCxConvertedData-TScal1)/(TScal2-TScal1) + TStem1);
+  aTEMPERATURE =(int16_t)((105-30)*(aADCxConvertedData-TScal1)/(TScal2-TScal1) + TStem1);
   printf("Temperature = %d \r\n", (int)aTEMPERATURE);
 }
 

@@ -2,9 +2,7 @@
   "name": "Project",
   "type": "ARM",
   "dependenceList": [],
-  "srcDirs": [
-    ".eide/deps"
-  ],
+  "srcDirs": [],
   "virtualFolder": {
     "name": "<virtual_root>",
     "files": [],
@@ -43,18 +41,8 @@
         "name": "PY32T020_HAL_Driver",
         "files":[
           {
-            "path":"../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal.c"
-          },
-          {                
-            "path":"../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal_cortex.c"
-          },
-          {                
-            "path":"../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_hal_flash.c"
-          },
-          {                
             "path":"../../../../../../Drivers/PY32T020_HAL_Driver/Src/py32t020_ll_utils.c"
-          }
-        ],
+          }],
         "folders": []
       },
       {
@@ -74,9 +62,9 @@
       }
     ]
   },
-  "outDir": "build",
+  "outDir": ".",
   "deviceName": "PY32T020x6",
-  "packDir": "../../../../../../Packs/GCC/.pack/Puya/PY32T0xx_DFP",
+  "packDir": null,
   "miscInfo": {
     "uid": "36bcf0031e18a3008bbdaa90a96a7987"
   },
@@ -93,14 +81,17 @@
           "RAM": [],
           "ROM": []
         },
-        "options": "null"
+        "options": "null",
+        "archExtensions": ""
       },
-      "uploader": "OpenOCD",
+      "uploader": "pyOCD",
       "uploadConfig": {
         "bin": "",
-        "target": "py32t020",
-        "interface": "cmsis-dap",
-        "baseAddr": "0x08000000"
+        "targetName": "PY32T020x6",
+        "baseAddr": "0x08000000",
+        "speed": "4M",
+        "otherCmds": "\"--pack=${env:PYSDEPATH}\\packs\\PY32T0xx_DFP.pack\"",
+        "config": ".eide/project.pyocd.yaml"
       },
       "uploadConfigMap": {
         "JLink": {
@@ -119,6 +110,14 @@
           "target": "py32t020",
           "interface": "cmsis-dap",
           "baseAddr": "0x08000000"
+        },
+        "pyOCD": {
+          "bin": "",
+          "targetName": "PY32T020x6",
+          "baseAddr": "0x08000000",
+          "speed": "4M",
+          "otherCmds": "\"--pack=${env:PYSDEPATH}\\packs\\PY32T0xx_DFP.pack\"",
+          "config": ".eide/project.pyocd.yaml"
         }
       },
       "custom_dep": {
@@ -131,10 +130,40 @@
           "../../../../../../Drivers/PY32T020_HAL_Driver/Inc"
         ],
         "libList": [],
-        "sourceDirList": [],
         "defineList": ["USE_HAL_DRIVER","PY32T020x6"]
+      },
+      "builderOptions": {
+        "GCC": {
+          "version": 5,
+          "beforeBuildTasks": [],
+          "afterBuildTasks": [],
+          "global": {
+            "$float-abi-type": "softfp",
+            "output-debug-info": "enable",
+            "misc-control": "--specs=nosys.specs --specs=nano.specs"
+          },
+          "c/cpp-compiler": {
+            "language-c": "c11",
+            "language-cpp": "c++11",
+            "optimization": "level-debug",
+            "warnings": "all-warnings",
+            "one-elf-section-per-function": true,
+            "one-elf-section-per-data": true,
+            "C_FLAGS": "",
+            "CXX_FLAGS": ""
+          },
+          "asm-compiler": {
+            "ASM_FLAGS": ""
+          },
+          "linker": {
+            "output-format": "elf",
+            "remove-unused-input-sections": true,
+            "LD_FLAGS": " ",
+            "LIB_FLAGS": "-lm"
+          }
+        }
       }
     }
   },
-  "version": "3.3"
+  "version": "3.6"
 }

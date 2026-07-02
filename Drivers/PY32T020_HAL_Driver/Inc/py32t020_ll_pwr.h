@@ -64,8 +64,10 @@ extern "C" {
   */
 #define LL_PWR_SRAM_RETENTION_VOLT_NORMAL     0x00000000U                                            /* Set SRAM voltage in stop mode */
 #define LL_PWR_SRAM_RETENTION_VOLT_STOP       (PWR_CR1_SRAM_RETV_CTRL_1                          )   /* Set SRAM voltage in stop mode */
+#if defined(PWR_DEEPSTOP_HIBERNATE_SUPPORT)
 #define LL_PWR_SRAM_RETENTION_VOLT_DLP        (PWR_CR1_SRAM_RETV_CTRL_1                          )   /* Set SRAM voltage in deep lowpower mode */
 #define LL_PWR_SRAM_RETENTION_VOLT_HIBERNATE  (PWR_CR1_SRAM_RETV_CTRL_1 | PWR_CR1_SRAM_RETV_CTRL_0)  /* Set SRAM voltage in hibernate mode */
+#endif
 /**
   * @}
   */
@@ -84,7 +86,9 @@ extern "C" {
   */
 #define LL_PWR_LPR_MODE_MR         0x00000000U                 /* MR mode */
 #define LL_PWR_LPR_MODE_LPR        PWR_CR1_LPR_0               /* Low Power Run mode */
+#if defined(PWR_DEEPSTOP_HIBERNATE_SUPPORT)
 #define LL_PWR_LPR_MODE_DLPR       PWR_CR1_LPR_1               /* Deep Low Power Run mode */
+#endif
 /**
   * @}
   */

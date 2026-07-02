@@ -85,7 +85,9 @@ typedef struct
   */
 #define TIM_TIM14_GPIO                         (0x00000000U) /*!< TIM14 TI1 is connected to GPIO */
 #define TIM_TIM14_RTC                          (0x00000001U) /*!< TIM14 TI1 is connected to RTC_clock */
+#if defined(RCC_HSE_SUPPORT)
 #define TIM_TIM14_HSE                          (0x00000002U) /*!< TIM14 TI1 is connected to HSE/32U */
+#endif
 #define TIM_TIM14_MCO                          (0x00000003U) /*!< TIM14 TI1 is connected to MCO */
 /**
   * @}

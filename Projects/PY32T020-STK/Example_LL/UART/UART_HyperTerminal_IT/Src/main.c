@@ -51,7 +51,9 @@ __IO uint16_t RxSize = 0;
 __IO uint16_t RxCount = 0;
 
 __IO ITStatus UartReady = RESET;
-__IO ITStatus UartError = RESET;
+
+uint32_t  EieFlags = 0;
+uint32_t ErrorFlags = 0;
 
 /* Private user code ---------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -72,6 +74,8 @@ int main(void)
   /* Configure Systemclock */
   APP_SystemClockConfig();
 
+  BSP_LED_Init(LED_TK1);
+  
   /* Configure UART */
   APP_ConfigUART(UART3);
 
@@ -90,6 +94,22 @@ int main(void)
   /* Send the End Message  */
   APP_UartTransmit_IT(UART3, (uint8_t*)aTxEndMessage, TXENDMESSAGESIZE);
   APP_WaitToReady();
+  
+  if(EieFlags)
+  {
+    while (1)
+    {
+      /* If some error occurs during transmission, the LED blinking
+         and the test failed */
+      BSP_LED_Toggle(LED_TK1); 
+      LL_mDelay(500);
+    }
+  }
+  else
+  {
+    /* Turn on LED if test passes then enter infinite loop */
+    BSP_LED_On(LED_TK1);
+  }
   
   while(1)
   {
@@ -135,10 +155,7 @@ static void APP_WaitToReady(void)
 {
   while (UartReady != SET);
   
-  if(UartError == SET)
-  {
-    APP_ErrorHandler();
-  }
+  UartReady = RESET;
 }
 
 /**
@@ -254,11 +271,11 @@ static void APP_UartReceive_IT(UART_TypeDef *UARTx, uint8_t *pData, uint16_t Siz
 void APP_UartIRQCallback(UART_TypeDef *UARTx)
 {
   /* The receive data register is not empty */
-  uint32_t errorflags = ((LL_UART_IsActiveFlag_PE(UARTx) | LL_UART_IsActiveFlag_FE(UARTx)   |\
+  ErrorFlags = ((LL_UART_IsActiveFlag_PE(UARTx) | LL_UART_IsActiveFlag_FE(UARTx)   |\
                           LL_UART_IsActiveFlag_ORE(UARTx) | LL_UART_IsActiveFlag_BRI(UARTx)) &&\
                          (LL_UART_IsEnabledIT_LS(UARTx))) ||\
                         ((LL_UART_IsActiveFlag_BUSY_ERR(UARTx)) && (LL_UART_IsEnabledIT_BUSYERRIE(UARTx)));
-  if (errorflags == RESET)
+  if (ErrorFlags == RESET)
   {
     if ((LL_UART_IsActiveFlag_RXNE(UARTx) != RESET) && (LL_UART_IsEnabledIT_RXNE(UARTx) != RESET))
     {
@@ -277,15 +294,35 @@ void APP_UartIRQCallback(UART_TypeDef *UARTx)
     }
   }
 
-  /* An error occurred */
-  if (errorflags != RESET)
+  /* An error occurred during receiving data */
+  if (ErrorFlags != RESET)
   {
-    LL_UART_DisableIT_RXNE(UARTx);
-    LL_UART_DisableIT_LS(UARTx);
-    LL_UART_DisableIT_BUSYERR(UARTx);
-    UartReady = SET;
-    UartError = SET;
-    return;
+    /* Parity error */
+    if(LL_UART_IsActiveFlag_PE(UARTx))
+    {
+      /* Clearing the PE bit. */
+      LL_UART_ClearFlag_PE(UARTx);
+    }
+    /* Frame error */
+    if(LL_UART_IsActiveFlag_FE(UARTx))
+    {
+      /* Clearing the FE bit. */
+      LL_UART_ClearFlag_FE(UARTx);
+    }
+    /* Overrun error */
+    if(LL_UART_IsActiveFlag_ORE(UARTx))
+    {
+      /* Clearing the ORE bit. */
+      LL_UART_ClearFlag_ORE(UARTx);
+    }
+    /* Busy_Err error */
+    if(LL_UART_IsActiveFlag_BUSY_ERR(UARTx))
+    {
+      /* Clearing the BUSYERR bit. */
+      LL_UART_ClearFlag_BUSY_ERR(UARTx);
+    }
+    /* Error callback function */
+    APP_UartErrorCallback();
   }
 
   /* The transmit data register is empty */
@@ -310,6 +347,16 @@ void APP_UartIRQCallback(UART_TypeDef *UARTx)
     
     return;
   }
+}
+
+/**
+  * @brief  USART Error handling function
+  * @param  None
+  * @retval None
+  */
+void APP_UartErrorCallback(void)
+{
+  EieFlags = ErrorFlags;
 }
 
 /**

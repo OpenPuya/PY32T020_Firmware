@@ -37,6 +37,7 @@ Deepstop mode;
 1，演示此样例功能时需要断开swd连接线并重新上电，因为默认情况下，仿真器会把
 DBGMCU_CR.DBG_STOP置位。
 2，注意关闭systick中断，防止该中断唤醒MCU。
+3，注意PY32T020B型号不支持DEEP STOP 模式
 
 Notes:
 1.To demonstrate this sample function, it is necessary to disconnect the SWD
@@ -44,4 +45,5 @@ cable and power it back on, as by default, the emulator will reset the
 DBGMCU_CR.DBG_STOP position.
 2.Pay attention to turning off the systick interrupt to prevent it from waking
 up the MCU.
+3.Note that PY32T020B model does not support DEEP STOP mode
 ================================================================================

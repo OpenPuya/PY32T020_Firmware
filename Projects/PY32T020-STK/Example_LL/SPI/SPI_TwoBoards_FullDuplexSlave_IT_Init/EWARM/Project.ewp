@@ -1086,19 +1086,16 @@
         <group>
             <name>PY32T020_HAL_Driver</name>
             <file>
-                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_utils.c</name>
+                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_gpio.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_rcc.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_spi.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_uart.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_gpio.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_rcc.c</name>
+                <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_utils.c</name>
             </file>
         </group>
     </group>
@@ -1113,10 +1110,10 @@
         <group>
             <name>User</name>
             <file>
-                <name>$PROJ_DIR$\..\Src\main.c </name>
+                <name>$PROJ_DIR$\..\Src\main.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\Src\py32t020_it.c </name>
+                <name>$PROJ_DIR$\..\Src\py32t020_it.c</name>
             </file>
         </group>
     </group>

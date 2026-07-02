@@ -101,15 +101,21 @@ static void APP_SystemClockConfig(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /* Oscillator configuration */
+#if defined(RCC_LSE_SUPPORT)
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_HSI | RCC_OSCILLATORTYPE_LSI | RCC_OSCILLATORTYPE_LSE; /* Select oscillator HSE, HSI, LSI, LSE */
+#else
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_HSI | RCC_OSCILLATORTYPE_LSI; /* Select oscillator HSE, HSI, LSI */
+#endif /* Select oscillator HSE, HSI, LSI, LSE */
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;                           /* Enable HSI */
   RCC_OscInitStruct.HSIDiv = RCC_HSI_DIV1;                           /* HSI 1 frequency division */
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_24MHz;  /* Configure HSI clock 24MHz */
   RCC_OscInitStruct.HSEState = RCC_HSE_OFF;                          /* Close HSE */
   /* RCC_OscInitStruct.HSEFreq  = RCC_HSE_6_8MHz; */                 /* HSE select 6-8MHz */
   RCC_OscInitStruct.LSIState = RCC_LSI_OFF;                          /* Close LSI */
+#if defined(RCC_LSE_SUPPORT)  
   RCC_OscInitStruct.LSEState = RCC_LSE_OFF;                          /* Close LSE */
   /* RCC_OscInitStruct.LSEDriver = RCC_LSEDRIVE_MEDIUM;*/            /* LSE medium drive capability */
+#endif  
   /* Configure oscillator */
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -152,6 +158,7 @@ static void APP_ExtiConfig(void)
   */
 static void APP_PWR_EnterHibernateMode(void)
 {
+#if defined(PWR_DEEPSTOP_HIBERNATE_SUPPORT)
   PWR_StopModeConfigTypeDef PWR_StopModeConfigStruct = {0};
   PWR_StopModeConfigStruct.WakeUpHsiEnableTime = PWR_WAKEUP_HSIEN_AFTER_MR;       /* Wait for MR to become stable */
   PWR_StopModeConfigStruct.SramRetentionVolt = PWR_SRAM_RETENTION_VOLT_HIBERNATE; /* Setting the SRAM voltage in hibernate mode */
@@ -163,6 +170,9 @@ static void APP_PWR_EnterHibernateMode(void)
   }
   
   HAL_PWR_EnterSTOPMode(PWR_DEEPLOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFE);         /* Entering hibernate mode */
+#else
+#error The hibernate mode is unsupported on py32t020b device
+#endif
 }
 
 /**

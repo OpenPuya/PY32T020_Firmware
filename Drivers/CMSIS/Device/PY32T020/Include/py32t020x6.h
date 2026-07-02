@@ -2704,7 +2704,7 @@ typedef struct
 /*                        Power Control (PWR)                                 */
 /*                                                                            */
 /******************************************************************************/
-#define PWR_DEEPSTOP_SUPPORT                  /*!< PWR feature available only on specific devices: Deep stop feature */
+#define PWR_DEEPSTOP_HIBERNATE_SUPPORT                  /*!< PWR feature available only on specific devices: Deep stop and hibernate feature */
 
 /********************  Bit definition for PWR_CR1 register  ********************/
 #define PWR_CR1_DBP_Pos                (8U)
@@ -2741,6 +2741,7 @@ typedef struct
 /*
 * @brief Specific device feature definitions
 */
+#define RCC_HSE_SUPPORT
 #define RCC_LSE_SUPPORT
 #define RCC_HSI48M_SUPPORT
 

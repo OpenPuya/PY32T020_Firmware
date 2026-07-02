@@ -81,7 +81,9 @@
  * @{
  */
 #define CLOCKSWITCH_TIMEOUT_VALUE  (5000U) /* 5 s    */
+#if defined(RCC_HSE_SUPPORT)
 #define HSE_TIMEOUT_VALUE          HSE_STARTUP_TIMEOUT
+#endif
 #define HSI_TIMEOUT_VALUE          (2U)    /* 2 ms (minimum Tick + 1) */
 #define LSI_TIMEOUT_VALUE          (2U)    /* 2 ms (minimum Tick + 1) */
 #define AHB_24MHZ                  (24000000U)
@@ -197,7 +199,7 @@ HAL_StatusTypeDef HAL_RCC_DeInit(void)
   }
 
   /* Set ICSCR to the reset value */
-  RCC->ICSCR = 0x01009100;
+  __HAL_RCC_HSI_CALIBRATIONVALUE_ADJUST(RCC_HSICALIBRATION_24MHz);
 
   /* Get Start Tick*/
   tickstart = HAL_GetTick();
@@ -269,6 +271,7 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
   /* Check the parameters */
   assert_param(IS_RCC_OSCILLATORTYPE(RCC_OscInitStruct->OscillatorType));
 
+#if defined(RCC_HSE_SUPPORT)
   /*------------------------------- HSE Configuration ------------------------*/
   if (((RCC_OscInitStruct->OscillatorType) & RCC_OSCILLATORTYPE_HSE) == RCC_OSCILLATORTYPE_HSE)
   {
@@ -291,6 +294,18 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
       {
         assert_param(IS_RCC_HSE_FREQ(RCC_OscInitStruct->HSEFreq));
 
+        CLEAR_BIT(RCC->CR, RCC_CR_HSEON);
+        /* Get Start Tick*/
+        tickstart = HAL_GetTick();
+
+        /* Wait till HSE is ready */
+        while (READ_BIT(RCC->CR, RCC_CR_HSERDY) == 1U)
+        {
+          if ((HAL_GetTick() - tickstart) > HSE_TIMEOUT_VALUE)
+          {
+            return HAL_TIMEOUT;
+          }
+        }
         if ((RCC_OscInitStruct->HSEFreq == RCC_HSE_4_6MHz) || (RCC_OscInitStruct->HSEFreq == RCC_HSE_6_8MHz))
         {
           MODIFY_REG(RCC->ECSCR, RCC_ECSCR_HSE_DRV, RCC_OscInitStruct->HSEFreq);
@@ -337,6 +352,7 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
       }
     }
   }
+#endif
   /*----------------------------- HSI Configuration --------------------------*/
   if (((RCC_OscInitStruct->OscillatorType) & RCC_OSCILLATORTYPE_HSI) == RCC_OSCILLATORTYPE_HSI)
   {
@@ -542,27 +558,20 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
       /* Set driver factor of the LSE*/
       if (RCC_OscInitStruct->LSEState != RCC_LSE_OFF)
       {
-        if (((RCC_OscInitStruct->LSEDriver) & RCC_ECSCR_LSE_DRIVER) == 0U)
-        {
-          CLEAR_BIT(RCC->BDCR, RCC_BDCR_LSEON);
-          
-          /* Get Start Tick*/
-          tickstart = HAL_GetTick();
+        CLEAR_BIT(RCC->BDCR, RCC_BDCR_LSEON);
 
-          /* Wait till LSE is off */
-          while (READ_BIT(RCC->BDCR, RCC_BDCR_LSEON) == 1U)
-          {
-            if ((HAL_GetTick() - tickstart) > RCC_LSE_TIMEOUT_VALUE)
-            {
-              return HAL_TIMEOUT;
-            }
-          }
-          MODIFY_REG(RCC->ECSCR, RCC_ECSCR_LSE_DRIVER_Msk, RCC_OscInitStruct->LSEDriver);
-        }
-        else
+        /* Get Start Tick*/
+        tickstart = HAL_GetTick();
+
+        /* Wait till LSE is off */
+        while (READ_BIT(RCC->BDCR, RCC_BDCR_LSEON) == 1U)
         {
-          MODIFY_REG(RCC->ECSCR, RCC_ECSCR_LSE_DRIVER_Msk, RCC_OscInitStruct->LSEDriver);
+          if ((HAL_GetTick() - tickstart) > RCC_LSE_TIMEOUT_VALUE)
+          {
+            return HAL_TIMEOUT;
+          }
         }
+        MODIFY_REG(RCC->ECSCR, RCC_ECSCR_LSE_DRIVER_Msk, RCC_OscInitStruct->LSEDriver);
       }
       /* Set the new LSE configuration -----------------------------------------*/
       __HAL_RCC_LSE_CONFIG(RCC_OscInitStruct->LSEState);
@@ -705,7 +714,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
   if (((RCC_ClkInitStruct->ClockType) & RCC_CLOCKTYPE_SYSCLK) == RCC_CLOCKTYPE_SYSCLK)
   {
     assert_param(IS_RCC_SYSCLKSOURCE(RCC_ClkInitStruct->SYSCLKSource));
-
+#if defined(RCC_HSE_SUPPORT)
     /* HSE is selected as System Clock Source */
     if (RCC_ClkInitStruct->SYSCLKSource == RCC_SYSCLKSOURCE_HSE)
     {
@@ -715,8 +724,13 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
         return HAL_ERROR;
       }
     }
+
     /* HSI is selected as System Clock Source */
     else if (RCC_ClkInitStruct->SYSCLKSource == RCC_SYSCLKSOURCE_HSISYS)
+#else
+    /* HSI is selected as System Clock Source */
+    if (RCC_ClkInitStruct->SYSCLKSource == RCC_SYSCLKSOURCE_HSISYS)
+#endif    
     {
       /* Check the HSI ready flag */
       if (READ_BIT(RCC->CR, RCC_CR_HSIRDY) == 0U)
@@ -961,12 +975,13 @@ uint32_t HAL_RCC_GetSysClockFreq(void)
     }
     sysclockfreq = (hsiValue[hsi_Index] / hsidiv);
   }
+#if defined(RCC_HSE_SUPPORT)
   else if (__HAL_RCC_GET_SYSCLK_SOURCE() == RCC_CFGR_SWS_HSE)
   {
     /* HSE used as system clock source */
     sysclockfreq = HSE_VALUE;
   }
-
+#endif
 #if defined(RCC_LSE_SUPPORT)
   else if (__HAL_RCC_GET_SYSCLK_SOURCE() == RCC_CFGR_SWS_LSE)
   {
@@ -1025,13 +1040,20 @@ void HAL_RCC_GetOscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
   assert_param(RCC_OscInitStruct != (void *)NULL);
 
   /* Set all possible values for the Oscillator type parameter ---------------*/
-#if defined(RCC_LSE_SUPPORT)    
+#if defined(RCC_LSE_SUPPORT) && defined(RCC_HSE_SUPPORT)  
   RCC_OscInitStruct->OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_HSI | \
                                       RCC_OSCILLATORTYPE_LSE | RCC_OSCILLATORTYPE_LSI;
-#else
+#elif defined(RCC_HSE_SUPPORT)
   RCC_OscInitStruct->OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_HSI | \
                                       RCC_OSCILLATORTYPE_LSI;
+#elif defined(RCC_LSE_SUPPORT)
+  RCC_OscInitStruct->OscillatorType = RCC_OSCILLATORTYPE_LSE | RCC_OSCILLATORTYPE_HSI | \
+                                      RCC_OSCILLATORTYPE_LSI;
+#else
+  RCC_OscInitStruct->OscillatorType = RCC_OSCILLATORTYPE_LSI | RCC_OSCILLATORTYPE_HSI;
 #endif
+
+#if defined(RCC_HSE_SUPPORT)
   /* Get the HSE configuration -----------------------------------------------*/
   if ((RCC->CR & RCC_CR_HSEBYP) == RCC_CR_HSEBYP)
   {
@@ -1047,7 +1069,7 @@ void HAL_RCC_GetOscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
   }
   
   RCC_OscInitStruct->HSEFreq = (RCC->ECSCR & RCC_ECSCR_HSE_DRV);
-  
+#endif  
   /* Get the HSI configuration -----------------------------------------------*/
   if ((RCC->CR & RCC_CR_HSION) == RCC_CR_HSION)
   {
@@ -1121,6 +1143,7 @@ void HAL_RCC_GetClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, uint32_t *pF
   *pFLatency = (uint32_t)(FLASH->ACR & FLASH_ACR_LATENCY);
 }
 
+#if defined(RCC_HSE_SUPPORT)
 /**
   * @brief  Enable the Clock Security System.
   * @note   If a failure is detected on the HSE oscillator clock, this oscillator
@@ -1135,6 +1158,7 @@ void HAL_RCC_EnableCSS(void)
 {
   SET_BIT(RCC->CR, RCC_CR_HSE_CSSON);
 }
+#endif
 
 #if defined(RCC_LSE_SUPPORT)
 /**
@@ -1175,17 +1199,24 @@ void HAL_RCC_NMI_IRQHandler(void)
   uint32_t itflag = RCC->CIFR;
 
   /* Clear interrupt flags related to CSS */
-#if defined(RCC_LSE_SUPPORT)
+#if defined(RCC_LSE_SUPPORT) && defined(RCC_HSE_SUPPORT)
   RCC->CICR = (itflag & (RCC_CIFR_CSSF | RCC_CIFR_LSECSSF));
-#else
+#elif defined(RCC_HSE_SUPPORT)
   RCC->CICR = (itflag & RCC_CIFR_CSSF);
+#elif defined(RCC_LSE_SUPPORT)
+  RCC->CICR = (itflag & RCC_CIFR_LSECSSF);
+#else
+  (void)itflag;   
 #endif
+
+#if defined(RCC_HSE_SUPPORT)
   /* Check RCC CSSF interrupt flag  */
   if ((itflag & RCC_CIFR_CSSF) != 0x00u)
   {
     /* RCC Clock Security System interrupt user callback */
     HAL_RCC_CSSCallback();
   }
+#endif
 
 #if defined(RCC_LSE_SUPPORT)
   /* Check RCC LSECSSF interrupt flag  */
@@ -1197,6 +1228,7 @@ void HAL_RCC_NMI_IRQHandler(void)
 #endif
 }
 
+#if defined(RCC_HSE_SUPPORT)
 /**
   * @brief Handle the RCC HSE Clock Security System interrupt callback.
   * @retval none
@@ -1207,6 +1239,7 @@ __weak void HAL_RCC_CSSCallback(void)
             the @ref HAL_RCC_CSSCallback should be implemented in the user file
    */
 }
+#endif
 
 #if defined(RCC_LSE_SUPPORT)
 /**

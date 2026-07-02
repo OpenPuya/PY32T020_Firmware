@@ -7,8 +7,14 @@
   <name>PY32T0xx_DFP</name>
   <description>Puya PY32T0 Series Device Support</description>
   <releases>
+    <release version="1.0.2" date="2024-08-22">
+        Add PY32T020B series.
+    </release>
+    <release version="1.0.1" date="2024-06-11">
+        First Release version of PY32T092 Device Family Pack.
+    </release>
     <release version="1.0.0" date="2024-01-05">
-        First Release version of PY32T0 Device Family Pack.
+        First Release version of PY32T020 Device Family Pack.
     </release>
   </releases>
   <keywords>
@@ -54,15 +60,68 @@
           __var DbgMCU_APB_Fz1 = 0x00000000;   // DGBMCU_APB_FZ1: All Peripherals Operate as in Normal Mode
           __var DbgMCU_APB_Fz2 = 0x00000000;   // DGBMCU_APB_FZ2: All Peripherals Operate as in Normal Mode
         </debugvars>
-
+        <memory name="OPT" access="r" start="0x1FFF0080" size="0x00000010" />
+        <algorithm name="CMSIS/Flash/PY32T020xx_OPT.FLM" start="0x1FFF0080" size="0x00000010" default="0"/>
         <!-- *************************  Device 'PY32T020x6'  ***************************** -->
+        <device Dname="PY32T020x5">
+          <compile header="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h" define="PY32T020x5" />
+          <memory name="IROM1" access="rx" start="0x08000000" size="0x00005000" startup="1" default="1"/>
+          <memory name="IRAM1" access="rw" start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="CMSIS/Flash/PY32T020xx_20.FLM" start="0x08000000" size="0x00005000" default="1"/>
+
+        </device>
         <device Dname="PY32T020x6">
           <compile header="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h" define="PY32T020x6" />
           <memory name="IROM1" access="rx" start="0x08000000" size="0x00008000" startup="1" default="1"/>
           <memory name="IRAM1" access="rw" start="0x20000000" size="0x00001000" init   ="0" default="1"/>
           <algorithm name="CMSIS/Flash/PY32T020xx_32.FLM" start="0x08000000" size="0x00008000" default="1"/>
-          <algorithm name="CMSIS/Flash/PY32T020xx_OPT.FLM" start="0x1FFF0080" size="0x00000010" default="0"/>
         </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'PY32T020B'  **************************** -->
+      <subFamily DsubFamily="PY32T020B">
+        <processor Dclock="48000000"/>
+        <debug svd="CMSIS/SVD/PY32T020xx.svd"/>
+        <debugvars configfile="CMSIS/Debug/PY32T020xx.dbgconf">
+          __var DbgMCU_CR      = 0x00000002;   // DBGMCU_CR:  DBG_STOP, DBG_STANDBY
+          __var DbgMCU_APB_Fz1 = 0x00000000;   // DGBMCU_APB_FZ1: All Peripherals Operate as in Normal Mode
+          __var DbgMCU_APB_Fz2 = 0x00000000;   // DGBMCU_APB_FZ2: All Peripherals Operate as in Normal Mode
+        </debugvars>
+        <memory name="OPT" access="r" start="0x1FFF0080" size="0x00000010" />
+        <algorithm name="CMSIS/Flash/PY32T020xx_OPT.FLM" start="0x1FFF0080" size="0x00000010" default="0"/>
+        <!-- *************************  Device 'PY32T020Bx6'  ***************************** -->
+        <device Dname="PY32T020Bx6">
+          <compile header="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h" define="PY32T020Bx6" />
+          <memory name="IROM1" access="rx" start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory name="IRAM1" access="rw" start="0x20000000" size="0x00001000" init   ="0" default="1"/>
+          <algorithm name="CMSIS/Flash/PY32T020xx_32.FLM" start="0x08000000" size="0x00008000" default="1"/>
+        </device>
+      </subFamily>
+
+
+
+            <!-- ************************  Subfamily 'PY32T092'  **************************** -->
+      <subFamily DsubFamily="PY32T092">
+        <processor Dclock="48000000"/>
+        <debug svd="CMSIS/SVD/PY32T092xx.svd"/>
+        <debugvars configfile="CMSIS/Debug/PY32T092xx.dbgconf">
+          __var DbgMCU_CR      = 0x00000002;   // DBGMCU_CR:  DBG_STOP, DBG_STANDBY
+          __var DbgMCU_APB_Fz1 = 0x00000000;   // DGBMCU_APB_FZ1: All Peripherals Operate as in Normal Mode
+          __var DbgMCU_APB_Fz2 = 0x00000000;   // DGBMCU_APB_FZ2: All Peripherals Operate as in Normal Mode
+        </debugvars>
+        <memory name="OPT" access="r" start="0x1FFF1D00" size="0x00000040" />
+        <memory name="OTP" access="r" start="0x1FFF1A00" size="0x00000100" />
+        <algorithm name="CMSIS/Flash/PY32T092xx_OPT.FLM" start="0x1FFF1D00" size="0x00000040" default="0"/>
+        <algorithm name="CMSIS/Flash/PY32T092xx_OTP.FLM" start="0x1FFF1A00" size="0x00000100" default="0"/>
+
+        <!-- *************************  Device 'PY32T092xC'  ***************************** -->
+        <device Dname="PY32T092xC">
+          <compile header="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h" define="PY32T092xC" />
+          <memory name="IROM1" access="rx" start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory name="IRAM1" access="rw" start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="CMSIS/Flash/PY32T092xx_256.FLM" start="0x08000000" size="0x00040000" default="1"/>
+        </device>
+
       </subFamily>
 
     </family>
@@ -86,14 +145,25 @@
       <require Cclass="CMSIS" Cgroup="CORE"/>
     </condition>
 
-    <condition id="PY32T020x6">
-      <description>Puya PY32T020x6 Devices</description>
-      <require Dvendor="Puya:176" Dname="PY32T020?6*"/>
+    <condition id="PY32T020">
+      <description>Puya PY32T020 Devices</description>
+      <require Dvendor="Puya:176" Dname="PY32T020*"/>
     </condition>
 
-    <condition id="PY32T020x6 ARMCC">
-      <description>Puya PY32T020x6 Devices and ARMCC Compiler</description>
-      <require condition="PY32T020x6"/>
+    <condition id="PY32T020 ARMCC">
+      <description>Puya PY32T020 Devices and ARMCC Compiler</description>
+      <require condition="PY32T020"/>
+      <require condition="Compiler ARMCC"/>
+    </condition>
+
+    <condition id="PY32T092">
+      <description>Puya PY32T092 Devices</description>
+      <require Dvendor="Puya:176" Dname="PY32T092*"/>
+    </condition>
+
+    <condition id="PY32T092 ARMCC">
+      <description>Puya PY32T092 Devices and ARMCC Compiler</description>
+      <require condition="PY32T092"/>
       <require condition="Compiler ARMCC"/>
     </condition>
   </conditions>
@@ -107,9 +177,12 @@
         <!-- common device header file -->
         <file category="header" name="Drivers/CMSIS/Device/PY/PY32T0xx/Include/py32t0xx.h"/>
 
-        <file category="source" condition="PY32T020x6 ARMCC" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/ARM/startup_py32t020x6.s" attr="config" version="0.0.1"/>
+        <file category="source" condition="PY32T020 ARMCC" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/ARM/startup_py32t020.s" attr="config" version="0.0.1"/>
+        <file category="source" condition="PY32T092 ARMCC" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/ARM/startup_py32t092.s" attr="config" version="0.0.1"/>
 
-        <file category="source" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/system_py32t0xx.c" attr="config" version="0.0.1"/>
+        <file category="source" condition="PY32T020 ARMCC" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/system_py32t020.c" attr="config" version="0.0.1"/>
+        <file category="source" condition="PY32T092 ARMCC" name="Drivers/CMSIS/Device/PY/PY32T0xx/Source/system_py32t092.c" attr="config" version="0.0.1"/>
+
       </files>
     </component>
   </components>

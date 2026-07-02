@@ -83,10 +83,10 @@
                                       || ((__VALUE__) == LL_RCC_APB1_DIV_8) \
                                       || ((__VALUE__) == LL_RCC_APB1_DIV_16))
 
-
+#if defined(RCC_HSE_SUPPORT)
 #define IS_LL_UTILS_HSE_BYPASS(__STATE__) (((__STATE__) == LL_UTILS_HSEBYPASS_ON) \
                                         || ((__STATE__) == LL_UTILS_HSEBYPASS_OFF))
-
+#endif
 /**
   * @}
   */

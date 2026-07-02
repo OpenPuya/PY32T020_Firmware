@@ -95,7 +95,7 @@ void SysTick_Handler(void)
   */
 void I2C1_IRQHandler(void)
 {
-  HAL_I2C_EV_IRQHandler(&I2cHandle);
+  HAL_I2C_IRQHandler(&I2cHandle);
 }
 
 /************************ (C) COPYRIGHT Puya *****END OF FILE******************/

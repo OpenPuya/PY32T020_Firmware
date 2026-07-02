@@ -226,9 +226,11 @@ void HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit)
 #if defined(RCC_CCIPR_COMP1SEL)
   PeriphClkInit->PeriphClockSelection |= RCC_PERIPHCLK_COMP1;
 #endif /* RCC_CCIPR_COMP1SEL */
+
 #if defined(RCC_CCIPR_COMP2SEL)
   PeriphClkInit->PeriphClockSelection |= RCC_PERIPHCLK_COMP2;
 #endif /* RCC_CCIPR_COMP2SEL */
+
 #if defined(RCC_CCIPR_IWDGSEL)
   PeriphClkInit->PeriphClockSelection |= RCC_PERIPHCLK_IWDG;
 #endif /* RCC_CCIPR_IWDGSEL */
@@ -240,10 +242,12 @@ void HAL_RCCEx_GetPeriphCLKConfig(RCC_PeriphCLKInitTypeDef  *PeriphClkInit)
   /* Get the COMP1 clock source --------------------------------------------*/
   PeriphClkInit->Comp1ClockSelection  = __HAL_RCC_GET_COMP1_SOURCE();
 #endif /* RCC_CCIPR_COMP1SEL */
+
 #if defined(RCC_CCIPR_COMP2SEL)
   /* Get the COMP2 clock source ---------------------------------------------*/
   PeriphClkInit->Comp2ClockSelection  = __HAL_RCC_GET_COMP2_SOURCE();
 #endif /* RCC_CCIPR_COMP2SEL */
+
 #if defined(RCC_CCIPR_IWDGSEL)
   /* Get the IWDG clock source ---------------------------------------------*/
   PeriphClkInit->IWDGClockSelection   = __HAL_RCC_GET_IWDG_SOURCE();
@@ -293,6 +297,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
       frequency = LSE_VALUE;
     }
 #endif
+#if defined(RCC_HSE_SUPPORT)
     /* Check if HSE is ready  and if RTC clock selection is HSE_DIV32*/
     else if ((HAL_IS_BIT_SET(RCC->CR, RCC_CR_HSERDY)) &&(srcclk == RCC_RTCCLKSOURCE_HSE_DIV32))
     {
@@ -308,6 +313,7 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
     {
       frequency = HSE_VALUE / 8U;
     }
+#endif
     /* Clock not enabled for RTC*/
     else
     {

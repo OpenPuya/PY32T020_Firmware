@@ -345,7 +345,7 @@ HAL_StatusTypeDef HAL_COMP_Init(COMP_HandleTypeDef *hcomp)
     {
       CLEAR_BIT(COMP12_COMMON->CSR_ODD, COMP_CSR_WINMODE);
     }    
-    
+   
     /* Get the EXTI line corresponding to the selected COMP instance */
     exti_line = COMP_GET_EXTI_LINE(hcomp->Instance);
 
@@ -936,9 +936,10 @@ uint32_t HAL_COMP_GetError(COMP_HandleTypeDef *hcomp)
   * @retval 0 or 1
   */
 static uint32_t COMP_VrefcmpCheck(COMP_HandleTypeDef *hcomp)   
-{ 
+{
   return (((hcomp->Instance == COMP1) && (hcomp->Init.InputPlus == COMP_INPUT_PLUS_IO3)) 
     || ((hcomp->Instance == COMP2) && (hcomp->Init.InputPlus == COMP_INPUT_PLUS_IO4)));
+
 }
 
 /**
@@ -953,7 +954,8 @@ static HAL_StatusTypeDef COMP_VrefConfig(COMP_HandleTypeDef *hcomp)
   {
     /* Voltage divider */  
     FlagStatus adcclkchanged = RESET;
-      
+
+
     FlagStatus comp1clkchanged = RESET;
     
     if(hcomp->Instance == COMP2)   
@@ -964,7 +966,7 @@ static HAL_StatusTypeDef COMP_VrefConfig(COMP_HandleTypeDef *hcomp)
         comp1clkchanged = SET;
       }
     }
-         
+
     if(hcomp->Init.VrefSrc == COMP_VREFCMP_SOURCE_VCC)
     {
       SET_BIT(COMP1->CSR,COMP_CSR_COMP_VCSEL);
@@ -996,7 +998,7 @@ static HAL_StatusTypeDef COMP_VrefConfig(COMP_HandleTypeDef *hcomp)
       {
         __HAL_RCC_COMP1_CLK_DISABLE();
       }
-    } 
+    }
   }
   else
   {

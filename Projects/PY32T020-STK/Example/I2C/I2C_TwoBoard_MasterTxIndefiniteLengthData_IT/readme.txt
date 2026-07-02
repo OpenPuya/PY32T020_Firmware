@@ -50,10 +50,13 @@ Example execution steps:
 PA11     ------> I2C1_SCL
 PA8      ------> I2C1_SDA
 （2）串口连线
+@PrintfConfigStart
 STK板        USB转TTL模块
 PA2(TX)  -->  RX
 PA3(RX)  -->  TX
 GND       -->  GND
+UART配置为波特率115200，数据位8，停止位1，校验位None
+@PrintfConfigEnd
 （3）主机程序和从机程序
 主机程序为I2C_TwoBoard_MasterTxIndefiniteLengthData_IT
 从机程序为I2C_TwoBoard_SlaveRxIndefiniteLengthData_IT
@@ -69,10 +72,13 @@ Notes:
 PA11     ------> I2C1_SCL
 PA8      ------> I2C1_SDA
 (2) UART connection
+@PrintfConfigStart
 STK board    USB to TTL moudle
 PA2(TX)  -->  RX
 PA3(RX)  -->  TX
 GND      -->  GND
+UART is configured as BaudRate 115200, data bit 8, stop bit 1, and parity None.
+@PrintfConfigEnd
 (3) Master program and slave program
 Master program: I2C_TwoBoard_MasterTxIndefiniteLengthData_IT
 Slave program: I2C_TwoBoard_SlaveRxIndefiniteLengthData_IT

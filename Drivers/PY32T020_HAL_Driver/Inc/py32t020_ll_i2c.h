@@ -1252,8 +1252,8 @@ __STATIC_INLINE uint32_t LL_I2C_IsActiveFlag_MSL(I2C_TypeDef *I2Cx)
 
 /**
   * @brief  Clear Address Matched flag.
-  * @note   Clearing this flag is done by a read access to the I2Cx_SR2
-  *         register followed by a read access to the I2Cx_SR1 register.
+  * @note   Clearing this flag is done by a read access to the I2Cx_SR1
+  *         register followed by a read access to the I2Cx_SR2 register.
   * @rmtoll SR1          ADDR          LL_I2C_ClearFlag_ADDR
   * @param  I2Cx I2C Instance.
   * @retval None
@@ -1261,9 +1261,9 @@ __STATIC_INLINE uint32_t LL_I2C_IsActiveFlag_MSL(I2C_TypeDef *I2Cx)
 __STATIC_INLINE void LL_I2C_ClearFlag_ADDR(I2C_TypeDef *I2Cx)
 {
   __IO uint32_t tmpreg;
-  tmpreg = I2Cx->SR2;
-  (void) tmpreg;
   tmpreg = I2Cx->SR1;
+  (void) tmpreg;
+  tmpreg = I2Cx->SR2;
   (void) tmpreg;
 }
 

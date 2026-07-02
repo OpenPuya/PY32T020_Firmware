@@ -36,9 +36,11 @@ Example execution steps:
 1，演示此样例功能时需要断开swd连接线并重新上电，因为默认情况下，仿真器会把
 DBGMCU_CR.DBG_STOP置位。
 2，注意关闭systick中断，防止该中断唤醒MCU。
+3，注意PY32T020B型号不支持Hibernate 模式
 
 Notes:
 1.To demonstrate this sample functionality, disconnect the SWD connection and 
 power cycle the board, as the debugger sets the DBGMCU_CR.DBG_STOP bit by default.
 2.Make sure to disable the SysTick interrupt to prevent it from waking up the MCU.
+3.Note that PY32T020B model does not support Hibernate mode
 ================================================================================

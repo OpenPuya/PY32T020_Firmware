@@ -56,6 +56,7 @@ extern "C" {
 /* Exported variables prototypes ---------------------------------------------*/
 /* Exported functions prototypes ---------------------------------------------*/
 void APP_ErrorHandler(void);
+void APP_UartErrorCallback(void);
 void APP_UartIRQCallback(UART_TypeDef *UARTx);
 
 #ifdef __cplusplus

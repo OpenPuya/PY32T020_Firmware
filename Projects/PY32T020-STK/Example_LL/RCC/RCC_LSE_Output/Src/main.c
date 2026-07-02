@@ -90,6 +90,10 @@ static void APP_SystemClockConfig(void)
   while(LL_PWR_IsEnabledBkUpAccess() == 0)
   {
   }
+  LL_RCC_LSE_Disable();
+  while (LL_RCC_LSE_IsReady() != 0)
+  {
+  }
   LL_RCC_LSE_SetDriveCapability(LL_RCC_LSEDRIVE_HIGH);
   LL_RCC_LSE_Enable();
   while (LL_RCC_LSE_IsReady() != 1)

@@ -67,15 +67,11 @@ static void APP_SystemClockConfig(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /* Oscillator configuration */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_HSI | RCC_OSCILLATORTYPE_LSI | RCC_OSCILLATORTYPE_LSE; /* Select oscillator HSE, HSI, LSI, LSE */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI | RCC_OSCILLATORTYPE_LSI ; /* Select oscillator HSI, LSI */
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;                           /* Enable HSI */
   RCC_OscInitStruct.HSIDiv = RCC_HSI_DIV1;                           /* HSI 1 frequency division */
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_24MHz;  /* Configure HSI clock 24MHz */
-  RCC_OscInitStruct.HSEState = RCC_HSE_OFF;                          /* Close HSE */
-  /* RCC_OscInitStruct.HSEFreq  = RCC_HSE_6_8MHz; */                 /* HSE select 6-8MHz */
   RCC_OscInitStruct.LSIState = RCC_LSI_OFF;                          /* Close LSI */
-  RCC_OscInitStruct.LSEState = RCC_LSE_OFF;                          /* Close LSE */
-  /* RCC_OscInitStruct.LSEDriver = RCC_LSEDRIVE_MEDIUM;*/            /* LSE medium drive capability */
   /* Configure oscillator */
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {

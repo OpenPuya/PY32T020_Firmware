@@ -72,7 +72,6 @@ int Init(unsigned long adr, unsigned long clk, unsigned long fnc)
 }
 
 
-
 /*
  *  De-Initialize Flash Programming Functions
  *    Parameter:      fnc:  Function Code (1 - Erase, 2 - Program, 3 - Verify)

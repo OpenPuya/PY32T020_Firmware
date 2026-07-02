@@ -476,30 +476,6 @@ typedef  void (*pCOMP_CallbackTypeDef)(COMP_HandleTypeDef *hcomp); /*!< pointer 
 #define __HAL_COMP_COMP1_EXTI_DISABLE_EVENT()         LL_EXTI_DisableEvent(COMP_EXTI_LINE_COMP1)
 
 /**
-  * @brief  Check whether the COMP1 EXTI line rising flag is set.
-  * @retval RESET or SET
-  */
-#define __HAL_COMP_COMP1_EXTI_GET_RISING_FLAG()       LL_EXTI_IsActiveRisingFlag(COMP_EXTI_LINE_COMP1)
-
-/**
-  * @brief  Clear the COMP1 EXTI rising flag.
-  * @retval None
-  */
-#define __HAL_COMP_COMP1_EXTI_CLEAR_RISING_FLAG()     LL_EXTI_ClearRisingFlag(COMP_EXTI_LINE_COMP1)
-
-/**
-  * @brief  Check whether the COMP1 EXTI line falling flag is set.
-  * @retval RESET or SET
-  */
-#define __HAL_COMP_COMP1_EXTI_GET_FALLING_FLAG()      LL_EXTI_IsActiveFallingFlag(COMP_EXTI_LINE_COMP1)
-
-/**
-  * @brief  Clear the COMP1 EXTI falling flag.
-  * @retval None
-  */
-#define __HAL_COMP_COMP1_EXTI_CLEAR_FALLING_FLAG()    LL_EXTI_ClearFallingFlag(COMP_EXTI_LINE_COMP1)
-
-/**
   * @brief  Enable the COMP2 EXTI line rising edge trigger.
   * @retval None
   */
@@ -572,30 +548,6 @@ typedef  void (*pCOMP_CallbackTypeDef)(COMP_HandleTypeDef *hcomp); /*!< pointer 
 #define __HAL_COMP_COMP2_EXTI_DISABLE_EVENT()         LL_EXTI_DisableEvent(COMP_EXTI_LINE_COMP2)
 
 /**
-  * @brief  Check whether the COMP2 EXTI line rising flag is set.
-  * @retval RESET or SET
-  */
-#define __HAL_COMP_COMP2_EXTI_GET_RISING_FLAG()       LL_EXTI_IsActiveRisingFlag(COMP_EXTI_LINE_COMP2)
-
-/**
-  * @brief  Clear the COMP2 EXTI rising flag.
-  * @retval None
-  */
-#define __HAL_COMP_COMP2_EXTI_CLEAR_RISING_FLAG()     LL_EXTI_ClearRisingFlag(COMP_EXTI_LINE_COMP2)
-
-/**
-  * @brief  Check whether the COMP2 EXTI line falling flag is set.
-  * @retval RESET or SET
-  */
-#define __HAL_COMP_COMP2_EXTI_GET_FALLING_FLAG()      LL_EXTI_IsActiveFallingFlag(COMP_EXTI_LINE_COMP2)
-
-/**
-  * @brief  Clear the COMP2 EXTI falling flag.
-  * @retval None
-  */
-#define __HAL_COMP_COMP2_EXTI_CLEAR_FALLING_FLAG()    LL_EXTI_ClearFallingFlag(COMP_EXTI_LINE_COMP2)
-
-/**
   * @}
   */
 
@@ -656,7 +608,7 @@ typedef  void (*pCOMP_CallbackTypeDef)(COMP_HandleTypeDef *hcomp); /*!< pointer 
   * @retval value of @ref COMP_ExtiLine
   */
 #define COMP_GET_EXTI_LINE(__INSTANCE__)    (((__INSTANCE__) == COMP1) ? COMP_EXTI_LINE_COMP1  \
-                                             : COMP_EXTI_LINE_COMP2)
+                                             : COMP_EXTI_LINE_COMP2)                                           
 /**
   * @}
   */
@@ -666,6 +618,7 @@ typedef  void (*pCOMP_CallbackTypeDef)(COMP_HandleTypeDef *hcomp); /*!< pointer 
   */
 #define IS_COMP_WINDOWMODE(__WINDOWMODE__)  (((__WINDOWMODE__) == COMP_WINDOWMODE_DISABLE)                || \
                                              ((__WINDOWMODE__) == COMP_WINDOWMODE_COMP2_INPUT_PLUS_COMMON)  )
+
 
 #define IS_COMP_POWERMODE(__POWERMODE__)    (((__POWERMODE__) == COMP_POWERMODE_HIGHSPEED)    || \
                                              ((__POWERMODE__) == COMP_POWERMODE_MEDIUMSPEED)    )    

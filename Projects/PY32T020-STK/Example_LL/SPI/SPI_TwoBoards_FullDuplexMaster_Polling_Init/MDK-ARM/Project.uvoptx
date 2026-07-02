@@ -10,7 +10,7 @@
     <aExt>*.s*; *.src; *.a*</aExt>
     <oExt>*.obj; *.o</oExt>
     <lExt>*.lib</lExt>
-    <tExt>*.txt; *.h; *.inc</tExt>
+    <tExt>*.txt; *.h; *.inc; *.md</tExt>
     <pExt>*.plm</pExt>
     <CppX>*.cpp</CppX>
     <nMigrate>0</nMigrate>
@@ -119,23 +119,8 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name></Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>CMSIS_AGDI</Key>
-          <Name>-X"Any" -UAny -O206 -S0 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(0BC11477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN1 -FF0PY32T020xx_32.FLM -FS08000000 -FL06000 -FP0($$Device:PY32T020x6$CMSIS\Flash\PY32T020xx_32.FLM)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>UL2CM3</Key>
-          <Name>UL2CM3(-S0 -C0 -P0 )  -FN1 -FC1000 -FD20000000 -FF0PY32T020xx_32 -FL06000 -FS08000000 -FP0($$Device:PY32T020x6$CMSIS\Flash\PY32T020xx_32.FLM)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>JL2CM3</Key>
-          <Name>-U601012352 -O78 -S8 -ZTIFSpeedSel50000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BC11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD20000000 -FC800 -FN1 -FF0PY32F002Bxx_24.FLM -FS08000000 -FL06000 -FP0($$Device:PY32F002Bx5$CMSIS\Flash\PY32F002Bxx_24.FLM)</Name>
+          <Name>UL2CM3(-S0 -C0 -P0 )  -FN1 -FC1000 -FD20000000 -FF0PY068xx_32 -FL08000 -FS08000000 -FP0($$Device:PY32T020x6$CMSIS\Flash\PY068xx_32.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -150,6 +135,11 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ARMDBGFLAGS</Key>
+          <Name></Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>DLGUARM</Key>
           <Name></Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
@@ -198,7 +188,7 @@
       <pMultCmdsp></pMultCmdsp>
       <DebugDescription>
         <Enable>1</Enable>
-        <EnableFlashSeq>0</EnableFlashSeq>
+        <EnableFlashSeq>1</EnableFlashSeq>
         <EnableLog>0</EnableLog>
         <Protocol>2</Protocol>
         <DbgClock>1000000</DbgClock>
@@ -327,18 +317,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_uart.c</PathWithFileName>
-      <FilenameWithoutPath>py32t020_ll_uart.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>9</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\..\..\..\Drivers\PY32T020_HAL_Driver\Src\py32t020_ll_gpio.c</PathWithFileName>
       <FilenameWithoutPath>py32t020_ll_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -346,7 +324,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>10</FileNumber>
+      <FileNumber>9</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -366,7 +344,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>11</FileNumber>
+      <FileNumber>10</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

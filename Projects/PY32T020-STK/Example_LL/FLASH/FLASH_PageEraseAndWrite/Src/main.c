@@ -52,6 +52,7 @@ static void APP_FlashErase(void);
 static void APP_FlashProgram(void);
 static void APP_FlashBlank(void);
 static void APP_FlashVerify(void);
+void APP_SystemClockConfig(void);
 
 /**
   * @brief  Main program.
@@ -59,8 +60,8 @@ static void APP_FlashVerify(void);
   */
 int main(void)
 {
-  /* Reset of all peripherals, Initializes the Systick. */ 
-  HAL_Init();
+  /* Configure Systemclock */
+  APP_SystemClockConfig();
 
   /* Enable SYSCFG and PWR clocks */
   LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_SYSCFG);
@@ -72,14 +73,12 @@ int main(void)
   /* Initialize Button */
   BSP_PB_Init(BUTTON_KEY,BUTTON_MODE_GPIO);
 
-  /* Initialize Uart */
-  BSP_UART_Config();
-
   /* Wait For Button */
   while(BSP_PB_GetState(BUTTON_KEY) == 0);
 
-  /* Unlock Flash */
-  HAL_FLASH_Unlock();
+  LL_FLASH_Unlock(FLASH);
+
+  LL_FLASH_TIMMING_SEQUENCE_CONFIG_24M();
 
   /* Erase Flash */
   APP_FlashErase();
@@ -91,7 +90,7 @@ int main(void)
   APP_FlashProgram();
 
   /* Lock Flash */
-  HAL_FLASH_Lock();
+  LL_FLASH_Lock(FLASH);
 
   /* Verify Flash */
   APP_FlashVerify();
@@ -111,15 +110,38 @@ int main(void)
   */
 static void APP_FlashErase(void)
 {
-  uint32_t PAGEError = 0;
-  FLASH_EraseInitTypeDef EraseInitStruct = {0};
-
-  EraseInitStruct.TypeErase   = FLASH_TYPEERASE_PAGEERASE;                                     /* Page Erase */
-  EraseInitStruct.PageAddress = FLASH_USER_START_ADDR;                                         /* Erase Start Address */
-  EraseInitStruct.NbPages  = sizeof(DATA) / FLASH_PAGE_SIZE;                                   /* Erase Page Number */
-  if (HAL_FLASHEx_Erase(&EraseInitStruct, &PAGEError) != HAL_OK)                               /* Page Erase */
+  uint32_t flash_program_start = FLASH_USER_START_ADDR ;                       /* Start address of user erase page */
+  uint32_t flash_program_end = (FLASH_USER_START_ADDR + sizeof(DATA));         /* End address of user erase page */
+  
+  while (flash_program_start < flash_program_end)
   {
-    APP_ErrorHandler();
+    /* Wait Busy=0 */
+    while(LL_FLASH_IsActiveFlag_BUSY(FLASH)==1);
+
+    /* Enable EOP */
+    LL_FLASH_EnableIT_EOP(FLASH);
+
+    /* Enable Page Erase */
+    LL_FLASH_EnablePageErase(FLASH);
+
+    /* Set Erase Address */
+    LL_FLASH_SetEraseAddress(FLASH,flash_program_start);
+
+    /* Wait Busy=0 */
+    while(LL_FLASH_IsActiveFlag_BUSY(FLASH)==1);
+
+    /* Wait EOP=1 */
+    while(LL_FLASH_IsActiveFlag_EOP(FLASH)==0);
+
+    /* Clear EOP */
+    LL_FLASH_ClearFlag_EOP(FLASH);
+
+    /* Disable EOP */
+    LL_FLASH_DisableIT_EOP(FLASH);
+
+    /* Disable Page Erase */
+    LL_FLASH_DisablePageErase(FLASH);
+    flash_program_start += FLASH_PAGE_SIZE;                                           /* Point to the start address of the next page to be erase */
   }
 }
 
@@ -130,17 +152,40 @@ static void APP_FlashErase(void)
   */
 static void APP_FlashProgram(void)
 {
-  uint32_t flash_program_start = FLASH_USER_START_ADDR ;                                /* flash program start address */
-  uint32_t flash_program_end = (FLASH_USER_START_ADDR + sizeof(DATA));                  /* flash program end address */
-  uint32_t *src = (uint32_t *)DATA;                                                     /* Program data */
+  uint32_t flash_program_start = FLASH_USER_START_ADDR ;                       /* Start address of user write flash */
+  uint32_t flash_program_end = (FLASH_USER_START_ADDR + sizeof(DATA));         /* End address of user write flash */
+  uint32_t *src = (uint32_t *)DATA;                                            /* Pointer to array */
 
   while (flash_program_start < flash_program_end)
   {
-    if (HAL_FLASH_Program(FLASH_TYPEPROGRAM_PAGE, flash_program_start, src) == HAL_OK)  /* Program */
-    {
-      flash_program_start += FLASH_PAGE_SIZE;                                           /* flash Start point first page */
-      src += FLASH_PAGE_SIZE / 4;                                                       /* Update data point */
-    }
+    /* Wait Busy=0 */
+    while(LL_FLASH_IsActiveFlag_BUSY(FLASH)==1);
+    
+    /* Enable EOP */
+    LL_FLASH_EnableIT_EOP(FLASH);
+
+    /* Enable Program */
+    LL_FLASH_EnablePageProgram(FLASH);
+
+    /* Page Program */
+    LL_FLASH_PageProgram(FLASH,flash_program_start,src);
+    
+    /* Wait Busy=0 */
+    while(LL_FLASH_IsActiveFlag_BUSY(FLASH)==1);
+    
+    /* Wait EOP=1 */
+    while(LL_FLASH_IsActiveFlag_EOP(FLASH)==0);
+    
+    /* Clear EOP */
+    LL_FLASH_ClearFlag_EOP(FLASH);
+   
+    /* Disable EOP */
+    LL_FLASH_DisableIT_EOP(FLASH);
+
+    /* Disable Program */
+    LL_FLASH_DisablePageProgram(FLASH);
+    flash_program_start += FLASH_PAGE_SIZE;                                           /* Point to the start address of the next page to be written */
+    src += FLASH_PAGE_SIZE / 4;                                                       /* Point to the next data to be written */
   }
 }
 
@@ -180,6 +225,40 @@ static void APP_FlashVerify(void)
     }
     addr += 4;
   }
+}
+
+/**
+  * @brief  Configure Systemclock
+  * @param  None
+  * @retval None
+  */
+void APP_SystemClockConfig(void)
+{
+  /*  Set FLASH Latency Before modifying the HSI */
+  LL_FLASH_SetLatency(LL_FLASH_LATENCY_0);
+
+  /* Enable HSI */
+  LL_RCC_HSI_SetCalibFreq(LL_RCC_HSICALIBRATION_24MHz);
+  LL_RCC_HSI_Enable();
+  while(LL_RCC_HSI_IsReady() != 1)
+  {
+  }
+
+  /* Set AHB divider:HCLK = SYSCLK */
+  LL_RCC_SetAHBPrescaler(LL_RCC_SYSCLK_DIV_1);
+
+  /* HSISYS used as SYSCLK clock source */
+  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_HSISYS);
+  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSISYS)
+  {
+  }
+
+  /* Set APB1 divider */
+  LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
+  LL_Init1msTick(24000000);
+
+  /* Update CMSIS variable (which can be updated also through SystemCoreClockUpdate function) */
+  LL_SetSystemCoreClock(24000000);
 }
 
 /**

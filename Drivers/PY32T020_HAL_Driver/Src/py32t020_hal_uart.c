@@ -1675,20 +1675,7 @@ static HAL_StatusTypeDef UART_Transmit_IT(UART_HandleTypeDef *huart)
   /* Check that a Tx process is ongoing */
   if (huart->gState == HAL_UART_STATE_BUSY_TX)
   {
-    if ((huart->Init.WordLength == UART_WORDLENGTH_9B) && (huart->Init.TxMode == UART_TX_MODE_1))
-    {
-      tmp16bit=(uint16_t *) huart->pTxBuffPtr;
-      huart->Instance->DR = (uint16_t)(*tmp16bit & (uint16_t)0x01FF);
-      huart->pTxBuffPtr += 2U;
-    }
-    else
-    {
-      tmp8bit=(uint8_t *) huart->pTxBuffPtr;
-      huart->Instance->DR = (uint8_t)(*tmp8bit & (uint8_t)0x00FF);
-      huart->pTxBuffPtr++;
-    }
-
-    if (--huart->TxXferCount == 0U)
+    if (huart->TxXferCount == 0U)
     {
       /* Disable the BUSYERR status interrupt and Transfer Hold Register empty interrupt */
       __HAL_UART_DISABLE_IT(huart, (UART_IT_BUSY_ERR | UART_IT_TDRE));
@@ -1703,6 +1690,22 @@ static HAL_StatusTypeDef UART_Transmit_IT(UART_HandleTypeDef *huart)
         /*Call legacy weak Tx complete callback*/
         HAL_UART_TxCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
+    }
+    else
+    {
+      if ((huart->Init.WordLength == UART_WORDLENGTH_9B) && (huart->Init.TxMode == UART_TX_MODE_1))
+      {
+        tmp16bit=(uint16_t *) huart->pTxBuffPtr;
+        huart->Instance->DR = (uint16_t)(*tmp16bit & (uint16_t)0x01FF);
+        huart->pTxBuffPtr += 2U;
+      }
+      else
+      {
+        tmp8bit=(uint8_t *) huart->pTxBuffPtr;
+        huart->Instance->DR = (uint8_t)(*tmp8bit & (uint8_t)0x00FF);
+        huart->pTxBuffPtr++;
+      }
+      huart->TxXferCount--;
     }
     return HAL_OK;
   }
